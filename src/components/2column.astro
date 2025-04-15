@@ -1,0 +1,59 @@
+---
+// 定义组件接受的属性，可以根据需要进行扩展
+const { 
+  leftColumnClass = "",
+  rightColumnClass = "",
+  reverseOnMobile = false
+} = Astro.props;
+---
+<div class={`two-column-container ${reverseOnMobile ? 'reverse-mobile' : ''}`}>
+  <div class={`left-column ${leftColumnClass}`}>
+    <slot name="left" />
+  </div>
+  <div class={`right-column ${rightColumnClass}`}>
+    <slot name="right" />
+  </div>
+</div>
+<style>
+  .two-column-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    margin: 2rem 0;
+  }
+  
+  /* 右侧列水平居中 */
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 水平居中对齐 */
+    padding: 0 1rem;
+  }
+  
+  /* 默认手机端显示顺序 */
+  .reverse-mobile {
+    flex-direction: column-reverse;
+  }
+  
+  /* 桌面端样式 */
+  @media (min-width: 768px) {
+    .two-column-container {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .left-column, .right-column {
+      flex: 1;
+    }
+    .left-column {
+      padding-right: 0 1.5rem;
+    }
+    .right-column {
+      padding-right: 1.5rem;
+    }
+    /* 即使在移动端设置了反转，在桌面端也恢复正常顺序 */
+    .reverse-mobile {
+      flex-direction: row;
+    }
+  }
+</style>

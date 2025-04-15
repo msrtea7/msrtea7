@@ -1,0 +1,147 @@
+---
+title: '02806 - Motor Vehicle Theft in San Francisco: Patterns and Prevention'
+pubDate: 2025-04-11
+author: 'Walbaaco'
+tags: ["visualization"]
+---
+
+import '../../styles/visual_center_fix.css'
+
+# Motor Vehicle Theft in San Francisco: Patterns and Prevention
+
+<div style="text-align: center">
+<i>Li, Junrui & Fu, Tongzheng<br />
+Group <b>22</b><br />
+March 30, 2025</i>
+</div>
+
+## Introduction
+
+This analysis examines motor vehicle theft in San Francisco using open crime data from the San Francisco Police Department ([available here](https://datasf.org/opendata/)). This comprehensive dataset contains various crime records from 2003 to present, including incident categories, dates, times, locations, and police districts. 
+
+For our study, we focused specifically on the spatial and temporal aspects of motor vehicle theft. We filtered and cleaned the data to analyze how vehicle theft patterns have evolved over time and across different city locations. Table 1 below shows the key data fields we used in our analysis.
+
+
+
+<h5 align="center">Table 1: SF crime data example</h5>
+<figure style="text-align: center;">
+  <div style="overflow-x: auto; max-width: 100%;">
+  | Incident Category | Incident Date | Incident Time | Police District | Longitude | Latitude | Location | Source | Year |
+  |------------------|--------------|--------------|----------------|-----------|----------|----------|--------|------|
+  | non-criminal | 2003-01-01 | 13:00 | NORTHERN | -122.418468 | 37.787965 | SUTTER ST / LARKIN ST | 03-17 | 2003 |
+  | other offenses | 2003-01-01 | 22:24 | MISSION | -122.417028 | 37.760366 | 19TH ST / SOUTH VAN NESS AV | 03-17 | 2003 |
+  | motor vehicle theft | 2003-01-01 | 16:00 | TARAVAL | -122.507539 | 37.753788 | 1700 Block of 48TH AV | 03-17 | 2003 |
+  </div>
+</figure>
+
+
+
+## The Dramatic Decline: Technology Turns the Tide
+
+Our analysis of the six most common crimes revealed something remarkable about motor vehicle theft (Figure 1). Over the very first few years, while most crime categories maintained relatively stable patterns within their own ranges, vehicle theft displayed a dramatic anomaly. 
+
+Between 2005 and 2006, motor vehicle theft rates suddenly plummeted to less than half their previous levels. This striking drop stands in sharp contrast to the contemporaneous consistent patterns seen in other crime categories.
+
+<div style="text-align: center;">
+<h5>Fig. 1: SF Monthly Top Crime Trends</h5>
+<iframe src='/visual/crime_trends_2.html' width="100%" height="600px" frameborder="0"></iframe>
+<figcaption>Line chart showing monthly-yearly trends of top 6 crime categories from 2003 to 2025. <br />The figure is interactively featuring zoom, selection, and hover information.</figcaption>
+</div>
+
+
+
+This sharp decline matches the timing of major improvements in car security. During late 20s and early 21s, vehicle theft was so common that even the federal government started a so-called ["Watch Your Car" program](https://www.ojp.gov/pdffiles1/bja/fs000261.pdf). As a possible factor, Early in-car technology at that time like EDRs, GPS, and E-ZPass systems had weaknesses that thieves could exploit. This is noted in a 2006 thesis called ["How Technology Drives Vehicular Privacy"](https://lorrie.cranor.org/pubs/vehicular-privacy.pdf).
+
+And everything changed so quick in 2005-2006 when car manufacturers widely adopted advanced anti-theft technologies ([source](https://securitytoday.com/articles/2007/10/10/study-car-thefts.aspx)). The impact was immediate and dramatic - theft rates fell sharply and stayed relatively stable for years afterward. 
+
+> Just a notion here, in this 'blog' like article, we choose not to cite the sources we use in a 'academic' way. 
+> 
+> Instead, for all of them we decide to cite them by using web links.
+
+## Persistent Hotspots: The Geography of Vehicle Theft
+
+Our heatmap of vehicle theft locations from 2003-2024 (Figure 2) shows consistent geographic patterns despite the overall reduction in thefts. Note that data for 2025 is excluded as it's incomplete.
+
+<h5 align="center">Fig. 2: SF Motor Vehicle Theft Distribution Map (2003-2023)</h5>
+<div class="map-container">
+    <iframe src='/visual/heat_map.html' width="100%" height="500px" frameborder="0" scrolling="no"></iframe>
+    <figcaption>Line chart showing monthly-yearly trends of top 6 crime categories from 2003 to 2025. <br />The figure is interactively featuring zoom, selection, and hover information.</figcaption>
+</div>
+<br />
+
+Two areas consistently stand out as high-risk zones: northeastern San Francisco and the Mission District to its south. These neighborhoods have remained theft hotspots for over 20 years, suggesting deeply rooted patterns in criminal activity. Unfortunately, we failed finding the exact pattern, but the table 2 below are feature we found with these 2 areas.
+
+
+<h5 align="center">Table 2: Features for Hotspots</h5>
+
+<div style="display: flex; justify-content: center;">
+
+| Factor | Finding | Source |
+|---|---|---|
+| Income | Large wealth disparity within the region | [Map - household income by district](https://datawrapper.dwcdn.net/PZMuj/7/) |
+| Race | Complex racial distribution, especially in Mission District area | [Map - race distribution](https://datawrapper.dwcdn.net/S4to1/11/) |
+| Transportation | Dense routes, transportation hub, busy area | [TNCs report 2018](https://www.sfmta.com/sites/default/files/reports-and-documents/2019/01/sfmta_mobility_trends_report_2018.pdf) |
+| Car Ownership | Extremely high car-free rate in the northwest | [Transpo Maps](https://transpomaps.org/projects/car-ownership/ca/san-francisco) |
+
+</div>
+
+
+However, we then found a interesting shift occurred after 2017: while the overall number of thefts remained stable since 2010(check Fig. 1), the geographic distribution became more concentrated in specific areas. This concentration peaked during 2020, the first year of the COVID-19 pandemic, when vehicle thefts became highly localized in these traditional hotspots.
+
+This geographic consistency offers valuable insights for prevention:
+
+- Police can focus resources on these high-risk areas
+- People should be extra careful when parking in these neighborhoods
+- The persistence of these hotspots suggests criminals operate in familiar territories where they've developed expertise
+
+## Time Patterns: When Vehicles Are Most Vulnerable
+
+Our 24-hour analysis (Figure 3) reveals clear patterns in when vehicle thefts occur.
+
+<div style="text-align: center;">
+  <h5>Fig. 3: SF Motor Vehicle Theft 24h Distribution Within A Year</h5>
+  <iframe src='/visual/crime_time_distribution.html' className="responsive-iframe" frameborder="0"></iframe>
+  <figcaption>Select a specific year (2003-2024) from the select box and hover <br /> the mouse
+              over the sector to view the specific incident numbers. <br />The data for 2025
+              are excluded for incompleteness.</figcaption>
+</div>
+
+
+Since 2003, vehicle thefts have consistently peaked between *6 PM* and *11 PM*, creating a clear evening vulnerability window. During daylight hours, noon emerges as a secondary peak, possibly when vehicle owners are distracted by lunch activities and parking lots experience high turnover.
+
+These time patterns provide practical guidance:
+
+- Evening hours require special vigilance, especially in high-risk areas
+- Even busy daytime periods around noon show increased theft risk
+- The consistency of these patterns over two decades points to fundamental aspects of criminal opportunity that remain constant despite other social changes
+
+
+
+## Contribution
+
+<h5 align="center">Table 3: <b>Group 22</b> Contribution Matrix</h5>
+
+<div style="display: flex; justify-content: center;">
+
+
+|Task|Li, Junrui|Fu, Tongzheng|
+|:---|:---:|:---:|
+|Diagram - bokeh line chart|🔸||
+|Diagram - folium heatmap||🔸|
+|Diagram - bokeh polar bar chart|🔸||
+|Topic mining||🔸|
+|Word content||🔸|
+|Formatting|🔸||
+|Web hosting|🔸||
+
+</div>
+
+<div style="text-align: center;">
+
+🔸 means mainly implemented by the team member,
+
+</div>
+
+The source code for this assignment is here: [https://github.com/msrtea7/02806_assignment2](https://github.com/msrtea7/02806_assignment2)
+
+

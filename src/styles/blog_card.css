@@ -1,0 +1,43 @@
+/* 整体容器样式 */
+.posts-list {
+    padding: 1rem 0rem;             /* 内边距 */
+  }
+  
+  /* 分隔线样式 */
+  .divider {
+    height: 1px;
+    background-color: #000000;
+    opacity: 0.5; 
+    margin: 0;
+  }
+  
+  /* 文章项目样式 */
+  .post-item {
+    padding: 2rem 0;           /* 上下内边距 */
+  }
+  
+  /* 日期样式 */
+  .post-date {
+    font-size: 0.9rem;         /* 字体大小 */
+    opacity: 1;              /* 透明度 */
+    margin-bottom: 0.5rem;     /* 下边距 */
+  }
+  
+  /* 标题样式 */
+  .post-title {
+    font-size: 1.5rem;          /* 字体大小 */
+    font-weight: 600;           /* 字体粗细 */
+    margin: 0;                  /* 移除默认边距 */
+  }
+  
+  /* 标题链接样式 */
+  .post-title a {
+    color: #933D3F;
+    text-decoration: none;      /* 移除下划线 */
+  }
+  
+  /* 标题链接悬停样式 */
+  .post-title a:hover {
+    text-decoration: underline; /* 添加下划线 */
+    text-decoration-color: #933D3F; /* 黑色下划线 */
+  }

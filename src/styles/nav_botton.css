@@ -1,0 +1,125 @@
+/* navigation.css */
+
+/* 设置整体导航栏与上下元素间的间隔.中的第一个值 1rem 控制上下内边距,第二个值 0 控制左右内边距 */
+.navbar {
+padding: 0rem 0;/* 1rem for top/bottom, 0 for left/right */
+padding: 0rem 0 1rem 0; /* top right bottom left */
+}
+
+/* 响应式设计 - 小屏幕 */
+@media (max-width: 768px) {
+/* 在移动设备上，鼠标悬停不起作用，改为点击切换 */
+.dropdown:hover .dropdown-content {
+    display: none; /*覆盖悬停效果 */
+}
+
+/* 为切换状态添加一个新的类 */
+.dropdown.active .dropdown-content {
+    display: block;
+    opacity: 1;
+}
+
+/* 可选：根据需要调整下拉菜单宽度 */
+.dropdown-content {
+    min-width: 100%; /* 使下拉菜单与触发器同宽 */
+}
+}
+
+
+.nav-links {
+display: flex;
+align-items: center;
+}
+
+.nav-links > a, 
+.dropdown-trigger {
+margin-right: 1.25rem; /* 标签之间的距离 (使用rem单位) */
+padding: 0.3125rem 0.625rem; /* 文字与边框之间的内边距 */
+border: 0.05rem solid #000; /* 细框 */
+text-decoration: none; /* 移除下划线 */
+color: inherit; /* 保持原来的文字颜色 */
+cursor: pointer;
+}
+
+/* 导航项悬停效果 - 添加在这里 */
+.nav-links > a:hover, 
+.dropdown-trigger:hover {
+    color: #933D3F; /* 悬停时的文字颜色 */
+    border-color:#933D3F;
+}
+
+/* 去掉最后一个元素的右边距 */
+.nav-links > a:last-child,
+.nav-links > div:last-child {
+margin-right: 0;
+}
+
+/* 下拉菜单样式 */
+.dropdown {
+position: relative;
+display: inline-block;
+}
+
+.dropdown-trigger {
+display: inline-block;
+position: relative;
+}
+
+.dropdown-trigger::after {
+content: "▼";
+font-size: 0.625rem;
+margin-left: 0.3125rem;
+vertical-align: middle;
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+left: 0;
+top: 100%; /* 紧贴触发器底部 */
+min-width: 5rem; /* 下拉框宽度 */
+z-index: 1;
+/* background-color: transparent; /* 透明背景 */
+background-color: #FCF5ED;
+/* border: 1px solid #000; /* 保留所有边框 */
+border: none;
+z-index: 999;/* 使用更高的值，确保在大多数内容之上 */
+}
+
+.dropdown-content a {
+display: block;
+padding: 0.5rem 0.625rem;
+text-decoration: none;
+color: inherit;
+border: 0.05rem solid #000; /* 改这里 - 添加完整边框 */
+margin-bottom: -1px; /* 改这里 - 避免边框重叠 */
+}
+
+.dropdown-content a:last-child {
+/* border-bottom: none; */
+margin-bottom: 0; /* 改这里 - 最后一项不需要负margin */
+}
+
+.dropdown-content a:hover {
+background-color: rgba(249, 249, 249, 0.5); /* 半透明背景 */
+color: #933D3F;
+border-color:#933D3F;
+}
+
+/* 显示下拉内容 */
+.dropdown:hover .dropdown-content {
+display: block;
+}
+
+/* 微妙的过渡效果 */
+.dropdown-content {
+opacity: 0;
+transform: translateY(0);
+transition: opacity 0.2s ease;
+pointer-events: none;
+}
+
+.dropdown:hover .dropdown-content {
+opacity: 1;
+pointer-events: auto;
+}

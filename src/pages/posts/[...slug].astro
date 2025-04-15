@@ -1,0 +1,54 @@
+---
+import { getCollection, render } from 'astro:content';
+import DefaultBlogLayout from '../../layouts/layout_blog_raw.astro';
+import CocktailLayout from '../../layouts/layout_blog_raw.astro';
+import HpcLayout from '../../layouts/layout_blog_raw.astro';
+
+export async function getStaticPaths() {
+  // 定义集合和对应的路径前缀
+  const collectionConfig = {
+    // blog: {
+    //   pathPrefix: '' // 博客文章不需要前缀
+    // },
+    academic: {
+      pathPrefix: 'academic/'
+    },
+    alcohol: {
+      pathPrefix: 'alcohol/'
+    }
+  };
+
+  // 获取所有集合的文章并创建路由
+  const allRoutes = await Promise.all(
+    Object.keys(collectionConfig).map(async (collection) => {
+      const posts = await getCollection(collection);
+      const { pathPrefix } = collectionConfig[collection];
+      
+      return posts.map(post => ({
+        params: { slug: post.id },
+        props: { post, collection }
+      }));
+    })
+  );
+
+  // 扁平化路由数组
+  return allRoutes.flat();
+}
+
+const { post, collection } = Astro.props;
+const { Content } = await render(post);
+
+// 定义集合和对应的布局组件
+const layoutMap = {
+  // blog: DefaultBlogLayout,
+  academic: DefaultBlogLayout,
+  alcohol: DefaultBlogLayout
+};
+
+// 获取布局组件
+const LayoutComponent = layoutMap[collection];
+---
+
+<LayoutComponent frontmatter={post.data}>
+  <Content />
+</LayoutComponent>

@@ -1,11 +1,70 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import IMG_portrait from '../assets/home/a.png';
+import MainLayout from '../layouts/layout_home.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// import Navigation from '../components/Nav_home.astro';
+import TwoColumn from '../components/2column.astro';
+import ImageGrid from '../components/22imageGrid.astro';
+import SocialMedia from '../components/socialMedia.astro';
+
+
+
+const pageTitle = "Me";
 ---
+    
+<MainLayout title={pageTitle}>
+    <!-- <Navigation /> -->
+    <TwoColumn>
+        <div slot="left">
+            <h1>你好，</h1>
+            <br>
+            我叫雷达、李黁、Walbaacco，代号msrtea7。<br>
+            02年生，肖马，男的，浙江人。<br>
+            我喜欢抽红利群，红塔山。<br>
+            钟爱蹲坑，抗拒马桶垫子。<br>
+            不长胡子，用的米诺地尔。<br>
+            聊天很难，见面好。<br>
+            <SocialMedia />
+        </div>
+        <div slot="right">
+            <Image 
+            src={IMG_portrait} 
+            alt="Me, portrait" 
+            class="portrait-image" 
+            />
+            
+            <!-- <ImageGrid 
+            images={[
+                {src: IMG_portrait, alt: "作品1描述"},
+                {src: IMG_portrait, alt: "作品2描述"},
+                {src: IMG_portrait, alt: "作品3描述"},
+                {src: IMG_portrait, alt: "作品4描述"}
+            ]}
+            /> -->
 
-<Layout>
-	<Welcome />
-</Layout>
+            
+        </div>
+
+    </TwoColumn>
+</MainLayout>
+
+
+
+
+<!-- <head>
+    <meta charset="UTF-8">
+</head> -->
+
+<!-- <div style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;">
+	<Image src={IMG_portrait} alt="Me, portrait" style="width: 300px; height: auto;" />
+</div> -->
+
+
+<!-- <MainLayout title={pageTitle}>
+<Navigation />
+<h1>你好</h1>
+我叫雷达、李黁、Walbaacco，代号msrtea7。<br>
+02年生，肖马，男的，浙江人。<br>
+<Image src={IMG_portrait} alt="Me, portrait" style="width: 300px; height: auto;" />
+</MainLayout> -->

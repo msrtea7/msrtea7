@@ -1,0 +1,35 @@
+---
+// import Welcome from '../components/Welcome.astro';
+// import layout_home from '../layouts/layout_home.astro';
+import "../../styles/css_home.css";
+import Navigation from '../../components/Nav_home.astro';
+
+import { Image } from 'astro:assets';
+import tree from '../../assets/blog/tree.JPG';
+
+// blog collections
+import { getCollection } from "astro:content";
+
+// 获取各个集合的文章
+const blogPosts = await getCollection("blog");
+const cocktailPosts = await getCollection("cocktail");
+const hpcPosts = await getCollection("hpc");
+
+// 如果你需要所有文章的组合列表
+const allPosts = [...blogPosts, ...cocktailPosts, ...hpcPosts];
+
+// http://localhost:4321/nun_bar
+---
+
+<Navigation />
+
+
+<Image src={tree} alt="Me, portrait" style="width: 300px; height: auto;" />
+
+<ul>
+  {allPosts.map((post) => (
+    <li>
+      <a href={`/posts/${post.id}`}>{post.data.title}</a>
+    </li>
+  ))}
+</ul>

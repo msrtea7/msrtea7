@@ -1,0 +1,30 @@
+---
+// src/layouts/Layout.astro
+import "../styles/engwrite.css";
+import Navigation from '../components/Nav_home.astro';
+
+const { title } = Astro.props;
+---
+
+<html lang="zh">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <style>
+        .layout {
+            margin: 0 auto; /*使整个布局容器在页面中水平居中。 */
+            width: 100%; /*让布局容器占据其父元素的全部可用宽度。*/
+            max-width: 1200px;
+            padding: 1rem; /*在布局容器的内部添加了一个 2rem 的内边距，需要在主css里面设置盒修正*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <Navigation />
+        <slot />
+    </div>
+</body>
+</html>

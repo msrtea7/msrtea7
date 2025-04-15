@@ -1,0 +1,21 @@
+---
+// import Welcome from '../components/Welcome.astro';
+// import layout_home from '../layouts/layout_home.astro';
+import MainLayout from '../../layouts/layout_home.astro';
+
+
+import { Image } from 'astro:assets';
+import bar_day from '../../assets/bar/bar.JPG';
+
+// http://localhost:4321/nun_bar
+const pageTitle = "Nun Bar";
+
+---
+
+<MainLayout title={pageTitle}>
+
+    <Image src={bar_day} alt="Me, portrait" style="width: 300px; height: auto;" />
+
+</MainLayout>
+
+

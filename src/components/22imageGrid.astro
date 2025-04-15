@@ -1,0 +1,108 @@
+---
+// 图片网格组件
+// 用法: <ImageGrid images={[{src: imgPath1, alt: "描述1"}, ...]} />
+// 或者使用slot传递自定义内容
+
+//使用Astro的Image来处理。因为我在index传入的是astro Image对象。另一种实现方法是传入路径字符串，用html的img
+import { Image } from 'astro:assets';
+
+const { 
+    title = "",
+    columns = 2,  // 默认2列
+    gap = "1rem", // 间距
+    containerClass = "", // 自定义类
+    mobileColumns = 2 // 新增：移动端列数，默认2列
+} = Astro.props;
+
+// 检查是否有images属性传入
+const hasImages = Astro.props.images && Astro.props.images.length > 0;
+
+// START 网格保持2*2，且自使用大小
+// 添加了mobileColumns属性：
+
+// 默认值为2，保证小屏幕上依然保持2×2布局
+// 可以通过属性自定义在移动设备上显示的列数
+
+// 优化了CSS：
+// 默认情况下使用--mobile-columns变量（值为2）
+// 移除了576px的中间断点，简化了媒体查询
+// 只在768px以上的屏幕使用--grid-columns变量
+
+
+// 增强了图片显示：
+// 添加了aspect-ratio: 1/1属性保持网格项为正方形（可选）
+// 使用object-fit: cover使图片更好地填充容器
+// 添加了overflow: hidden防止图片溢出
+
+
+// 改进了Image组件使用：
+// 支持传递width和height属性到Image组件
+// END 网格保持2*2，且自使用大小
+
+---
+<div class={`image-grid-container ${containerClass}`}>
+  {title && <h2 class="image-grid-title">{title}</h2>}
+  
+  <div class="image-grid" style={`--grid-columns: ${columns}; --grid-gap: ${gap}; --mobile-columns: ${mobileColumns};`}>
+    {hasImages ? (
+      Astro.props.images.map(img => (
+        <div class="grid-item">
+          <Image src={img.src} alt={img.alt || ""} width={img.width} height={img.height} />
+        </div>
+      ))
+    ) : (
+      <slot />
+    )}
+  </div>
+</div>
+<style>
+  .image-grid-container {
+    width: 100%;
+    margin: 2rem 0;
+  }
+  
+  .image-grid-title {
+    margin-bottom: 1rem;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--mobile-columns, 2), 1fr); /* 默认使用移动端列数 */
+    gap: var(--grid-gap);
+    width: 100%;
+  }
+  
+  .grid-item {
+    aspect-ratio: 1/1; /* 可选：保持方形比例 */
+    overflow: hidden; /* 防止图片溢出 */
+  }
+  
+  .grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 让图片填充整个容器 */
+    display: block;
+    border-radius: 0.25rem;
+  }
+  
+  /* 在中等及以上屏幕尺寸使用指定的列数 */
+  @media (min-width: 768px) {
+    .image-grid {
+      grid-template-columns: repeat(var(--grid-columns), 1fr);
+    }
+  }
+  
+  /* Safari特定修复 */
+  @supports (-webkit-touch-callout: none) {
+    .image-grid {
+      display: -webkit-grid;
+      -webkit-grid-template-columns: repeat(var(--mobile-columns, 2), 1fr);
+    }
+    
+    @media (min-width: 768px) {
+      .image-grid {
+        -webkit-grid-template-columns: repeat(var(--grid-columns), 1fr);
+      }
+    }
+  }
+</style>

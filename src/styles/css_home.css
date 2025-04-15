@@ -1,0 +1,59 @@
+/* RESET  通过reset来解决safari显示问题：CSS Reset可以帮助消除不同浏览器之间的样式差异。 https://www.oryoy.com/news/jie-mi-safari-liu-lan-qi-zhong-de-css3bug-na-xie-wen-ti-rang-ni-tou-teng-ru-he-qing-song-jie-jue.html
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
+/* 添加全局盒模型设置 */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+/* 盒模型修正：box-sizing: border-box 
+确保padding和border包含在元素的宽度和高度内，
+这样添加padding不会增加元素的总宽度 */
+
+
+
+
+body {
+    -webkit-text-size-adjust: 100%;
+
+
+    font-family: Georgia,Palatino, serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #FCF5ED;
+    padding: 1rem;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+/* 可以调试时候用，画出边界 */
+/* body { border: 1px solid red; }
+.layout { border: 1px solid blue; } */
+
+/* img {
+    display: block;
+    margin: 0 auto;
+} */
+
+/* 调整图片样式 */
+.portrait-image {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto;
+    /* border: 1px solid #eee; 添加边框以便于调试 */
+}
+/* 在大屏幕上调整图片对齐方式 */
+
+@media (min-width: 768px) {
+    .portrait-image {
+        margin: 0 auto;
+    }
+}

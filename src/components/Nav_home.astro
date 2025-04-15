@@ -1,0 +1,68 @@
+---
+import "../styles/nav_botton.css";
+---
+<!-- <div class="nav-links">
+<a href="/">Home</a>
+<a href="/nun_bar/">Nun Bar</a>
+<a href="/blogs/">Blog</a>
+</div> -->
+
+
+<nav class="navbar">
+    <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/nun_bar/">Nun Bar</a>
+    <div class="dropdown">
+        <a class="dropdown-trigger">Blog</a>
+        <div class="dropdown-content">
+        <a href="/blog_academic/">Academic</a>
+        <a href="/blog_alcohol/">Alcohol</a>
+        <!-- <a href="/blogs/daily/">Daily</a> -->
+        </div>
+    </div>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const dropdown = document.querySelector('.dropdown');
+      const trigger = document.querySelector('.dropdown-trigger');
+      
+      // 只在移动设备上添加点击事件处理
+      if (window.innerWidth <= 768) {
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          dropdown.classList.toggle('active');
+        });
+        
+        // 点击其他区域关闭下拉菜单
+        document.addEventListener('click', (e) => {
+          if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('active');
+          }
+        });
+      }
+      
+      // 处理窗口大小变化
+      window.addEventListener('resize', () => {
+        if (window.innerWidth <= 768) {
+          // 如果是小屏幕，添加点击事件
+          dropdown.classList.remove('active');
+        }
+      });
+    });
+  </script>
+
+
+
+<!-- <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/nun_bar/">Nun Bar</a>
+    <div class="dropdown">
+    <button class="dropbtn">Blog</button>
+    <div class="dropdown-content">
+        <a href="/blog_cocktail/">Cocktail</a>
+        <a href="/blog_hpc/">HPC</a>
+    </div>
+    </div>
+</div> -->

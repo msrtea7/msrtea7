@@ -1,3 +1,8 @@
+#
+
+```npm install @astrojs/mdx```
+
+
 # Astro Starter Kit: Basics
 
 ```sh

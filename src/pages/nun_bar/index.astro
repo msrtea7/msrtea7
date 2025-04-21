@@ -5,7 +5,21 @@ import MainLayout from '../../layouts/layout_home.astro';
 
 
 import { Image } from 'astro:assets';
-import bar_day from '../../assets/bar/bar.JPG';
+import daiquiri from '../../assets/bar/daiquiri.png';
+import good from '../../assets/bar/good.png';
+import mango from '../../assets/bar/mango.png';
+import paper from '../../assets/bar/paper.png';
+import pineaple from '../../assets/bar/pineaple.png';
+
+import ImageCarousel from '../../components/ImageCarousel.astro';
+
+const images = [
+    { src: good, alt: "fresh" },
+    { src: pineaple, alt: "my boy" },
+    { src: paper, alt: "paper plane" },
+    { src: daiquiri, alt: "daiquiri" },
+    { src: mango, alt: "pineaple" },
+];
 
 // http://localhost:4321/nun_bar
 const pageTitle = "Nun Bar";
@@ -14,8 +28,13 @@ const pageTitle = "Nun Bar";
 
 <MainLayout title={pageTitle}>
 
-    <Image src={bar_day} alt="Me, portrait" style="width: 300px; height: auto;" />
+    <!-- <Image src={bar_day} alt="Me, portrait" style="width: 300px; height: auto;" /> -->
+
+    <ImageCarousel images={images} />
 
 </MainLayout>
+
+
+
 
 

@@ -1,0 +1,121 @@
+---
+// 导入 Image 组件
+import { Image } from 'astro:assets';
+
+// 定义组件的 props
+interface Props {
+  images: {
+    src: ImageMetadata;  // 使用 ImageMetadata 类型接受图片资源
+    alt: string;
+  }[];
+}
+
+const { images } = Astro.props;
+
+import '../styles/carousel_base.css'
+---
+
+<div class="embla">
+  <div class="embla__viewport">
+    <div class="embla__container">
+      {images.map((image) => (
+        <div class="embla__slide">
+          <Image src={image.src} alt={image.alt} class="embla__slide__img" />
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <!-- 导航按钮 (仅在非移动设备显示) -->
+  <!-- <button class="embla__prev embla__button">←</button>
+  <button class="embla__next embla__button">→</button> -->
+  <button class="embla__prev embla__button">&lsaquo;</button>
+  <button class="embla__next embla__button">&rsaquo;</button>
+  
+  
+  <!-- 指示点 -->
+  <div class="embla__dots"></div>
+</div>
+
+<script>
+  import EmblaCarousel from 'embla-carousel';
+  
+  // 当页面内容加载完成时初始化轮播图
+  document.addEventListener('DOMContentLoaded', () => {
+    // 获取所有轮播图容器
+    const emblaNodes = document.querySelectorAll('.embla');
+    
+    emblaNodes.forEach((emblaNode) => {
+      const viewportNode = emblaNode.querySelector('.embla__viewport');
+      const prevBtn = emblaNode.querySelector('.embla__prev');
+      const nextBtn = emblaNode.querySelector('.embla__next');
+      const dotsNode = emblaNode.querySelector('.embla__dots');
+      
+      // 初始化 Embla Carousel
+      const embla = EmblaCarousel(viewportNode, {
+        loop: true,
+        draggable: true,
+        skipSnaps: false
+      });
+      
+      // 设置导航按钮
+      if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => embla.scrollPrev());
+        nextBtn.addEventListener('click', () => embla.scrollNext());
+        
+        // 更新按钮状态
+        const updateButtonsState = () => {
+          if (embla.canScrollPrev()) {
+            prevBtn.removeAttribute('disabled');
+          } else {
+            prevBtn.setAttribute('disabled', 'disabled');
+          }
+          
+          if (embla.canScrollNext()) {
+            nextBtn.removeAttribute('disabled');
+          } else {
+            nextBtn.setAttribute('disabled', 'disabled');
+          }
+        };
+        
+        embla.on('select', updateButtonsState);
+        updateButtonsState();
+      }
+      
+      // 创建指示点
+      if (dotsNode) {
+        const setupDots = () => {
+          // 清空现有指示点
+          dotsNode.innerHTML = '';
+          
+          // 创建新的指示点
+          const slides = embla.slideNodes();
+          slides.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.classList.add('embla__dot');
+            dot.addEventListener('click', () => embla.scrollTo(index));
+            dotsNode.appendChild(dot);
+          });
+        };
+        
+        // 更新当前指示点状态
+        const updateDots = () => {
+          const dots = dotsNode.querySelectorAll('.embla__dot');
+          const currentIndex = embla.selectedScrollSnap();
+          
+          dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+              dot.classList.add('embla__dot--selected');
+            } else {
+              dot.classList.remove('embla__dot--selected');
+            }
+          });
+        };
+        
+        setupDots();
+        embla.on('select', updateDots);
+        updateDots();
+      }
+    });
+  });
+</script>

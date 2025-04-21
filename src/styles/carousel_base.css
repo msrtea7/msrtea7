@@ -1,0 +1,153 @@
+/* 添加全局盒模型设置 */
+*, *::before, *::after {
+box-sizing: border-box;
+}
+
+
+/* 确保主容器具有相对定位 */
+.embla {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  width: 500px; 
+  height: 500px;
+  /* 可以添加一些底部间距，确保有空间容纳按钮和指示点 */
+  margin-bottom: 2rem;
+}
+
+.embla__viewport {
+  overflow: hidden;
+  /* 添加以下内容 */
+  height: 100%;
+}
+
+.embla__container {
+  display: flex;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  /* 添加以下内容 */
+  height: 100%;
+}
+
+.embla__slide {
+  position: relative;
+  min-width: 100%;
+  /* 添加以下内容 */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.embla__slide__img {
+  /* 替换原来的 width: 100%; height: auto; 为以下内容 */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.embla__button {
+  position: absolute;
+  z-index: 1;
+  /* 修改从顶部和垂直居中的定位 */
+  top: auto;
+  bottom: -3rem; /* 按钮位于轮播图底部外侧 */
+  transform: none; /* 移除垂直居中的变换 */
+  background: transparent;
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+  font-weight: bold; /* 添加箭头文字加粗 */
+  font-size: 1rem; /* 增加箭头大小 */
+  transition: background-color 0.3s ease; /* 添加过渡效果 */
+  color:#933D3F;
+}
+
+/* 添加悬浮效果 */
+.embla__button:hover {
+  background-color: #933D3F; /* 使用你之前选择的红色 */
+  color: #FCF5ED; /* 悬浮时箭头变为白色，增加对比度 */
+}
+
+.embla__prev {
+  left: 0; /* 左按钮位于左下角 */
+}
+
+.embla__next {
+  left: 3rem; /* 右按钮位于左按钮右侧 */
+  right: auto; /* 移除原来的右对齐 */
+}
+
+/* 指示点样式 */
+
+.embla__dot {
+  width: 0.425rem;
+  height: 0.425rem;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+.embla__dots {
+  position: absolute;
+  bottom: -3rem; /* 与按钮底部对齐 */
+  right: 0; /* 靠右对齐 */
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0;
+  /* 添加以下样式使点垂直居中对齐到按钮的中心线 */
+  height: 2.5rem; /* 与按钮高度一致 */
+  align-items: center; /* 垂直居中 */
+
+  padding-right: 1rem;
+}
+
+.embla__dot--selected {
+  background-color: #933D3F; /* 选中时的颜色，你可以根据需要调整 */
+}
+
+/* 在移动设备上隐藏导航按钮
+@media (max-width: 768px) {
+  .embla__button {
+    display: none;
+  }
+} */
+
+/* 响应式调整示例
+@media (max-width: 1024px) {
+  .embla {
+    width: 600px;
+    height: 400px;
+  }
+} */
+
+@media (max-width: 768px) {
+  .embla {
+    width: 100%; /* 在移动设备上使用全宽 */
+    height: 350px;
+  }
+  
+  /* 隐藏导航按钮 */
+  .embla__button {
+    display: none;
+  }
+  
+  /* 指示点居中 */
+  .embla__dots {
+    right: 0;
+    left: 0;
+    justify-content: center;
+    padding-right: 0;
+    bottom: -2.5rem;
+  }
+}

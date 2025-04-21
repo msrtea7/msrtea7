@@ -36,6 +36,13 @@ const collectionDefinitions = {
             // complexity: z.string().optional(),
             // technologies: z.array(z.string()).optional()
         }
+    },
+    daily: {
+        pattern: 'daily/[^_]*.{md,mdx}',
+        extraSchema: {
+            // complexity: z.string().optional(),
+            // technologies: z.array(z.string()).optional()
+        }
     }
 };
 

@@ -1,0 +1,118 @@
+/* 添加全局盒模型设置 */
+*, *::before, *::after {
+box-sizing: border-box;
+}
+
+
+/* 基本样式，遵循极简设计 */
+.embla {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  /* 添加以下固定尺寸 */
+  width: 800px; /* 你想要的固定宽度 */
+  height: 500px; /* 你想要的固定高度 */
+}
+
+.embla__viewport {
+  overflow: hidden;
+  /* 添加以下内容 */
+  height: 100%;
+}
+
+.embla__container {
+  display: flex;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  /* 添加以下内容 */
+  height: 100%;
+}
+
+.embla__slide {
+  position: relative;
+  min-width: 100%;
+  /* 添加以下内容 */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.embla__slide__img {
+  /* 替换原来的 width: 100%; height: auto; 为以下内容 */
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* 导航按钮样式 */
+.embla__button {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.embla__prev {
+  left: 10px;
+}
+
+.embla__next {
+  right: 10px;
+}
+
+/* 指示点样式 */
+
+.embla__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+.embla__dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.embla__dot--selected {
+  background-color: #933D3F; /* 选中时的颜色，你可以根据需要调整 */
+}
+
+/* 在移动设备上隐藏导航按钮 */
+@media (max-width: 768px) {
+  .embla__button {
+    display: none;
+  }
+}
+
+/* 响应式调整示例
+@media (max-width: 1024px) {
+  .embla {
+    width: 600px;
+    height: 400px;
+  }
+} */
+
+@media (max-width: 768px) {
+  .embla {
+    width: 100%; /* 在移动设备上使用全宽 */
+    height: 350px;
+  }
+}

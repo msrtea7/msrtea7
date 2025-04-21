@@ -7,14 +7,14 @@ import HpcLayout from '../../layouts/layout_blog_raw.astro';
 export async function getStaticPaths() {
   // 定义集合和对应的路径前缀
   const collectionConfig = {
-    // blog: {
-    //   pathPrefix: '' // 博客文章不需要前缀
-    // },
     academic: {
       pathPrefix: 'academic/'
     },
     alcohol: {
       pathPrefix: 'alcohol/'
+    },
+    daily: {
+      pathPrefix: 'daily/'
     }
   };
 
@@ -42,7 +42,8 @@ const { Content } = await render(post);
 const layoutMap = {
   // blog: DefaultBlogLayout,
   academic: DefaultBlogLayout,
-  alcohol: DefaultBlogLayout
+  alcohol: DefaultBlogLayout,
+  daily: DefaultBlogLayout
 };
 
 // 获取布局组件

@@ -8,7 +8,6 @@
 .navbar {
 padding: 0rem 0;/* 1rem for top/bottom, 0 for left/right */
 padding: 0rem 0 1rem 0; /* top right bottom left */
-font-family: serif, Palatino, Georgia,'YsabeauOffice';
 }
 
 /* 响应式设计 - 小屏幕 */
@@ -16,6 +15,12 @@ font-family: serif, Palatino, Georgia,'YsabeauOffice';
 /* 在移动设备上，鼠标悬停不起作用，改为点击切换 */
 .dropdown:hover .dropdown-content {
     display: none; /*覆盖悬停效果 */
+}
+
+@media (min-width: 769px) {
+    .navbar {
+        font-family: serif, Palatino, Georgia,'YsabeauOffice';
+    }
 }
 
 /* 为切换状态添加一个新的类 */

@@ -1,9 +1,14 @@
 /* navigation.css */
+@font-face {
+    font-family: 'YsabeauOffice';
+    src: url('/fonts/YsabeauOffice-VariableFont_wght.ttf') format('truetype-variations');
+}
 
 /* 设置整体导航栏与上下元素间的间隔.中的第一个值 1rem 控制上下内边距,第二个值 0 控制左右内边距 */
 .navbar {
 padding: 0rem 0;/* 1rem for top/bottom, 0 for left/right */
 padding: 0rem 0 1rem 0; /* top right bottom left */
+font-family: serif, 'YsabeauOffice';
 }
 
 /* 响应式设计 - 小屏幕 */

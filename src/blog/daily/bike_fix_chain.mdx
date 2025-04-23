@@ -1,0 +1,63 @@
+---
+title: '修车，拼接链条'
+pubDate: 2025-04-21
+author: 'Walbaaco'
+tags: ["bike"]
+---
+import ImageCarousel from '../../components/ImageCarousel.astro';
+
+import { Image } from 'astro:assets';
+import fresh from '../../assets/blog/bike_fix_chain/new.png'
+import we from '../../assets/blog/bike_fix_chain/we.png'
+import zombie from '../../assets/blog/bike_fix_chain/zombie.png'
+
+export const images = [
+    { src: fresh, alt: "fresh" },
+    { src: zombie, alt: "the zombie bike" },
+    { src: we, alt: "Me, Adam and Lu" },
+];
+
+# 修车，拼接链条
+
+## 断了
+
+一个礼拜前刚收了个二手自行车。估计是闲置太久，链条锈的厉害。
+
+那是后半夜了，那天付哥对象光临丹麦，在王哥家聚。和卢哥回去的路上，这链条卢在骑的时候爆断了哈哈哈。
+
+> 特别鸣谢卢哥给切身排查了安全隐患。
+
+## 垃圾佬
+
+完事儿了修呗，real talk之前在国内都是狠造共享单车的，还从没想着得自己修车。当然也是因为身在丹麦不由己，买这买链子和找店修车是下下下策。
+
+感谢卢哥和李老板的帮助，在U2停车场的一辆僵尸车上拆下来了一根成色非常之好的链条。这是垃圾佬伟大的胜利。
+
+<div style="text-align: center;">
+    <Image src={zombie} alt="the zombie bike" class="single_img" />
+</div>
+
+可惜稍短了这链条，得延长，必须延长。
+
+简单的过程：
+- 从老的链条上拆下来个6节，称作 chain-a
+- chain-a 一端连到新链条，得到chain-b which 是未闭合的。
+- 在链子和车挂上之后再完成chain-b 闭合
+
+<div style="text-align: center;">
+    <Image src={fresh} alt="fresh" class="single_img" />
+</div>
+
+实际操作中由于新链子没有quick link，老链子锈得夸张，在拆链子和闭合链子上花了大功夫。一开始李老板的拆链子的五金件都给咱干歪了。
+
+## Adam!
+
+就和所有可爱的故事一样，我们也遇到了那位贵人。一个在隔壁楼组装车的老美，僵尸车缝合怪，简直不要太专业。感谢Adam的指导和工具支持。
+
+整体来讲，“简单的过程”中最难的是闭合。因为没有quick link，我们需要用锤子把插销砸回去which需要 [ 人-车-平面 ] 在一个非常完美的角度。
+
+Adam有个中等大小手提的音箱正对着他的小凳子。非常好的音乐，hard rock babe。他平时喜欢alternative, rock, indie, sometimes Jazz in the evening。非常好。
+
+<div style="text-align: center;">
+    <Image src={we} alt="Me, Adam and Lu" class="single_img" />
+</div>

@@ -13,12 +13,16 @@ import pineaple from '../../assets/bar/pineaple.png';
 
 import ImageCarousel from '../../components/ImageCarousel.astro';
 
+const externalImageUrl = 'https://assets.msrtea7.com/IMGA0323.JPG';
+
+
 const images = [
     { src: good, alt: "fresh" },
     { src: pineaple, alt: "my boy" },
     { src: paper, alt: "paper plane" },
     { src: daiquiri, alt: "daiquiri" },
     { src: mango, alt: "pineaple" },
+    // { src: externalImageUrl, alt: "external image", isExternal: true },
 ];
 
 // http://localhost:4321/nun_bar
@@ -28,12 +32,11 @@ const pageTitle = "Nun Bar";
 
 <MainLayout title={pageTitle}>
 
-    <!-- <Image src={bar_day} alt="Me, portrait" style="width: 300px; height: auto;" /> -->
-
     <ImageCarousel images={images} />
 
 </MainLayout>
 
+<!-- <Image src={bar_day} alt="Me, portrait" style="width: 300px; height: auto;" /> -->
 
 
 

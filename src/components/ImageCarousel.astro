@@ -20,7 +20,11 @@ import '../styles/carousel_base.css'
     <div class="embla__container">
       {images.map((image) => (
         <div class="embla__slide">
-          <Image src={image.src} alt={image.alt} class="embla__slide__img" />
+          {image.isExternal ? (
+            <img src={image.src} alt={image.alt} class="embla__slide__img" />
+          ) : (
+            <Image src={image.src} alt={image.alt} class="embla__slide__img" />
+          )}
         </div>
       ))}
     </div>

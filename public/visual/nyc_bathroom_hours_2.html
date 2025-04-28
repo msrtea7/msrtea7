@@ -93,34 +93,7 @@
                 height: 100%;
             }
             
-            /* 响应式设计 */
-            @media (max-width: 768px) {
-                body {
-                    padding: 10px;
-                }
-                .container {
-                    padding: 15px;
-                }
-                h1 {
-                    font-size: 24px;
-                }
-                select {
-                    width: 100%;
-                }
-                #chart-container {
-                    height: 900px;
-                }
-                .am-title {
-                    top: 10px;
-                    width: 100%;
-                    left: 0;
-                }
-                .pm-title {
-                    top: 450px;
-                    width: 100%;
-                    left: 0;
-                }
-            }
+            
         </style>
     </head>
     <body>
@@ -340,7 +313,7 @@
                 // 清除旧图表并创建新图表
                 Plotly.react(chartDiv, traces, updatedLayout, {
                     displayModeBar: false, // 隐藏模式栏以获得更简洁的外观
-                    responsive: true,
+                    responsive: false,
                     autosize: true,
                 });
             }

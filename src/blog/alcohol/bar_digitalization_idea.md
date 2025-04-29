@@ -8,6 +8,8 @@ author: 'Walbaaco'
 # 酒吧数字化 - 0.0.1
 
 > 我热爱酒，热爱计算机。但我不能和爱好者一样了，是时候下个阶段。
+>
+> 链接 --> 是我的简历 <https://msrtea7.com/posts/alcohol/barback_resume/>
 
 ## 现在
 对于酒吧数字化的议题，互联网上可找到的主要有两类

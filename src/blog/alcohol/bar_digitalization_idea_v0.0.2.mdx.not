@@ -46,7 +46,7 @@ author: 'Walbaaco'
 
 ### **业务运营框架**
 
-
+<div className="table-container">
 在进行头脑风暴前，我需要对酒吧业务进行一个简单的框架分析。
 
 在这里我用平衡计分卡模型来进行业务运营框架分析，在具体项目内用时空概念来进一步细分。于是我得到了如下矩阵
@@ -57,19 +57,15 @@ author: 'Walbaaco'
 
 <h5 align="center">表格 1: 酒吧 - 场景与平衡计分卡关联矩阵</h5>
 
-<figure style="text-align: center;">
-  <div style="overflow-x: auto; max-width: 100%;">
 
-  | BSC视角 | 酒吧实体-营业时间内 | 酒吧实体-营业时间外 | 非酒吧实体 |
-  |---------|-------------------|-------------------|-----------|
-  | **财务视角** | • <span className="bartop">吧台：客单价管理、销售组合优化</span><br/>• <span className="guest-area">客座区：座位周转率管理</span><br/>• <span className="management">管理区：即时销售监控</span> | • <span className="kitchen">后厨：原料损耗控制</span><br/> • <span className="management">管理区：日结与盘点</span><br/>• <span className="management">管理区：能源使用监控</span> | • 财务报表分析<br/>• 预算编制与控制<br/>• 成本结构优化 |
-  | **客户视角** | • <span className="bartop">吧台：顾客接待与服务，产品体验呈现</span><br/>• <span className="guest-area">客座区：顾客接待与服务</span><br/>• <span className="management">管理区：问题快速响应</span> | | • 客户数据分析<br/>• 市场趋势研究<br/>• 客户关系管理<br/>• 品牌形象维护<br/>|
-  | **内部流程视角** | • <span className="bartop">吧台：调酒标准执行、即时品质控制</span><br/>• <span className="guest-area">客座区：服务流程管理</span><br/>• <span className="kitchen">后厨：即时补给支持</span><br/>• <span className="management">管理区：跨部门协调</span> | • <span className="bartop">吧台：工作台优化</span><br/>• <span className="kitchen">后厨：Bar Back备料</span><br/> • <span className="kitchen">后厨：酒单设计和更新</span><br/>• <span className="kitchen">后厨：库存管理、设备维护</span><br/>• <span className="management">管理区：团队管理</span> | • 标准操作流程制定<br/>• 供应链管理<br/>• 品质标准设计<br/>• 风险管理计划<br/> |
-  | **学习与成长视角** || • <span className="bartop">吧台：调酒技能训练</span> | • 人才招聘<br/>• 培训体系设计<br/>• 创新研发规划<br/>• 行业交流与学习 |
+| BSC视角 | 酒吧实体-营业时间内 | 酒吧实体-营业时间外 | 非酒吧实体 |
+|---------|-------------------|-------------------|-----------|
+| **财务视角** | • <span className="bartop">吧台：客单价管理、销售组合优化</span><br/>• <span className="guest-area">客座区：座位周转率管理</span><br/>• <span className="management">管理区：即时销售监控</span> | • <span className="kitchen">后厨：原料损耗控制</span><br/> • <span className="management">管理区：日结与盘点</span><br/>• <span className="management">管理区：能源使用监控</span> | • 财务报表分析<br/>• 预算编制与控制<br/>• 成本结构优化 |
+| **客户视角** | • <span className="bartop">吧台：顾客接待与服务，产品体验呈现</span><br/>• <span className="guest-area">客座区：顾客接待与服务</span><br/>• <span className="management">管理区：问题快速响应</span> | | • 客户数据分析<br/>• 市场趋势研究<br/>• 客户关系管理<br/>• 品牌形象维护<br/>|
+| **内部流程视角** | • <span className="bartop">吧台：调酒标准执行、即时品质控制</span><br/>• <span className="guest-area">客座区：服务流程管理</span><br/>• <span className="kitchen">后厨：即时补给支持</span><br/>• <span className="management">管理区：跨部门协调</span> | • <span className="bartop">吧台：工作台优化</span><br/>• <span className="kitchen">后厨：Bar Back备料</span><br/> • <span className="kitchen">后厨：酒单设计和更新</span><br/>• <span className="kitchen">后厨：库存管理、设备维护</span><br/>• <span className="management">管理区：团队管理</span> | • 标准操作流程制定<br/>• 供应链管理<br/>• 品质标准设计<br/>• 风险管理计划<br/> |
+| **学习与成长视角** || • <span className="bartop">吧台：调酒技能训练</span> | • 人才招聘<br/>• 培训体系设计<br/>• 创新研发规划<br/>• 行业交流与学习 |
 
-  </div>
-</figure>
-
+</div>
 
 ### **数字化应用**
 
@@ -79,17 +75,16 @@ author: 'Walbaaco'
 
 <h5 align="center">表格 2: 数字化技术在上述框架中的分布</h5>
 
-<figure style="text-align: center;">
-  <div style="overflow-x: auto; max-width: 100%;">
+<div className="table-container">
 
-  | BSC视角 | 酒吧实体-营业时间内 | 酒吧实体-营业时间外 | 非酒吧实体 |
-  |---------|-------------------|-------------------|-----------|
-  | **财务视角** || • <span className="kitchen">后厨：IoT设备能源与浪费监控</span> |• 区块链技术增强供应链透明度<br/> |
-  | **客户视角** | • <span className="bartop">吧台：机器人自动化摇酒</span><br/>• <span className="bartop">吧台：AI推荐个性化服务</span><br/>• <span className="guest-area">客座区：VR体验沉浸式用餐</span><br/>• <span className="guest-area">客座区：AR菜单互动体验</span> || |
-  | **内部流程视角** | | • <span className="kitchen">后厨：<span className="digital">库存管理软件</span></span><br/>• <span className="kitchen">后厨：IoT监控食品安全，IoT获取设备运行时数据(例如冰箱里的温度实时获取)</span><br/>|• 文档管理工具<br/> • 区块链供应链管理<br/> • 学徒表现记录，电子存档<br/>|
-  | **学习与成长视角** | <span className="guest-area">客座区：数字化客户反馈收集</span> | |• 知识管理系统<br/>• <span className="digital">在线培训平台</span> |
-  </div>
-</figure>
+| BSC视角 | 酒吧实体-营业时间内 | 酒吧实体-营业时间外 | 非酒吧实体 |
+|---------|-------------------|-------------------|-----------|
+| **财务视角** || • <span className="kitchen">后厨：IoT设备能源与浪费监控</span> |• 区块链技术增强供应链透明度<br/> |
+| **客户视角** | • <span className="bartop">吧台：机器人自动化摇酒</span><br/>• <span className="bartop">吧台：AI推荐个性化服务</span><br/>• <span className="guest-area">客座区：VR体验沉浸式用餐</span><br/>• <span className="guest-area">客座区：AR菜单互动体验</span> || |
+| **内部流程视角** | | • <span className="kitchen">后厨：<span className="digital">库存管理软件</span></span><br/>• <span className="kitchen">后厨：IoT监控食品安全，IoT获取设备运行时数据(例如冰箱里的温度实时获取)</span><br/>|• 文档管理工具<br/> • 区块链供应链管理<br/> • 学徒表现记录，电子存档<br/>|
+| **学习与成长视角** | <span className="guest-area">客座区：数字化客户反馈收集</span> | |• 知识管理系统<br/>• <span className="digital">在线培训平台</span> |
+
+</div>
 
 非常有意思的发现是，吧台 & 客座区的“数字化”都是非常变态的。
 

@@ -1,0 +1,155 @@
+---
+title: 'Bar digitalization - 0.0.2'
+pubDate: 2025-04-29
+author: 'Walbaaco'
+# tags: [""]
+---
+<style jsx>{`
+  .bartop {
+    color: #c02c38;
+    font-weight: 500;
+  }
+  .guest-area {
+    color:rgb(18, 117, 183);
+    font-weight: 500;
+  }
+  .kitchen {
+    color:rgb(18, 123, 62);
+    font-weight: 500;
+  }
+  .management {
+    color:rgb(195, 147, 36);
+    font-weight: 500;
+  }
+  .table-container {
+    overflow-x: auto;
+    margin: 20px 0;
+  }
+  th:first-child {
+    width: 15%;
+  }
+`}</style>
+
+
+
+# **Bar Digitalization - 0.0.2**
+
+> Thank you very much for taking the time to read this article!
+> 
+> I love alcohol, and I love computers. But I can't just remain an enthusiast anymore; it's time for the next stage.
+>
+> Link --> [Personal Resume](https://msrtea7.com/posts/alcohol/barback_resume/)<br/>
+> Link --> [Bar Digitalization 0.0.1](https://msrtea7.com/posts/alcohol/bar_digitalization_idea/)
+
+## **Business Operation Framework and Digitalization**
+
+
+### **Business Operation Framework**
+
+<div className="table-container">
+Before brainstorming, I need to make a simple framework analysis of bar operations.
+
+Here I use the Balanced Scorecard model for business operation framework analysis, with further breakdown using space-time concepts for specific projects. This gives me the following matrix:
+
+> The definition of **Management Area** is a bit vague. I want to keep the "space" classification framework, but it can actually be understood as "bar manager" or other leadership roles.
+>
+> This framework is very basic - feedback welcome!
+
+<h5 align="center">Table 1: Bar - Scene and Balanced Scorecard Correlation Matrix</h5>
+
+
+| BSC Perspective | Bar Premises - During Business Hours | Bar Premises - After Business Hours | Non-Bar Premises |
+|---------|-------------------|-------------------|-----------|
+| **Financial Perspective** | • <span className="bartop">Bar Counter: Customer spending management, sales mix optimization</span><br/>• <span className="guest-area">Guest Area: Seat turnover rate management</span><br/>• <span className="management">Management Area: Real-time sales monitoring</span> | • <span className="kitchen">Back of House: Raw material waste control</span><br/> • <span className="management">Management Area: Daily settlement and inventory</span><br/>• <span className="management">Management Area: Energy use monitoring</span> | • Financial statement analysis<br/>• Budget preparation and control<br/>• Cost structure optimization |
+| **Customer Perspective** | • <span className="bartop">Bar Counter: Customer reception and service, product experience presentation</span><br/>• <span className="guest-area">Guest Area: Customer reception and service</span><br/>• <span className="management">Management Area: Rapid problem response</span> | | • Customer data analysis<br/>• Market trend research<br/>• Customer relationship management<br/>• Brand image maintenance<br/>|
+| **Internal Process Perspective** | • <span className="bartop">Bar Counter: Cocktail standard execution, real-time quality control</span><br/>• <span className="guest-area">Guest Area: Service process management</span><br/>• <span className="kitchen">Back of House: Real-time supply support</span><br/>• <span className="management">Management Area: Cross-department coordination</span> | • <span className="bartop">Bar Counter: Workstation optimization</span><br/>• <span className="kitchen">Back of House: Bar Back prep work</span><br/> • <span className="kitchen">Back of House: Menu design and updates</span><br/>• <span className="kitchen">Back of House: Inventory management, equipment maintenance</span><br/>• <span className="management">Management Area: Team management</span> | • Standard operating procedure development<br/>• Supply chain management<br/>• Quality standard design<br/>• Risk management planning<br/> |
+| **Learning & Growth Perspective** || • <span className="bartop">Bar Counter: Bartending skill training</span> | • Talent recruitment<br/>• Training system design<br/>• Innovation R&D planning<br/>• Industry exchange and learning |
+
+</div>
+
+### **Digital Applications**
+
+In this 2023 article, several bar digitalization projects are listed. [Link](https://www.barandrestaurant.com/technology/tech-trends-shaping-future-bar-and-restaurant-industry)
+
+I've placed the projects mentioned in the article into the framework above.
+
+<h5 align="center">Table 2: Distribution of Digital Technologies in the Above Framework</h5>
+
+<div className="table-container">
+
+| BSC Perspective | Bar Premises - During Business Hours | Bar Premises - After Business Hours | Non-Bar Premises |
+|---------|-------------------|-------------------|-----------|
+| **Financial Perspective** || • <span className="kitchen">Back of House: IoT device energy and waste monitoring</span> |• Blockchain technology enhancing supply chain transparency<br/> |
+| **Customer Perspective** | • <span className="bartop">Bar Counter: Robotic automated cocktail making</span><br/>• <span className="bartop">Bar Counter: AI-recommended personalized service</span><br/>• <span className="guest-area">Guest Area: VR immersive dining experience</span><br/>• <span className="guest-area">Guest Area: AR menu interactive experience</span> || |
+| **Internal Process Perspective** | | • <span className="kitchen">Back of House: <span className="digital">Inventory management software</span></span><br/>• <span className="kitchen">Back of House: IoT monitoring food safety, IoT obtaining real-time equipment operation data (e.g., real-time temperature from refrigerators)</span><br/>|• Document management tools<br/> • Blockchain supply chain management<br/> • Apprentice performance records, electronic archiving<br/>|
+| **Learning & Growth Perspective** | <span className="guest-area">Guest Area: Digital customer feedback collection</span> | |• Knowledge management systems<br/>• <span className="digital">Online training platforms</span> |
+
+</div>
+
+A very interesting finding is that the "digitalization" of the bar counter & guest areas is quite 'bullshit'.
+
+## **Conversations - Pain Points**
+
+After discussing this with a bartender & owner from my hometown (referred to as "Owner A" below), his pain points are all represented in the tables above.
+
+### **Pain Point 1: Unified Quality Standards**
+
+Involves:
+- Row: Internal Process Perspective<br/>
+- Column: Bar Premises - During Business Hours, Non-Bar Premises
+
+This issue has two dimensions: **single location** and **chain operations**.
+
+For a single location, Owner A mentioned that different batches of fresh ingredients like lemons/limes show quality variations. For experienced bartenders, they might have the ability to flexibly adjust recipes to handle these differences, but this is more difficult for apprentices or less experienced bartenders. Could there be quality standards for this?
+
+For chain operations, Owner A mentioned that if they opened another bar, they would want to ensure customers get the same experience with a Whiskey Sour at both locations. How? There are even more uncertain factors.
+
+### **Pain Point 2: Product Waste Rate**
+
+- Row: Financial Perspective, Learning & Growth Perspective<br/>
+- Column: Bar Premises - After Business Hours, Non-Bar Premises
+
+Owner A described that when creating drinks, there's quite a bit of beverage/material waste. Employee training also creates beverage waste, as well as other small things like complimentary drinks, or customers wanting a replacement for drinks they don't like.
+
+Currently, Owner A uses estimation to figure out the approximate cost of this beverage and material waste. He wants a more accurate solution.
+
+## **My Ideas**
+
+I'm very grateful for Owner A's enthusiastic answers, and of course for Friend B's inspirational thoughts.
+
+For Owner A's pain points, I think feasible solutions would mainly involve IoT (Internet of Things). The main difficulty is at the information collection level, such as collecting quality data for lemon juice and then processing it (cross-disciplinary). Waste rate control is similar - finding an elegant way to obtain data without interfering with normal human activities. After all, it's not possible to record every pour of alcohol in a notebook, haha!
+
+Before talking with Owner A, my own ideas were mainly in the Learning & Growth Perspective and Internal Process Perspective from **Table 2**. I want to do, or rather I think the following two things would be meaningful:
+
+- Using voice recognition/handwriting recognition + large language model semantic analysis to automatically archive drink recipe logs
+- Customizing a knowledge base for the bar itself
+
+### **1. Using Voice Recognition/Handwriting Recognition + Large Language Model Semantic Analysis to Automatically Archive Drink Recipe Logs**
+
+In my own home bar practice, when testing drinks, recipes often go through many iterations. Recording the proportions and flavors of each recipe often only stays in my head (because my hands aren't clean enough to write or type at this time). When there are many trials and I get tipsy, I forget the drink recipes.
+
+So I want to use voice recognition/handwriting recognition to get basic log "data," for example, before making a drink, speaking into a microphone about which ingredient is how many milliliters. Then a large language model can robustly format this unstructured natural language. For writing to log files or databases, this can use an agent or traditional automation solutions.
+
+### **2. Customizing a Knowledge Base for the Bar**
+
+This inspiration comes from Flavor Group's 2023 tenth anniversary menu. I was very pleasantly surprised that modern menus can detail information to this degree. The hierarchical structure is clear, making it perfect for standardized storage!
+
+Simply put: it's about detailed recording of the specific milliliter amounts for each recipe of every drink, garnishes, glassware, flavor descriptions, etc. For each homemade ingredient, also detailed recording of recipes, proportions, and production techniques.
+
+For cocktail brands with rich menus, creating a knowledge base can:
+- Efficiently store the bar's digital assets
+- Facilitate information lookup and employee training
+
+Of course, it's not just about recording recipes; the bar can choose to put any information in this knowledge base.
+
+A knowledge base is not the same as a database. Simply put, it's a database plus. Imagine it as a Wikipedia dedicated to this bar, where users (customers/industry peers/apprentices) can explore by searching for entries.
+
+Also, thanks to structured storage, the bar's content can be easily integrated into various scenarios:
+- Digital ordering
+- Book publishing and content licensing
+- Inventory management software data synchronization
+- Employee training
+- Supply chain and inventory optimization (one ingredient used in multiple cocktails)
+- Creation of visual information charts
+- Integration with large language models to explore unlimited possibilities
+- ...

@@ -156,10 +156,19 @@ Also, thanks to structured storage, the bar's content can be easily integrated i
 - Integration with large language models to explore unlimited possibilities
 - ...
 
+
+import { Image } from 'astro:assets';
+import im1 from '../../assets/bar/im1.png'
+import im2 from '../../assets/bar/im1.png'
+
 <h5 align="center">Fig.1 Example of flavor group how they organize recipe data</h5>
-  <iframe src='/bar/pt_1.html' width="100%" height="540px" frameborder="0" scrolling="no"></iframe>
+<div style="text-align: center;">
+    <Image src={im1} alt="Gin tasting" class="single_img" />
+</div>
 <br />
 
-<h5 align="center">Fig.1 The related self-made ingredients</h5>
-  <iframe src='/bar/pt_2.html' width="100%" height="700px" frameborder="0" scrolling="no"></iframe>
+<h5 align="center">Fig.2 The related self-made ingredients</h5>
+<div style="text-align: center;">
+    <Image src={im2} alt="Gin tasting" class="single_img" />
+</div>
 <br />

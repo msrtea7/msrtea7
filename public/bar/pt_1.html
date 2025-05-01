@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cocktail Recipe Table</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            white-space: nowrap;
+        }
+
+        th, td {
+            border: 1px dashed #999;
+            padding: 10px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
+        .first-column {
+            font-weight: bold;
+            background-color: #f0f0f0;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .table-container {
+                padding: 10px;
+            }
+
+            table {
+                white-space: normal;
+            }
+
+            th, td {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Hide the table and show card view on mobile */
+            .table-view {
+                display: none;
+            }
+
+            .card-view {
+                display: block;
+            }
+
+            .recipe-card {
+                background: white;
+                margin-bottom: 15px;
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            }
+
+            .recipe-card h3 {
+                margin-bottom: 10px;
+                color: #333;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 5px;
+            }
+
+            .recipe-detail {
+                margin-bottom: 8px;
+            }
+
+            .recipe-detail strong {
+                color: #555;
+                margin-right: 5px;
+            }
+        }
+
+        /* Default hide card view on larger screens */
+        .card-view {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <!-- Table View for Desktop/Tablet -->
+        <div class="table-view">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sequence No.</th>
+                        <th>①</th>
+                        <th>②</th>
+                        <th>③</th>
+                        <th>④</th>
+                        <th>⑤</th>
+                        <th>⑥</th>
+                        <th>⑦</th>
+                        <th>⑧</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="first-column" rowspan="2">Spirit<br>&<br>Quantity</td>
+                        <td>22.5ml</td>
+                        <td>22.5ml</td>
+                        <td>15ml</td>
+                        <td>22.5ml</td>
+                        <td>1dash</td>
+                        <td>1dash</td>
+                        <td>1dash</td>
+                        <td>1dash</td>
+                    </tr>
+                    <tr>
+                        <td>22.9g</td>
+                        <td>26g</td>
+                        <td>15.2g</td>
+                        <td>23.2g</td>
+                        <td>0.4g</td>
+                        <td>0.4g</td>
+                        <td>0.45g</td>
+                        <td>0.61g</td>
+                    </tr>
+                    <tr>
+                        <td class="first-column">Name</td>
+                        <td>Kim Bali</td>
+                        <td>Di Ganci<br>Black Galanga<br>Liqueur</td>
+                        <td>Lychee<br>Liqueur<br>Cream</td>
+                        <td>Fresh<br>Kiwi Juice</td>
+                        <td>Bay Leaf<br>Fragrance<br>Spray</td>
+                        <td>Angel Fungus<br>Fungus Cream<br>Fragrance</td>
+                        <td>Self-made<br>Osmanthus Fragrance<br>Spray</td>
+                        <td>Self-made<br>Juice Fragrance<br>Mist</td>
+                    </tr>
+                    <tr>
+                        <td class="first-column">Garnish</td>
+                        <td colspan="8">Dried Flower & Orange Decoration</td>
+                    </tr>
+                    <tr>
+                        <td class="first-column">Glassware</td>
+                        <td colspan="8">Add a large classic ice cube to the ancient glass (約360ml)</td>
+                    </tr>
+                    <tr>
+                        <td class="first-column">Preparation<br>Method</td>
+                        <td colspan="8">Add all ingredients to the shaker with crushed ice, shake vigorously, and strain through back-filtered ice into the ancient glass.</td>
+                    </tr>
+                    <tr>
+                        <td class="first-column" rowspan="3">Tasting<br>Notes</td>
+                        <td colspan="4">Alcohol: &lt;17%ABV</td>
+                        <td colspan="4">Alcohol Content: 14.7ml</td>
+                    </tr>
+                    <tr>
+                        <td colspan="8"><strong>Flavor:</strong> Slightly sour and sweet, three-dimensional taste balance.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="8"><strong>Aroma:</strong> The sweet aroma of the wine cup, rich pulp orange aroma, after entering the mouth, the pulp aroma begins to release, keeping for a long time, and the wood aroma comes to the back of the mouth, keeping for a long time.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Card View for Mobile -->
+        <div class="card-view">
+            <div class="recipe-card">
+                <h3>Recipe Card ①</h3>
+                <div class="recipe-detail"><strong>Name:</strong> Kim Bali</div>
+                <div class="recipe-detail"><strong>Quantity:</strong> 22.5ml / 22.9g</div>
+            </div>
+            
+            <div class="recipe-card">
+                <h3>Recipe Card ②</h3>
+                <div class="recipe-detail"><strong>Name:</strong> Di Ganci Black Galanga Liqueur</div>
+                <div class="recipe-detail"><strong>Quantity:</strong> 22.5ml / 26g</div>
+            </div>
+            
+            <div class="recipe-card">
+                <h3>Recipe Card ③</h3>
+                <div class="recipe-detail"><strong>Name:</strong> Lychee Liqueur Cream</div>
+                <div class="recipe-detail"><strong>Quantity:</strong> 15ml / 15.2g</div>
+            </div>
+            
+            <div class="recipe-card">
+                <h3>Recipe Card ④</h3>
+                <div class="recipe-detail"><strong>Name:</strong> Fresh Kiwi Juice</div>
+                <div class="recipe-detail"><strong>Quantity:</strong> 22.5ml / 23.2g</div>
+            </div>
+            
+            <div class="recipe-card">
+                <h3>Recipe Card ⑤</h3>
+                <div class="recipe-detail"><strong>Name:</strong> Bay Leaf Fragrance Spray</div>
+                <div class="recipe-detail"><strong>Quantity:</strong> 1dash / 0.4g</div>
+            </div>
+            
+            <div class="recipe-card">
+                <h3>Recipe Card ⑥</h3>
+                <div class="recipe-detail"><strong>Name:</strong> Angel Fungus Fungus Cream Fragrance</div>
+                <div class="recipe-detail"><strong>Quantity:</strong> 1dash / 0.4g</div>
+            </div>
+            
+            <div class="recipe-card">
+                <h3>Recipe Card ⑦</h3>
+                <div class="recipe-detail"><strong>Name:</strong> Self-made Osmanthus Fragrance Spray</div>
+                <div class="recipe-detail"><strong>Quantity:</strong> 1dash / 0.45g</div>
+            </div>
+            
+            <div class="recipe-card">
+                <h3>Recipe Card ⑧</h3>
+                <div class="recipe-detail"><strong>Name:</strong> Self-made Juice Fragrance Mist</div>
+                <div class="recipe-detail"><strong>Quantity:</strong> 1dash / 0.61g</div>
+            </div>
+            
+            <div class="recipe-card">
+                <h3>Preparation Details</h3>
+                <div class="recipe-detail"><strong>Garnish:</strong> Dried Flower & Orange Decoration</div>
+                <div class="recipe-detail"><strong>Glassware:</strong> Ancient glass with large ice cube (約360ml)</div>
+                <div class="recipe-detail"><strong>Preparation:</strong> Add all ingredients to the shaker with crushed ice, shake vigorously, and strain into glass</div>
+                <div class="recipe-detail"><strong>Alcohol:</strong> <17%ABV</div>
+                <div class="recipe-detail"><strong>Content:</strong> 14.7ml</div>
+                <div class="recipe-detail"><strong>Flavor:</strong> Slightly sour and sweet, three-dimensional taste balance</div>
+                <div class="recipe-detail"><strong>Aroma:</strong> Sweet wine cup aroma, rich pulp orange scent</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

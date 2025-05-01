@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Layout - Four Tables</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .recipe-section {
+            margin-bottom: 40px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .recipe-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .recipe-header h2 {
+            font-size: 20px;
+            margin-right: 20px;
+            color: #333;
+        }
+
+        .recipe-marker {
+            width: 12px;
+            height: 12px;
+            background: #ff5722;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .recipe-info {
+            margin-left: auto;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .tables-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .table-wrapper {
+            flex: 1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid black;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 14px;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .table-title {
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .process-table td {
+            border: 1px dashed #666;
+        }
+
+        .process-table .step-marker {
+            width: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .numbered-cell {
+            background-color: #f8f8f8;
+            border: 1px solid #999;
+        }
+
+        .combined-table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .combined-table .process-cell {
+            border: 1px dashed #666;
+        }
+
+        .combined-table .equipment-cell {
+            background-color: #f8f8f8;
+        }
+
+        /* Desktop view for main table containers */
+        .desktop-view {
+            display: block;
+        }
+
+        .mobile-view {
+            display: none;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .recipe-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .recipe-info {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .tables-container {
+                flex-direction: column;
+            }
+
+            .desktop-view {
+                display: none;
+            }
+
+            .mobile-view {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .recipe-section {
+                padding: 10px;
+            }
+
+            th, td {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            .table-title {
+                font-size: 14px;
+            }
+        }
+
+        /* Mobile card view styles */
+        .recipe-card {
+            background: white;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .recipe-card h3 {
+            margin-bottom: 10px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        .recipe-detail {
+            margin-bottom: 8px;
+        }
+
+        .recipe-detail strong {
+            color: #555;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- First Recipe Section -->
+        <div class="recipe-section">
+            <div class="recipe-header">
+                <div class="recipe-marker"></div>
+                <h2>Self-made Vanilla Root Bitter*</h2>
+                <div class="recipe-info">Preparation Time: 3 hours+ | Yield: about 165ml</div>
+            </div>
+            
+            <!-- Desktop View -->
+            <div class="desktop-view">
+                <div class="tables-container">
+                    <!-- Recipe Ratio Table -->
+                    <div class="table-wrapper" style="max-width: 200px;">
+                        <div class="table-title">Recipe Ratio</div>
+                        <table>
+                            <tr>
+                                <td class="numbered-cell">①</td>
+                                <td>10g</td>
+                                <td>Vanilla Root</td>
+                            </tr>
+                            <tr>
+                                <td class="numbered-cell">②</td>
+                                <td>200ml</td>
+                                <td>Angel Fungus Original Bitter</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <!-- Combined Process and Equipment Table -->
+                    <div class="table-wrapper" style="flex: 2;">
+                        <div class="table-title">Production Process</div>
+                        <table class="combined-table">
+                            <tr>
+                                <th colspan="3">Production Process</th>
+                                <th colspan="2">Equipment & Tools Used</th>
+                            </tr>
+                            <tr>
+                                <td class="step-marker">○</td>
+                                <td class="text-left" colspan="2">Cut 10g of vanilla root into 5mm small pieces with scissors, place in a vacuum bag (note: vacuum bag size must be appropriate), then add 200ml Angel Fungus Original Bitter, seal well;</td>
+                                <td class="numbered-cell">①</td>
+                                <td>Vacuum Machine</td>
+                            </tr>
+                            <tr>
+                                <td class="step-marker">○</td>
+                                <td class="text-left" colspan="2">Put the vacuum bag in a low-temperature slow cooker water bath, heat at 65°C for 3 hours;</td>
+                                <td class="numbered-cell">②</td>
+                                <td>Low-temp Slow Cooker</td>
+                            </tr>
+                            <tr>
+                                <td class="step-marker">○</td>
+                                <td class="text-left" colspan="2">After completion, remove the vacuum bag and let it cool to room temperature, then filter with coffee filter paper to extract the bitter;</td>
+                                <td class="numbered-cell">③</td>
+                                <td>Scissors</td>
+                            </tr>
+                            <tr>
+                                <td class="step-marker">○</td>
+                                <td class="text-left" colspan="2">After bottling, label with production date (bitter has high cost, make less, suggest liquid doesn't exceed too many measuring cups, because each time passing through measuring cup, it will absorb a bit).</td>
+                                <td class="numbered-cell">④</td>
+                                <td>Coffee Filter Paper</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"></td>
+                                <td class="numbered-cell">⑤</td>
+                                <td>Electronic Scale</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile View -->
+            <div class="mobile-view">
+                <div class="recipe-card">
+                    <h3>Recipe Ratio</h3>
+                    <div class="recipe-detail"><strong>Ingredient ①:</strong> 10g - Vanilla Root</div>
+                    <div class="recipe-detail"><strong>Ingredient ②:</strong> 200ml - Angel Fungus Original Bitter</div>
+                </div>
+                
+                <div class="recipe-card">
+                    <h3>Production Process</h3>
+                    <div class="recipe-detail"><strong>Step 1:</strong> Cut 10g of vanilla root into 5mm small pieces with scissors, place in a vacuum bag (note: vacuum bag size must be appropriate), then add 200ml Angel Fungus Original Bitter, seal well;</div>
+                    <div class="recipe-detail"><strong>Equipment:</strong> Vacuum Machine</div>
+                    
+                    <div class="recipe-detail" style="margin-top: 10px;"><strong>Step 2:</strong> Put the vacuum bag in a low-temperature slow cooker water bath, heat at 65°C for 3 hours;</div>
+                    <div class="recipe-detail"><strong>Equipment:</strong> Low-temp Slow Cooker</div>
+                    
+                    <div class="recipe-detail" style="margin-top: 10px;"><strong>Step 3:</strong> After completion, remove the vacuum bag and let it cool to room temperature, then filter with coffee filter paper to extract the bitter;</div>
+                    <div class="recipe-detail"><strong>Equipment:</strong> Scissors</div>
+                    
+                    <div class="recipe-detail" style="margin-top: 10px;"><strong>Step 4:</strong> After bottling, label with production date (bitter has high cost, make less, suggest liquid doesn't exceed too many measuring cups, because each time passing through measuring cup, it will absorb a bit).</div>
+                    <div class="recipe-detail"><strong>Equipment:</strong> Coffee Filter Paper</div>
+                    
+                    <div class="recipe-detail" style="margin-top: 10px;"><strong>Additional Equipment:</strong> Electronic Scale</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second Recipe Section -->
+        <div class="recipe-section">
+            <div class="recipe-header">
+                <div class="recipe-marker"></div>
+                <h2>Self-made Oolong Bitter*</h2>
+                <div class="recipe-info">Preparation Time: 3 hours | Yield: about 150ml</div>
+            </div>
+            
+            <!-- Desktop View -->
+            <div class="desktop-view">
+                <div class="tables-container">
+                    <!-- Recipe Ratio Table -->
+                    <div class="table-wrapper" style="max-width: 200px;">
+                        <div class="table-title">Recipe Ratio</div>
+                        <table>
+                            <tr>
+                                <td class="numbered-cell">①</td>
+                                <td>10g</td>
+                                <td>Oolong Tea Powder</td>
+                            </tr>
+                            <tr>
+                                <td class="numbered-cell">②</td>
+                                <td>200ml</td>
+                                <td>Angel Fungus Original Bitter</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <!-- Combined Process and Equipment Table -->
+                    <div class="table-wrapper" style="flex: 2;">
+                        <div class="table-title">Production Process</div>
+                        <table class="combined-table">
+                            <tr>
+                                <th colspan="3">Production Process</th>
+                                <th colspan="2">Equipment & Tools Used</th>
+                            </tr>
+                            <tr>
+                                <td class="step-marker">○</td>
+                                <td class="text-left" colspan="2">Use vacuum bag (note: vacuum bag size must be appropriate) to weigh 10g oolong tea powder, then add 200ml Angel Fungus Original Bitter, seal well;</td>
+                                <td class="numbered-cell">①</td>
+                                <td>Vacuum Machine</td>
+                            </tr>
+                            <tr>
+                                <td class="step-marker">○</td>
+                                <td class="text-left" colspan="2">Put the vacuum bag in a low-temperature slow cooker water bath, heat at 65°C for 3 hours;</td>
+                                <td class="numbered-cell">②</td>
+                                <td>Low-temp Slow Cooker</td>
+                            </tr>
+                            <tr>
+                                <td class="step-marker">○</td>
+                                <td class="text-left" colspan="2">After completion, remove the vacuum bag and let it cool to room temperature, then filter with coffee filter paper to extract the bitter;</td>
+                                <td class="numbered-cell">③</td>
+                                <td>Electronic Scale</td>
+                            </tr>
+                            <tr>
+                                <td class="step-marker">○</td>
+                                <td class="text-left" colspan="2">After bottling, label with production date (bitter has high cost, make less, suggest liquid doesn't exceed too many measuring cups, because each time passing through one measuring cup, it will absorb a bit more).</td>
+                                <td class="numbered-cell">④</td>
+                                <td>Coffee Filter Paper</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile View -->
+            <div class="mobile-view">
+                <div class="recipe-card">
+                    <h3>Recipe Ratio</h3>
+                    <div class="recipe-detail"><strong>Ingredient ①:</strong> 10g - Oolong Tea Powder</div>
+                    <div class="recipe-detail"><strong>Ingredient ②:</strong> 200ml - Angel Fungus Original Bitter</div>
+                </div>
+                
+                <div class="recipe-card">
+                    <h3>Production Process</h3>
+                    <div class="recipe-detail"><strong>Step 1:</strong> Use vacuum bag (note: vacuum bag size must be appropriate) to weigh 10g oolong tea powder, then add 200ml Angel Fungus Original Bitter, seal well;</div>
+                    <div class="recipe-detail"><strong>Equipment:</strong> Vacuum Machine</div>
+                    
+                    <div class="recipe-detail" style="margin-top: 10px;"><strong>Step 2:</strong> Put the vacuum bag in a low-temperature slow cooker water bath, heat at 65°C for 3 hours;</div>
+                    <div class="recipe-detail"><strong>Equipment:</strong> Low-temp Slow Cooker</div>
+                    
+                    <div class="recipe-detail" style="margin-top: 10px;"><strong>Step 3:</strong> After completion, remove the vacuum bag and let it cool to room temperature, then filter with coffee filter paper to extract the bitter;</div>
+                    <div class="recipe-detail"><strong>Equipment:</strong> Electronic Scale</div>
+                    
+                    <div class="recipe-detail" style="margin-top: 10px;"><strong>Step 4:</strong> After bottling, label with production date (bitter has high cost, make less, suggest liquid doesn't exceed too many measuring cups, because each time passing through one measuring cup, it will absorb a bit more).</div>
+                    <div class="recipe-detail"><strong>Equipment:</strong> Coffee Filter Paper</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

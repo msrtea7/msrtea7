@@ -149,7 +149,7 @@ Variable assignment also required updates to handle stack-based variables:
 
 This generates RISC-V store instructions to update variables on the stack. The implementation handles different variable types appropriately, using SW for integer values.
 
-### Function Call Implementation and Stack Alignment
+### **- Function Call Implementation and Stack Alignment**
 
 The workflow for this part goes like this: adjusts the stack pointer to make room for extra arguments, then stores each argument at the appropriate stack offset. After the function call returns, we clean up the stack by restoring the stack pointer.
 

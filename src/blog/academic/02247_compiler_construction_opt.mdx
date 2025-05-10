@@ -1,0 +1,225 @@
+---
+title: '02247 - Compiler - Partial Evaluation Optimization'
+pubDate: 2025-05-11
+author: 'Walbaaco'
+tags: ["compiler"]
+---
+
+# **Partial Evaluation Optimization (Medium - Hard)**
+<div style="text-align: center;">
+*Author: Li, Junrui*
+</div>
+
+> Project repo and intro: [https://github.com/msrtea7/project_hyggec_full](https://github.com/msrtea7/project_hyggec_full)
+
+## **Design**
+
+Given a typechecked AST node `e`, the partial evaluation process attempts to:
+
+1. Reduce `e` into `e′` using the interpreter's reduction function
+2. If reduction is successful, recursively optimize `e′`
+3. If `e` cannot be reduced:
+   -  If `e` is a simple value, return `e`
+   -  Otherwise, recursively optimize all subexpressions of `e′`
+
+To ensure correct semantics, the optimization will use a specialized runtime environment where:
+
+- Input/output functions (Reader/Printer) are set to None to prevent reduction of I/O operations
+- An empty heap is used to track Pointer instances
+- A constant environment tracks known constant values for variables
+
+## **Implementation**
+
+I implement the partial evaluation optimization in a separate file `PartialEval.fs`, leveraging the existing `reduce()` function from `interpreter.fs`.
+
+To meet the requirement that the user could choose whether to use this optimization or not, I set an optimization level 2 which could be enabled with argument `-O 2`.
+
+It is notable here that, in my current mechanism, the optimization level 2 would not trigger the level 1 which is the predefined peephole optimization.
+
+### **- Constant Folding**
+
+The core implementation is in the `tryConstantFold()` function:
+
+```fsharp
+and tryConstantFold (node: AST.Node<'E,'T>) : Option<AST.Node<'E,'T>> =
+    if Interpreter.isValue node then None
+    else
+        match Interpreter.reduce env node with
+        | Some(_, reduced) ->
+            match tryConstantFold reduced with
+            | Some furtherReduced -> Some furtherReduced
+            | None -> Some reduced
+        | None -> None
+```
+
+This function recursively applies the interpreter's `reduce` method, which already handles arithmetic operations like addition and multiplication.
+
+The optimization also handles specific expression patterns through direct pattern matching on the `Expr` field:
+
+```fsharp
+match (lhs'.Expr, rhs'.Expr) with
+| (IntVal(v1), IntVal(v2)) -> {node with Expr = IntVal(v1 + v2)}
+| (FloatVal(v1), FloatVal(v2)) -> {node with Expr = FloatVal(v1 + v2)}
+| _ -> {node with Expr = Add(lhs', rhs')}
+```
+
+### **- Constant Propagation**
+
+For constant propagation, the optimizer maintains a mapping of variable names to their constant values using the `ConstEnv` type:
+
+```fsharp
+type ConstEnv<'E,'T> = Map<string, Node<'E,'T>>
+```
+
+This map is passed through recursive calls to `optimizeNode()` and updated when processing variable bindings. When evaluating variable references, the optimizer looks up the name in the environment:
+
+```fsharp
+| Var(name) when constEnv.ContainsKey(name) ->
+    constEnv.[name]
+```
+
+For `let` bindings, the optimizer updates the environment when a variable is bound to a constant:
+
+```fsharp
+| Let(name, init, body) ->
+    let init' = optimizeNode constEnv init
+    
+    let bodyEnv = 
+        if isConstant init' then
+            constEnv.Add(name, init')
+        else
+            constEnv
+            
+    let body' = optimizeNode bodyEnv body
+```
+
+The `isConstant` helper function identifies AST nodes that represent constant values:
+
+```fsharp
+let isConstant (node: Node<'E,'T>) : bool =
+    match node.Expr with
+    | UnitVal | BoolVal(_) | IntVal(_) | FloatVal(_) | StringVal(_) -> true
+    | _ -> false
+```
+
+### **- Dead Code Elimination**
+
+The optimizer examines the condition after optimization and, if it's a constant, eliminates the unreachable branch:
+
+```fsharp
+| If(cond, ifTrue, ifFalse) ->
+    let cond' = optimizeNode constEnv cond
+    
+    match cond'.Expr with
+    | BoolVal(true) -> optimizeNode constEnv ifTrue
+    | BoolVal(false) -> optimizeNode constEnv ifFalse
+    | _ -> 
+        let ifTrue' = optimizeNode constEnv ifTrue
+        let ifFalse' = optimizeNode constEnv ifFalse
+        {node with Expr = If(cond', ifTrue', ifFalse')}
+```
+
+The optimizer also simplifies sequence expressions (`Seq`) by removing non-terminal effects that have no impact on the final result:
+
+```fsharp
+| Seq(nodes) ->
+    let nodes' = List.map (optimizeNode constEnv) nodes
+    match nodes' with
+    | [] -> {node with Expr = UnitVal}
+    | [last] when isConstant last -> last
+    | _ -> {node with Expr = Seq(nodes')}
+```
+
+### **- Function Inlining**
+
+Function inlining is implemented using pattern matching to detect these cases:
+
+```fsharp
+| Application(expr, args) ->
+    let expr' = optimizeNode constEnv expr
+    let args' = List.map (optimizeNode constEnv) args
+    
+    match expr'.Expr with
+    | Lambda(lamArgs, body) when List.forall isConstant args' && 
+                                 args'.Length = lamArgs.Length ->
+        let (lamArgNames, _) = List.unzip lamArgs
+        let lamArgNamesValues = List.zip lamArgNames args'
+        let folder acc (var, sub) = (ASTUtil.subst acc var sub)
+        let inlinedBody = List.fold folder body lamArgNamesValues
+        optimizeNode constEnv inlinedBody
+    | _ ->
+        {node with Expr = Application(expr', args')}
+```
+
+The inlining process extracts parameter names from `lamArgs`, pairs them with argument values in `lamArgNamesValues`, and uses a `folder()` function with `ASTUtil.subst` to perform the substitution. The `List.fold` operation sequentially applies these substitutions, building the inlined function body.
+
+### **- Handling Special Cases**
+
+#### Avoiding Excessive Reductions
+
+To prevent reducing expressions with side effects (such as I/O operations), the implementation creates a special runtime environment where I/O operations cannot be performed:
+
+```fsharp
+let env = { 
+    ...
+    Interpreter.Reader = None
+    Interpreter.Printer = None
+    ...
+}
+```
+
+By setting `Reader` and `Printer` to `None`, expressions like `print("Hello")` will not be reduced and will be preserved in the optimized code.
+
+#### Managing Pointer References
+
+The optimizer must handle AST nodes containing `Pointer` expressions, which are used by the interpreter but cannot be directly compiled. The `containsPointer` function recursively checks for pointer references:
+
+```fsharp
+let rec containsPointer (node: Node<'E,'T>) : bool =
+    match node.Expr with
+    | Pointer(_) -> true
+    | Add(lhs, rhs) -> containsPointer lhs || containsPointer rhs
+    // Other expression types...
+    | _ -> false
+```
+
+For expressions that might create pointers, the optimizer tracks all reduction steps in a history list:
+
+```fsharp
+let history = reduceSteps node [node]
+```
+
+The optimizer then selects the most recent reduction that doesn't contain pointers:
+
+```fsharp
+match history |> List.tryFind (fun n -> not (containsPointer n)) with
+| Some node -> Some node  // Use this safe reduction
+| None -> None  // No pointer-free reduction found
+```
+
+## **Evaluation**
+
+Example command: `./hyggec rars -v -O 2 examples/helloworld.hyg`
+
+Here the Table 2 compares the number of RISC-V assembly instructions before and after applying the partial evaluation optimization. The test cases mentioned are at folder `/project_dir/examples/`
+
+<div style="display: flex; justify-content: center;">
+
+| **Filename** | **before** | **after** |
+|--------------|------------|-----------|
+| constant_propagation.hyg | 43 | 31 |
+| constant_folding_1.hyg | 31 | 23 |
+| constant_folding_2.hyg | 43 | 25 |
+| deadcode.hyg | 32 | 21 |
+| deadcode_2.hyg | 53 | 22 |
+| inlining.hyg | 100 | 21 |
+| pointer.hyg | 483 | 475 |
+</div>
+
+<div style="text-align: center;">
+*Table: Comparison of instruction counts before and after optimization*
+</div>
+<br/>
+For the first 6 files, the optimization works well and eliminates the number of instructions to different extents since the complexity of the source code varies.
+
+`pointer.hyg` is an example from test files of "structures", involving a lot of pointer expressions. The optimizer works well, it keeps most of the instructions the same.

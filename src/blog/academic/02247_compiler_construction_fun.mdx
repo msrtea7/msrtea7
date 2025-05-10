@@ -1,0 +1,194 @@
+---
+title: '02247 - Compiler - Revised mechanism for function arguments processing'
+pubDate: 2025-05-11
+author: 'Walbaaco'
+tags: ["compiler"]
+---
+
+import { Image } from 'astro:assets';
+import res from '../../assets/blog/02247/res_fun.png'
+
+
+
+# **Pass more than 8 Integer Arguments via The Stack (Hard)**
+
+<div style="text-align: center;">
+*Author: Li, Junrui*
+</div>
+
+> Project repo and intro: [https://github.com/msrtea7/project_hyggec_full](https://github.com/msrtea7/project_hyggec_full)
+
+## **Stack structure overview**
+
+Here is a simple visualization of the revised RISC-V stack frame which could accept more than 8 integer arguments:
+
+```
+High addresses
++------------------+
+| Caller's frame   |
++------------------+ <-- Previous sp (stored in fp before the call)
+| Return address   |
++------------------+
+| Saved fp         |
++------------------+ <-- Current fp
+| Callee-saved     |
+| registers        |
++------------------+
+| Local variables  |
++------------------+
+| Args to called   |
+| functions (>8)   |
++------------------+ <-- Current sp
+Low addresses
+```
+
+In my implementation, I maintained the memory layout where:
+- The frame pointer (fp) serves as the reference point for accessing function parameters and local variables
+- Parameters beyond the 8th are stored at positive offsets from fp
+- The stack grows downward (toward lower addresses)
+- The stack pointer (sp) is adjusted dynamically during function calls
+
+At the function call site, the stack must be prepared to hold extra arguments. The caller is responsible for placing these arguments on the stack before the call and cleaning up afterward.
+
+## **Implementation**
+
+The work is done within file `RISCVCodegen.fs`.
+
+To represent stack-based variables, I extend the compiler's internal storage model. This requires:
+- A new storage type for stack-allocated variables
+- Updated code generation for variable access
+- Proper stack management in function prologues and epilogues
+- Correct parameter passing at call sites
+
+### **- Storage Representation**
+
+The first step was extending the `Storage` type in `RISCVCodegen.fs` to represent the variables stored in the stack.
+
+```fsharp
+/// Storage information for variables.
+[<RequireQualifiedAccess; StructuralComparison; StructuralEquality>]
+type internal Storage =
+    /// The variable is stored in an integerregister.
+    | Reg of reg: Reg
+    /// The variable is stored in a floating-point register.
+    | FPReg of fpreg: FPReg
+    /// The variable is stored in memory, in a location marked with a
+    /// label in the compiled assembly code.
+    | Label of label: string
+    /// This variable is stored on the stack, at the given offset (in bytes)
+    /// from the memory address contained in the frame pointer (fp) register.
+    | Frame of offset: int
+```
+
+The `Frame` case stores the byte offset from the frame pointer, allowing variables to be located relative to fp. By using the frame pointer rather than the stack pointer (which changes during function execution), the revised mechanism ensures consistent access to parameters throughout the function's lifetime.
+
+### **- Stack Frame Management and Argument Mapping**
+
+The `compileFunction` function was modified to map function arguments to appropriate storage locations while ensuring proper stack frame setup:
+
+```fsharp
+/// Folder function that assigns storage information to function arguments
+let folder (acc: Map<string, Storage>) (i, (var, _tpe)) =
+    if i < 8 then
+        // First 8 args use registers a0-a7
+        acc.Add(var, Storage.Reg(Reg.a((uint)i)))
+    else
+        // Args beyond 8 use stack locations relative to fp
+        // Note: We use (i-8)*4 because each word is 4 bytes
+        acc.Add(var, Storage.Frame((i-8)*4))
+```
+
+This creates a mapping where:
+- First 8 arguments → Registers a0-a7
+- 9th argument → Memory at fp+0
+- 10th argument → Memory at fp+4
+- And so on...
+
+A key challenge was ensuring the frame pointer (fp) was correctly established at function entry. In the function prologue, I save the old frame pointer and set a new one:
+
+- Setting fp at the beginning of each function to create a stable reference point
+- Using fp as the base for accessing stack-based variables
+- Preserving fp across function calls by saving and restoring it
+
+### **- Variable Access with Stack-Based Parameters**
+
+The variable access logic in the `doCodegen` function was updated to handle stack-based variables:
+
+```fsharp
+// For integer variables stored on stack
+| Some(Storage.Frame(offset)) ->
+    // Load a variable from the stack at fp+offset
+    Asm(RV.LW(Reg.r(env.Target), Imm12(offset), Reg.fp),
+        $"Load stack variable '{name}' from fp+{offset}")
+        
+// For floating-point variables stored on stack
+| Some(Storage.Frame(offset)) ->
+    // Load a float variable from the stack at fp+offset
+    Asm([ (RV.LW(Reg.r(env.Target), Imm12(offset), Reg.fp),
+           $"Load stack variable '{name}' from fp+{offset}")
+          (RV.FMV_W_X(FPReg.r(env.FPTarget), Reg.r(env.Target)),
+           $"Transfer '{name}' to fp register") ])
+```
+
+This generates the appropriate RISC-V instructions to load values from stack locations. The implementation required careful consideration of RISC-V's load word (LW) instruction semantics, ensuring correct offsets from the frame pointer.
+
+### **- Variable Assignment with Stack-Based Storage**
+
+Variable assignment also required updates to handle stack-based variables:
+
+```fsharp
+| Some(Storage.Frame(offset)) ->
+    match rhs.Type with
+    | t when (isSubtypeOf rhs.Env t TFloat) ->
+        rhsCode.AddText(RV.FSW_S(FPReg.r(env.FPTarget), Imm12(offset), Reg.fp),
+                       $"Assignment to stack variable {name} at fp+{offset}")
+    | _ ->
+        rhsCode.AddText(RV.SW(Reg.r(env.Target), Imm12(offset), Reg.fp),
+                       $"Assignment to stack variable {name} at fp+{offset}")
+```
+
+This generates RISC-V store instructions to update variables on the stack. The implementation handles different variable types appropriately, using SW for integer values.
+
+### Function Call Implementation and Stack Alignment
+
+The workflow for this part goes like this: adjusts the stack pointer to make room for extra arguments, then stores each argument at the appropriate stack offset. After the function call returns, we clean up the stack by restoring the stack pointer.
+
+```fsharp
+// Function that stores extra arguments (beyond the 8th) on the stack
+let storeExtraArg (acc: Asm) (i: int) =
+    acc.AddText(RV.SW(Reg.r(env.Target + (uint i) + 1u), Imm12((i - 8) * 4), Reg.sp),
+                $"Store extra function call argument {i+1} at sp+{(i - 8) * 4}")
+
+// Determine how many arguments go in registers and how many on stack
+let regArgsCount = min 8 args.Length
+let extraArgsCount = max 0 (args.Length - 8)
+
+// Calculate padding needed for 16-byte alignment
+let alignmentPadding = (extraArgsCount % 4) * 4
+
+// Code to store extra arguments on the stack
+let stackArgsStoreCode = 
+    if extraArgsCount > 0 then
+        // Adjust stack pointer to make room for extra arguments + alignment
+        Asm(RV.ADDI(Reg.sp, Reg.sp, Imm12(-4 * extraArgsCount - alignmentPadding)),
+            $"Adjust stack pointer for {extraArgsCount} extra arguments with alignment")
+        ++ (List.fold storeExtraArg (Asm()) [8..(args.Length-1)])
+    else
+        Asm() // No extra arguments to store
+```
+
+This implementation addresses several challenges:
+
+1. **Stack Alignment**: RISC-V requires the stack to be 16-byte aligned at function calls. I calculate the appropriate padding to maintain this alignment.
+
+2. **Parameter Ordering**: Arguments are stored in reverse order to match the expectations of the RISC-V calling convention.
+
+3. **Register Spilling**: With more complex functions, the register pressure increases. My implementation handles this by carefully managing register allocation and using the stack for variables that cannot be kept in registers.
+
+## **Evaluation**
+
+The implementation successfully extends the Hygge compiler to support functions with more than 8 integer parameters. But just a notion here, the current implementation doesn't support code generation path with ANF (the -a parameter). Two example test cases `fun_1.hyg` (9 integer arguments), `fun_2.hyg` (10 integer arguments) are given at `/project_dir/examples/`.
+
+<div style="text-align: center;">
+    <Image src={res} alt="Me, Adam and Lu" class="single_img" />
+</div>

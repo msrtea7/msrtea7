@@ -15,7 +15,10 @@ export async function getStaticPaths() {
     },
     daily: {
       pathPrefix: 'daily/'
-    }
+    },
+    martial: {
+      pathPrefix: 'martial/'
+    },
   };
 
   // 获取所有集合的文章并创建路由
@@ -43,7 +46,8 @@ const layoutMap = {
   // blog: DefaultBlogLayout,
   academic: DefaultBlogLayout,
   alcohol: DefaultBlogLayout,
-  daily: DefaultBlogLayout
+  daily: DefaultBlogLayout,
+  martial: DefaultBlogLayout,
 };
 
 // 获取布局组件

@@ -556,4 +556,40 @@ vertical-align:1px;
   }
 }
 
+/* Bilibili视频容器 */
+.bilibili-video-container {
+  position: relative;
+  width: 100%; /* 默认宽度100%，您可以根据需要修改这个值 */
+  padding-bottom: 56.25%; /* 16:9的宽高比 */
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+/* Bilibili iframe样式 */
+.bilibili-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+
+/* 针对小屏幕的优化 */
+@media (max-width: 768px) {
+  .bilibili-video-container {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    width: calc(100% + 2rem);
+    border-radius: 0;
+  }
+  
+  .bilibili-video-container iframe {
+    border-radius: 0; /* 在小屏幕上移除圆角 */
+  }
+}
+
 

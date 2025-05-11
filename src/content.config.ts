@@ -43,6 +43,13 @@ const collectionDefinitions = {
             // complexity: z.string().optional(),
             // technologies: z.array(z.string()).optional()
         }
+    },
+    martial: {
+        pattern: 'martial/[^_]*.{md,mdx}',
+        extraSchema: {
+            // complexity: z.string().optional(),
+            // technologies: z.array(z.string()).optional()
+        }
     }
 };
 

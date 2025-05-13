@@ -593,3 +593,16 @@ vertical-align:1px;
 }
 
 
+/* 居中注释块 - 默认移动端样式 */
+.centered-guide-block {
+  margin: 0 auto;
+  width: 100%; /* 在小屏幕上使用全宽 */
+  /* 保留原有的引用块样式 */
+}
+
+/* 在宽屏设备上应用不同的宽度 */
+@media (min-width: 768px) {
+  .centered-guide-block {
+    width: 50%; /* 仅在宽屏上将宽度限制为30% */
+  }
+}

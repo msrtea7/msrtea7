@@ -15,7 +15,15 @@ Group <b>69</b><br />
 May 11, 2025</i>
 </div>
 
+
+> Source codes and visualization files: [the link](https://github.com/msrtea7/msrtea7/tree/main/public/visual_project)<br/>
+> Jupyter explanation document: [the link](https://github.com/msrtea7/msrtea7/blob/main/public/visual_project/02247_project.ipynb)
+>
+> For this article, we tried an pretty user-driven approach, hope you'd enjoy!
+
 ## **Where Are the People, Where Are the Toilets?**
+
+Welcome here the visual toilets tour of New York City(NYC)!
 
 ### **For people just looking for a toilet:**
 
@@ -33,21 +41,17 @@ Click around to see where there’s lots of foot traffic but barely any toilets�
 
 Turn on the administrative district layer and you might notice some areas are “blessed” with toilets, while others seem forgotten.
 
->**Map Interaction Guide**
->
->Click and drag with the left mouse button to move the map<br/>
->Scroll to zoom in/out<br/>
->Double-click to reset the view<br/>
->Use the left-side filters to toggle layers on/off<br/>
->Hold the right mouse button to rotate the map<br/>
->Hover over a point to see more details<br/>
-
 <h5 align="center">Fig. 1: NYC pedastrain intensity and toilets distribution map</h5>
 <div class="map-container">
     <iframe src='/visual_project/nyc_scatter_hexbin.html' width="100%" height="500px" frameborder="0" scrolling="no"></iframe>
-    {/* <figcaption>Line chart showing monthly-yearly trends of top 6 crime categories from 2003 to 2025. <br />The figure is interactively featuring zoom, selection, and hover information.</figcaption> */}
 </div>
 <br />
+
+<blockquote className="centered-guide-block">
+<div style="text-align: center">
+Labels on the upper left corner are also clickable ***filters***.<br/>***Hover*** for more info, double click to ***reset***.
+</div>
+</blockquote>
 
 ### **Limitations (with a touch of wishful thinking):**
 
@@ -75,27 +79,23 @@ Where are the coverage gaps? Do wealthy districts have tighter spacing between f
 Play with different radius to simulate accessibility for children, seniors, or those with limited mobility.
 
 
->Figure 2: Coverage Map Interaction
->
->Click and drag to move the map<br/>
->Scroll to zoom<br/>
->Double-click to reset the view<br/>
->Use the sliding bar on the left to adjust coverage radius and check current zoom level<br/>
->Right-click and drag to rotate<br/>
->Hover over a point for details<br/>
-
 <h5 align="center">Fig. 2: NYC public toilet service coverage map</h5>
 <div class="map-container">
     <iframe src='/visual_project/nyc_coverage.html' width="100%" height="500px" frameborder="0" scrolling="no"></iframe>
-    {/* <figcaption>Line chart showing monthly-yearly trends of top 6 crime categories from 2003 to 2025. <br />The figure is interactively featuring zoom, selection, and hover information.</figcaption> */}
 </div>
 <br />
+
+<blockquote className="centered-guide-block">
+<div style="text-align: center">
+Use the ***sliding bar*** on the left to adjust coverage radius.<br/>***One click*** to select, ***Shift + Click*** to choose multiple. <br/>Double click to ***reset***.
+</div>
+</blockquote>
 
 ### **Step 2: What’s Nearby? (Toilet Co-location with Urban Services)**
 
 #### **Now let’s zoom out.**
 
-This heatmap shows how toilets tend to “stick” to certain services—schools, parks, transit hubs, government buildings, etc.
+This heat matrix shows how toilets tend to “stick” to certain services—schools, parks, transit hubs, government buildings, etc.
 
 Some relationships are strong, others barely exist. These patterns tell us a lot about planning priorities.
 
@@ -104,10 +104,6 @@ Some relationships are strong, others barely exist. These patterns tell us a lot
 Is the presence of a toilet just luck, or a sign of institutional logic (or neglect)?
 
 Can cross-agency partnerships fill in the gaps?
-
->Figure 3: Heatmap Tips
->
->Hover over any colored block to view detailed information
 
 <h5 align="center">Fig. 3: Affinity heat matrix between NYC public toilets and other domain categories</h5>
 <div style="max-width: 600px; margin: 0 auto;">
@@ -120,6 +116,12 @@ Can cross-agency partnerships fill in the gaps?
     </div>
 </div>
 <br />
+
+<blockquote className="centered-guide-block">
+<div style="text-align: center">
+***Hover*** to check detailed similarity score. (Max = 1.0)
+</div>
+</blockquote>
 
 ### **Step 3: But... Is It Even Open? (24-Hour Toilet Access Clock)**
 
@@ -140,16 +142,8 @@ Overlay this with the buffer zones (Step 1), and you may discover “invisible d
 Weekends, evenings, holidays—who's really being served?
 
 
-
->Figure 4: Time Chart Interaction
->
->Select Day to switch dates<br/>
->Hover over a color block for more details<br/>
->Click and hold to zoom into an area<br/>
->Double-click to reset the chart<br/>
-
 <br/>
-<br/>
+
 <div style="text-align: center">
 <h5>Fig. 4: NYC public toilets opening hours clock</h5>
 </div>
@@ -164,6 +158,16 @@ Weekends, evenings, holidays—who's really being served?
     </div>
   </div>
 </div>
+
+<br/>
+<blockquote className="centered-guide-block">
+<div style="text-align: center">
+***Select*** Day to switch week days<br/>
+***Hover*** over a color block for more details<br/>
+**Click** and hold to **zoom** into an area<br/>
+**Double-click** to reset<br/>
+</div>
+</blockquote>
 
 <br/>
 <br/>

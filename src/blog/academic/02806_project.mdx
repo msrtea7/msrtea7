@@ -7,12 +7,63 @@ tags: ["visualization"]
 ---
 
 
+# **NYC public toilets**
+
+<div style="text-align: center">
+<i>Li, Junrui & Fu, Tongzheng<br />
+Group <b>69</b><br />
+May 11, 2025</i>
+</div>
+
+## **Where Are the People, Where Are the Toilets?**
+
+### **For people just looking for a toilet:**
+
+Start by locating yourself!
+
+Hopefully, you’re in one of the brighter green areas—those spots mean high foot traffic, which often means more toilets nearby.
+
+The little icons show toilet locations, and their colors tell you the status: open, closed, or under maintenance.
+
+### **For researchers (or the curious ones):**
+
+This map is your entry point into the world of urban toilet logic.
+
+Click around to see where there’s lots of foot traffic but barely any toilets—urban planning gaps, perhaps?
+
+Turn on the administrative district layer and you might notice some areas are “blessed” with toilets, while others seem forgotten.
+
 <h5 align="center">Pedastrain intensity and restroom distribution</h5>
 <div class="map-container">
     <iframe src='/visual/nyc_pedastrain.html' width="100%" height="500px" frameborder="0" scrolling="no"></iframe>
     {/* <figcaption>Line chart showing monthly-yearly trends of top 6 crime categories from 2003 to 2025. <br />The figure is interactively featuring zoom, selection, and hover information.</figcaption> */}
 </div>
 <br />
+
+### **Limitations (with a touch of wishful thinking):**
+
+We’d love to turn this into a full-blown digital twin—one where real-time data, predictive models, and AI insights reveal the hidden stories behind toilet distribution.
+
+But for now… it’s just a really good map with some smart layers.
+
+Maybe you can imagine the rest, contact us or build it yourself?
+
+
+
+## **From Circles to Clocks: Understanding Access, Context, and Time**
+
+### **Step 1: How Far Can You Go? (Service Coverage Map)**
+
+#### **For toilet seekers:**
+
+Each toilet is surrounded by a circle—this is how far you can reasonably walk to reach it (default: 300 meters). Adjust the slider to see what’s comfortably reachable and what’s... a bit of a hike.
+
+#### **For researchers & curious minds:**
+This isn’t just about walking distance—it’s about service fairness.
+
+Where are the coverage gaps? Do wealthy districts have tighter spacing between facilities?
+
+Play with different radius to simulate accessibility for children, seniors, or those with limited mobility.
 
 
 <h5 align="center">Coverage</h5>
@@ -21,6 +72,20 @@ tags: ["visualization"]
     {/* <figcaption>Line chart showing monthly-yearly trends of top 6 crime categories from 2003 to 2025. <br />The figure is interactively featuring zoom, selection, and hover information.</figcaption> */}
 </div>
 <br />
+
+### Step 2: What’s Nearby? (Toilet Co-location with Urban Services)
+
+#### **Now let’s zoom out.**
+
+This heatmap shows how toilets tend to “stick” to certain services—schools, parks, transit hubs, government buildings, etc.
+
+Some relationships are strong, others barely exist. These patterns tell us a lot about planning priorities.
+
+#### **Ask yourself:**
+
+Is the presence of a toilet just luck, or a sign of institutional logic (or neglect)?
+
+Can cross-agency partnerships fill in the gaps?
 
 
 <h5 align="center">Fig. 3: Affinity heatmap between restroom and domain categories</h5>
@@ -35,6 +100,24 @@ tags: ["visualization"]
 </div>
 <br />
 
+### **Step 3: But... Is It Even Open? (24-Hour Toilet Access Clock)**
+
+#### **For toilet seekers:**
+
+A toilet nearby is great—unless it’s locked.
+
+This circular chart shows when toilets are actually open, grouped by who runs them (e.g., Parks Dept, libraries, etc.).
+
+Some are daytime only. Some skip weekends. Some might save your night out.
+
+#### **For researchers & explorers:**
+
+This is where things get juicy.
+
+Overlay this with the buffer zones (Step 1), and you may discover “invisible deserts”—places that look covered, but aren't open when people need them most.
+
+Weekends, evenings, holidays—who's really being served?
+
 
 <div style={{ display: 'flex', justifyContent: 'center', width: '100%'}}>
   <div style={{ width: '100%', maxWidth: '1500px',overflowX: 'auto' }}>
@@ -47,4 +130,8 @@ tags: ["visualization"]
     </div>
   </div>
 </div>
+
+Toilets aren’t just dots on a map—they’re part of a living, timed, institutional network.
+
+And sometimes... the network forgets you exist at 11:45 PM.
 

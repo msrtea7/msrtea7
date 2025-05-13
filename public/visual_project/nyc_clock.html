@@ -37,13 +37,13 @@
             }
             select {
                 padding: 10px 15px;
-                font-size: 16px;
+                font-size: 12px;
                 font-family: "Georgia, Palatino, serif";
                 border-radius: 4px;
                 border: 1px solid #ccc;
                 background-color: white;
                 cursor: pointer;
-                min-width: 200px;
+                min-width: 100px;
             }
             select:focus {
                 outline: none;
@@ -52,7 +52,7 @@
             }
             label[for="day-select"] {
                 font-family: "Georgia, Palatino, serif";
-                font-size: 18px;
+                font-size: 14px;
                 font-weight: 500;
                 color: #333;
                 margin-right: 10px;
@@ -252,7 +252,7 @@
                             }
                             
                             let text = `Hour: ${hour}:00-${(hour+1) % 24}:00<br>Operator: ${operator}<br>Count: ${count}`;
-                            if (count > 0) {
+                            if (count < 0) {
                                 text += `<br><br>Facilities:<br>${facilityNames}`;
                             }
                             textValues.push(text);
@@ -286,11 +286,20 @@
                 
                 // 创建布局
                 const layout = {
+                    font: {
+                        family: "Georgia, Palatino, serif",
+                    },
+                    hoverlabel:{
+                        font: {
+                            family: "Georgia, Palatino, serif",
+                        },
+                    },
                     polar: getPolarConfig('AM', globalMaxCount),
                     polar2: getPolarConfig('PM', globalMaxCount),
                     showlegend: true,
                     paper_bgcolor: "rgba(0,0,0,0)",
                     plot_bgcolor: "rgba(0,0,0,0)",
+                    // 添加悬浮标签样式
                     legend: {
                         orientation: "h",
                         yanchor: "top",

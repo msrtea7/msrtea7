@@ -2,7 +2,7 @@
 title: '个人站图片托管 - backblaze + cloudflare workers'
 pubDate: 2025-04-21
 author: 'Walbaaco'
-tags: ["bike"]
+tags: ["utils"]
 ---
 # 个人站图片托管 - backblaze + cloudflare workers
 

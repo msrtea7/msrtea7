@@ -4,6 +4,7 @@ pubDate: 2025-06-23
 author: 'Walbaaco'
 tags: ["me"]
 ---
+<div style="text-align: center;">
 
 # 大便
 
@@ -56,3 +57,5 @@ X形状。
 像是丝带在风中翩翩起舞。
 
 目前最高记录大概是21米，七层楼左右。
+
+</div>

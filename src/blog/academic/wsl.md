@@ -8,6 +8,8 @@ tags: ["compiler"]
 # The Ultimate Guide For **Basic** Personal WSL DL Env Development
 
 > 此刻是二零二四年三月一日凌晨一点四十分，我的心情无比沉重且轻盈，我将写下这篇文档以在将来帮助自己或有需要的人。
+>
+> Fuck Windows, 灾难级。
 
 ## 1. 配置 Windows
 

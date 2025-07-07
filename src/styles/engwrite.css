@@ -259,7 +259,7 @@ kbd {
 }
 /* 滑轮颜色 */
 pre.astro-code {
-  max-height: 500px; /* 设置最大高度以启用滚动 */
+  max-height: 520px; /* 设置最大高度以启用滚动 */
   overflow: auto;
   scrollbar-width: thin;
 }
@@ -605,4 +605,40 @@ vertical-align:1px;
   .centered-guide-block {
     width: 50%; /* 仅在宽屏上将宽度限制为30% */
   }
+}
+
+/*svg显示*/
+
+.full_svg {
+  width: 80%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+/* 在小屏幕上调整为更大的宽度 */
+@media (max-width: 768px) {
+  .full_svg {
+    width: 95%;
+  }
+}
+
+/* 在超大屏幕上限制最大宽度 */
+@media (min-width: 1200px) {
+  .full_svg {
+    max-width: 1000px;
+  }
+}
+
+.debug_svg {
+  width: 80%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  border: 2px solid red; /* 临时边框，看看容器是否存在 */
+  min-height: 200px; /* 临时最小高度 */
+  background: #f0f0f0; /* 临时背景色 */
 }

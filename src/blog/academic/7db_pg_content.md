@@ -5,9 +5,9 @@ author: 'Walbaaco'
 tags: ["DB"]
 ---
 
-# 7DB - PostgreSQL - content
+# **7DB - PostgreSQL - content**
 
-> 附上代码位置
+> Corresponding code [here](https://msrtea7.com/posts/academic/7db_pg_code/)
 
 ## **Day 1**
 

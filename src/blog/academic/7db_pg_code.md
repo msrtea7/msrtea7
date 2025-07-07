@@ -5,7 +5,7 @@ author: 'Walbaaco'
 tags: ["DB"]
 ---
 
-# 7DB - PostgreSQL - code
+# **7DB - PostgreSQL - code**
 
 ## **Day 1**
 
@@ -96,7 +96,7 @@ In such cases, use **pg_restore** to restore:
 pg_restore -h localhost -p 5432 -d my_pg_db backup.dump
 ```
 
-> 注意这里需要指向文章network
+> Detail with PostgreSQL Client-Server Architecture [PostgreSQL Client-Server Architecture](https://msrtea7.com/posts/academic/7db_pg_file_access/)
 
 ### **Homework**
 

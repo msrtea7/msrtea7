@@ -7,14 +7,14 @@ import  '../styles/blog_card.css';
 
 const the_posts = await getCollection("daily");
 const pageTitle = "daily";
-// const sortedPosts = cocktailPosts.sort((a, b) => {
-//   return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
-// });
+const sortedPosts = the_posts.sort((a, b) => {
+    return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
+});
 ---
 <MainLayout title={pageTitle}>
 
     <section class="posts-list">
-        {the_posts.map((post, index) => (
+        {sortedPosts.map((post, index) => (
             <>
             {/* 分隔线 */}
             {index === 0 && <div class="divider"></div>}

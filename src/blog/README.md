@@ -3,4 +3,6 @@
 1. 文件夹归类在blog/ 下，
 2. 添加对应首页 blog_[].astro，改metadata
 3. content.config.ts 添加schema
-4. [...slug].astro 下面 getStaticPaths函数和layoutMap函数
+4. posts/[...slug].astro 下面 getStaticPaths函数和layoutMap函数
+
+5. 关闭，重新npm run dev

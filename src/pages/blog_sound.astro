@@ -1,32 +1,20 @@
 ---
 import MainLayout from '../layouts/layout_home.astro';
 
-
 // blog collections
 import { getCollection } from "astro:content";
 import  '../styles/blog_card.css';
 
-const the_posts = await getCollection("alcohol");
+const the_posts = await getCollection("sound");
 
-// 如果你需要所有文章的组合列表
-// const allPosts = [...blogPosts, ...cocktailPosts, ...hpcPosts];
-
-const pageTitle = "alcohol";
+const pageTitle = "sound";
 
 const sortedPosts = the_posts.sort((a, b) => {
     return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
 });
+
 ---
 <MainLayout title={pageTitle}>
-    <!-- <Image src={tree} alt="Me, portrait" style="width: 300px; height: auto;" />
-
-    <ul>
-        {hpcPosts.map((post) => (
-            <li>
-            <a href={`/posts/${post.id}`}>{post.data.title}</a>
-            </li>
-        ))}
-    </ul> -->
 
     <section class="posts-list">
         {sortedPosts.map((post, index) => (

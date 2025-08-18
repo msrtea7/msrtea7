@@ -1,5 +1,5 @@
 ---
-title: 'The Ultimate Guide For **Basic** Personal WSL DL Env Development'
+title: 'The Ultimate Guide For Basic Personal WSL DL Env Development'
 pubDate: 2024-03-01
 author: 'Walbaaco'
 tags: ["compiler"]

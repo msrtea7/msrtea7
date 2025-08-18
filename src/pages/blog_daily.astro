@@ -10,6 +10,7 @@ const pageTitle = "daily";
 const sortedPosts = the_posts.sort((a, b) => {
     return new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime();
 });
+
 ---
 <MainLayout title={pageTitle}>
 
@@ -38,5 +39,6 @@ const sortedPosts = the_posts.sort((a, b) => {
             </>
         ))}
     </section>
+
 </MainLayout>
 

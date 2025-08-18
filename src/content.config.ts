@@ -50,7 +50,14 @@ const collectionDefinitions = {
             // complexity: z.string().optional(),
             // technologies: z.array(z.string()).optional()
         }
-    }
+    },
+    sound: {
+        pattern: 'sound/[^_]*.{md,mdx}',
+        extraSchema: {
+            // complexity: z.string().optional(),
+            // technologies: z.array(z.string()).optional()
+        }
+    },
 };
 
 // 创建集合对象

@@ -19,6 +19,9 @@ export async function getStaticPaths() {
     martial: {
       pathPrefix: 'martial/'
     },
+    sound: {
+      pathPrefix: 'sound/'
+    },
   };
 
   // 获取所有集合的文章并创建路由
@@ -48,6 +51,7 @@ const layoutMap = {
   alcohol: DefaultBlogLayout,
   daily: DefaultBlogLayout,
   martial: DefaultBlogLayout,
+  sound: DefaultBlogLayout,
 };
 
 // 获取布局组件

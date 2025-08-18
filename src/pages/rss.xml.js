@@ -18,8 +18,8 @@ export async function GET(context) {
   allPosts.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
 
   return rss({
-    title: '你的网站标题',
-    description: '你的网站描述',
+    title: 'msrtea7 黁舍',
+    description: '聊天很难，见面好',
     site: context.site,
     items: allPosts.map((post) => ({
       title: post.data.title,

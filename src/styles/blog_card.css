@@ -29,6 +29,13 @@
     font-weight: 600;           /* 字体粗细 */
     margin: 0;                  /* 移除默认边距 */
   }
+
+  /* 响应式调整示例 */
+  @media (max-width: 768px) {
+    .post-title {
+      font-size: 1.25rem;
+    }
+  }
   
   /* 标题链接样式 */
   .post-title a {

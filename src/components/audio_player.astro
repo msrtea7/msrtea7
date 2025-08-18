@@ -191,6 +191,9 @@ const { src } = Astro.props;
             this.audio.addEventListener('error', (e) => this.onError(e));
             this.audio.addEventListener('loadstart', () => this.onLoadStart());
             this.audio.addEventListener('canplay', () => this.onCanPlay());
+
+            // 键盘事件
+            document.addEventListener('keydown', (e) => this.handleKeydown(e));
         }
 
         togglePlay() {
@@ -292,6 +295,18 @@ const { src } = Astro.props;
 
         onCanPlay() {
             console.log('音频可以开始播放');
+        }
+
+        handleKeydown(e) {
+            // 只有当焦点不在输入框等元素上时才响应空格键
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                return;
+            }
+
+            if (e.code === 'Space') {
+                e.preventDefault(); // 防止页面滚动
+                this.togglePlay();
+            }
         }
     }
 

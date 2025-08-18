@@ -75,11 +75,23 @@ display: inline-block;
 position: relative;
 }
 
-.dropdown-trigger::after {
+/* .dropdown-trigger::after {
 content: "▼";
 font-size: 0.625rem;
 margin-left: 0.3125rem;
 vertical-align: middle;
+} */
+
+.dropdown-trigger::after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 0.3125rem;
+    vertical-align: middle;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 6px solid currentColor; /* 使用当前文字颜色 */
 }
 
 .dropdown-content {

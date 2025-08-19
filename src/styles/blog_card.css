@@ -35,6 +35,11 @@
     .post-title {
       font-size: 1.25rem;
     }
+    .post-date {
+      font-size: 0.8rem;         /* 字体大小 */
+      opacity: 1;              /* 透明度 */
+      margin-bottom: 0.5rem;     /* 下边距 */
+    }
   }
   
   /* 标题链接样式 */

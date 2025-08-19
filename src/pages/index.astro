@@ -10,21 +10,24 @@ import SocialMedia from '../components/socialMedia.astro';
 
 
 
-const pageTitle = "Me";
+const pageTitle = "msrtea7";
 ---
     
 <MainLayout title={pageTitle}>
     <!-- <Navigation /> -->
     <TwoColumn>
         <div slot="left">
-            <h1>你好，</h1>
+            <h1 class="title-size">你好，</h1>
             <br>
-            我叫雷达、李黁、Walbaacco，字德钗，代号msrtea7。<br>
-            02年生，肖马，男的，浙江人。<br>
-            <!-- 我喜欢抽红利群，红塔山。<br> -->
-            钟爱蹲坑，抗拒马桶垫子。<br>
-            不长胡子，用的米诺地尔。<br>
-            聊天很难，见面好。<br>
+            <div class="normal-size">
+                <!-- 我叫雷达、李黁、Walbaacco，字德钗，代号msrtea7。<br> -->
+                我叫雷达，代号msrtea7。<br>
+                02年生，肖马，男的，浙江人。<br>
+                <!-- 我喜欢抽红利群，红塔山。<br> -->
+                钟爱蹲坑，抗拒马桶垫子。<br>
+                不长胡子，用的米诺地尔。<br>
+                聊天很难，见面好。<br>
+            </div>
             <SocialMedia />
         </div>
         <div slot="right">
@@ -49,22 +52,15 @@ const pageTitle = "Me";
     </TwoColumn>
 </MainLayout>
 
-
-
-
-<!-- <head>
-    <meta charset="UTF-8">
-</head> -->
-
-<!-- <div style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;">
-	<Image src={IMG_portrait} alt="Me, portrait" style="width: 300px; height: auto;" />
-</div> -->
-
-
-<!-- <MainLayout title={pageTitle}>
-<Navigation />
-<h1>你好</h1>
-我叫雷达、李黁、Walbaacco，代号msrtea7。<br>
-02年生，肖马，男的，浙江人。<br>
-<Image src={IMG_portrait} alt="Me, portrait" style="width: 300px; height: auto;" />
-</MainLayout> -->
+<style>
+    .title-size {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    
+    .normal-size {
+        font-size: 1.125rem;
+        line-height: 1.6;
+    }
+</style>

@@ -23,12 +23,18 @@ const {
     margin: 2rem 0;
   }
   
-  /* 右侧列水平居中 */
+  /* 移动端左列padding */
+  .left-column {
+    padding: 0 1rem; /* 上下1rem，左右1.5rem，你可以根据需要调整 */
+  }
+  
+  /* 右侧列水平居中 + 添加padding */
   .right-column {
     display: flex;
     flex-direction: column;
-    align-items: center; /* 水平居中对齐 */
-    padding: 0 1rem;
+    /* align-items: flex-start; 左对齐 */
+    align-items: center;
+    padding: 0 1rem 1rem 1rem; /* 上0.5rem，右1rem，下1rem，左1rem，你可以根据需要调整 */
   }
   
   /* 默认手机端显示顺序 */
@@ -46,10 +52,11 @@ const {
       flex: 1;
     }
     .left-column {
-      padding-right: 0 1.5rem;
+      padding-right: 0 1.5rem; /* 这里你的原代码有个问题，应该是 padding: 0 1.5rem 0 0; */
+      padding: 0 1.5rem 0 0; /* 桌面端左列：右侧1.5rem padding */
     }
     .right-column {
-      padding-right: 1.5rem;
+      padding: 0 0 0 1.5rem; /* 桌面端右列：左侧1.5rem padding */
     }
     /* 即使在移动端设置了反转，在桌面端也恢复正常顺序 */
     .reverse-mobile {

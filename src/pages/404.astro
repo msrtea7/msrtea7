@@ -1,0 +1,31 @@
+---
+import MainLayout from '../layouts/layout_home.astro';
+const pageTitle = "404";
+---
+
+<MainLayout title={pageTitle}>
+    <div class="error-container">
+        404
+    </div>
+</MainLayout>
+
+<style>
+    .error-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* min-height: 70vh; */
+        padding: 2rem;
+        font-size: 4rem;
+        /* font-weight: bold; */
+        text-align: center;
+    }
+    
+    /* 响应式设计
+    @media (max-width: 768px) {
+        .error-container {
+            font-size: 3rem;
+            padding: 1.5rem;
+        }
+    } */
+</style>

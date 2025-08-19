@@ -1,35 +1,9 @@
----
-// src/components/GoogleAnalytics.astro
-// 简化版本，基于 FreeCodeCamp 教程的直接方法
+<!-- Google tag (gtag.js) -->
+<script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-4S7GYQ56PX"></script>
+<script type="text/partytown">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-// 配置选项
-const ENABLE_COOKIE_CONSENT = false; // 开关：是否启用 Cookie 同意功能
-
-// 获取环境变量
-const GA_MEASUREMENT_ID = import.meta.env.GA_MEASUREMENT_ID;
-const NODE_ENV = import.meta.env.NODE_ENV;
-
-// 只在生产环境且有 Measurement ID 时启用 GA
-const shouldEnableGA = NODE_ENV === 'production' && GA_MEASUREMENT_ID;
----
-
-{shouldEnableGA && (
-  <>
-    <!-- Google tag (gtag.js) - 来自 Google Analytics 的官方代码片段 -->
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
-    <script define:vars={{ GA_MEASUREMENT_ID }}>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', { GA_MEASUREMENT_ID });
-    </script>
-  </>
-)}
-
-{!shouldEnableGA && (
-  <!-- 开发环境提示 -->
-  <script>
-    console.log('🔧 开发环境：Google Analytics 已禁用');
-  </script>
-)}
+  gtag('config', 'G-4S7GYQ56PX');
+</script>

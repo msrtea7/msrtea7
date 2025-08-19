@@ -19,6 +19,17 @@ const { title } = Astro.props;
             padding: 1rem; /*在布局容器的内部添加了一个 2rem 的内边距，需要在主css里面设置盒修正*/
         }
     </style>
+    <!-- Google tag (gtag.js) -->
+    <script is:inline type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-4S7GYQ56PX"></script>
+    <script is:inline type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-4S7GYQ56PX");
+    </script>
 </head>
 
 <body>

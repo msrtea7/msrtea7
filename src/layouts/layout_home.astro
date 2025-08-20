@@ -1,6 +1,23 @@
 ---
 const { title } = Astro.props;
-import "../styles/css_home.css";
+// 主题文件（必需）
+import '../styles/themes/colors-light.css';
+import '../styles/themes/colors-dark.css';
+
+// 设计系统（必需）
+import '../styles/tokens/design-system.css';
+
+
+// 组件样式（按需导入）
+import '../styles/tokens/responsive.css';
+// import '../styles/components/article.css';
+// import '../styles/components/article_complement.css';
+import '../styles/components/blog-card.css';
+import '../styles/components/carousel.css';
+import '../styles/components/home-styles.css';
+import '../styles/components/navigation.css';
+import '../styles/components/social-media.css';
+
 import Navigation from '../components/Nav_home.astro';
 // import GoogleAnalytics from '../components/google_analytics.astro';
 

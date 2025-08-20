@@ -1,12 +1,7 @@
 ---
-import "../styles/nav_botton.css";
+// import "../styles/nav_botton.css";
+import ThemeToggle from "./theme_toggle.astro";
 ---
-<!-- <div class="nav-links">
-<a href="/">Home</a>
-<a href="/nun_bar/">Nun Bar</a>
-<a href="/blogs/">Blog</a>
-</div> -->
-
 
 <nav class="navbar">
     <div class="nav-links">
@@ -23,6 +18,7 @@ import "../styles/nav_botton.css";
         <!-- <a href="/blogs/daily/">Daily</a> -->
         </div>
     </div>
+    <ThemeToggle />
     </div>
 </nav>
 
@@ -54,4 +50,4 @@ import "../styles/nav_botton.css";
         }
       });
     });
-  </script>
+</script>

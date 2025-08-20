@@ -1,0 +1,23 @@
+/* =============================================================================
+   社交媒体样式 - 重构版
+   依赖: colors-*.css, design-system.css, responsive.css
+   ============================================================================= */
+
+/* =============================================================================
+   社交媒体图标
+   ============================================================================= */
+
+.social-icons {
+  display: flex;
+  gap: var(--space-4);
+  margin: var(--space-4) 0;
+}
+
+.social-icons a {
+  color: var(--color-text-primary);
+  transition: color var(--transition-fast);
+}
+
+.social-icons a:hover {
+  color: var(--color-social-hover);
+}

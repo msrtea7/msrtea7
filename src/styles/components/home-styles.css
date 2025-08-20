@@ -1,0 +1,119 @@
+/* =============================================================================
+   主页样式 - 重构版
+   依赖: colors-*.css, design-system.css, responsive.css
+   ============================================================================= */
+
+/* =============================================================================
+   CSS Reset
+   ============================================================================= */
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, 
+blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, 
+img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, 
+i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, 
+caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, 
+embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, 
+section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* 全局盒模型设置 */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* =============================================================================
+   字体定义
+   ============================================================================= */
+
+@font-face {
+  font-family: 'Noto Serif SC';
+  src: url('/fonts/NotoSerifSC-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+4E00-9FFF, U+3400-4DBF, U+20000-2A6DF, U+2A700-2B73F, U+2B740-2B81F, U+2B820-2CEAF, U+F900-FAFF, U+2F800-2FA1F;
+}
+
+@font-face {
+  font-family: 'Chinese Font';
+  src: local('Songti SC'), local('Songti TC'), local('STSong');
+  unicode-range: U+4E00-9FFF, U+3400-4DBF, U+20000-2A6DF, U+2A700-2B73F, U+2B740-2B81F, U+2B820-2CEAF, U+F900-FAFF, U+2F800-2FA1F;
+}
+
+/* =============================================================================
+   主体样式
+   ============================================================================= */
+
+body {
+  -webkit-text-size-adjust: 100%;
+  font-family: var(--font-family-serif);
+  font-size: var(--font-size-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  padding: var(--space-4);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* =============================================================================
+   图片样式
+   ============================================================================= */
+
+.portrait-image {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin: 0 auto;
+  /* border: 1px solid var(--color-border-debug); 调试边框 */
+}
+
+/* =============================================================================
+   响应式框架（保留原visual_center_fix.css的内容）
+   ============================================================================= */
+
+.responsive-iframe {
+  height: 600px;
+  border: none;
+}
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* =============================================================================
+   响应式调整
+   ============================================================================= */
+
+@media (min-width: 768px) {
+  .portrait-image {
+    margin: 0 auto;
+  }
+  
+  .responsive-iframe {
+    width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-iframe {
+    width: 100%;
+  }
+}

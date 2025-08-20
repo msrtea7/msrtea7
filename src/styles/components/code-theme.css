@@ -1,0 +1,15 @@
+/* 代码块主题切换 - 最简版本 */
+
+/* 默认显示浅色主题代码块 */
+.astro-code[data-theme="dark"] {
+  display: none;
+}
+
+/* 深色模式时切换 */
+html.dark .astro-code[data-theme="light"] {
+  display: none;
+}
+
+html.dark .astro-code[data-theme="dark"] {
+  display: block;
+}

@@ -1,0 +1,465 @@
+/* =============================================================================
+   文章样式 - 重构版
+   依赖: colors-*.css, design-system.css, responsive.css
+   ============================================================================= */
+
+/* =============================================================================
+   现代CSS Reset
+   ============================================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+body, h1, h2, h3, h4, h5, h6, p {
+  padding: 0;
+}
+
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: var(--leading-relaxed);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+img, picture, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+a {
+  text-decoration-skip-ink: auto;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+pre {
+  overflow-x: auto;
+  white-space: pre;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =============================================================================
+   字体定义
+   ============================================================================= */
+
+@font-face {
+  font-family: 'Noto Serif SC';
+  src: url('/fonts/NotoSerifSC-VariableFont_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+4E00-9FFF, U+3400-4DBF, U+20000-2A6DF, U+2A700-2B73F, U+2B740-2B81F, U+2B820-2CEAF, U+F900-FAFF, U+2F800-2FA1F;
+}
+
+@font-face {
+  font-family: 'Chinese Font';
+  src: local('Songti SC'), local('Songti TC'), local('STSong');
+  unicode-range: U+4E00-9FFF, U+3400-4DBF, U+20000-2A6DF, U+2A700-2B73F, U+2B740-2B81F, U+2B820-2CEAF, U+F900-FAFF, U+2F800-2FA1F;
+}
+
+/* =============================================================================
+   基础样式
+   ============================================================================= */
+
+body {
+  -webkit-text-size-adjust: 100%;
+  font-family: var(--font-family-serif);
+  font-size: var(--font-size-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  padding: var(--space-4);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* =============================================================================
+   块级元素
+   ============================================================================= */
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: var(--space-15) 0;
+}
+
+/* =============================================================================
+   标题
+   ============================================================================= */
+
+h1, h2, h3, h4, h5, h6 {
+  margin: var(--space-5) 0 var(--space-2);
+  padding: 0;
+  font-weight: var(--font-weight-medium);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, 
+h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-weight: var(--font-weight-light);
+  text-align: center;
+  font-size: var(--font-size-3xl);
+  color: var(--color-primary);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  border-bottom: 1px solid var(--color-border-medium);
+  color: var(--color-text-black);
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+}
+
+h4 {
+  font-size: var(--font-size-base);
+}
+
+h5 {
+  font-size: var(--font-size-sm);
+}
+
+h6 {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, 
+body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, 
+a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: var(--space-2);
+}
+
+/* =============================================================================
+   链接
+   ============================================================================= */
+
+a {
+  color: var(--color-primary-hover);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* =============================================================================
+   列表
+   ============================================================================= */
+
+ul, ol {
+  padding-left: var(--space-8);
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  font-style: italic;
+  padding: 0;
+  margin: var(--space-15) 0 var(--space-1);
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 var(--space-15);
+  padding: 0 var(--space-15);
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* =============================================================================
+   代码
+   ============================================================================= */
+
+pre, code, tt {
+  font-size: var(--font-size-xs);
+  font-family: var(--font-family-mono);
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: pre-wrap;
+  border: 1px solid var(--color-border-light);
+  background-color: var(--color-bg-tertiary);
+  border-radius: var(--radius-base);
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre-wrap;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: var(--color-bg-code);
+  border: 1px solid var(--color-border-medium);
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-base);
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background-color: var(--color-button-bg-end);
+  background-image: linear-gradient(var(--color-button-bg-start), var(--color-button-bg-end));
+  background-repeat: repeat-x;
+  border-color: var(--color-button-bg-end) var(--color-button-border) var(--color-button-border) var(--color-button-bg-end);
+  border-image: none;
+  border-radius: var(--radius-sm);
+  border-style: solid;
+  border-width: 1px;
+  font-family: var(--font-family-sans);
+  line-height: 10px;
+  padding: var(--space-1) var(--space-1);
+}
+
+/* Astro代码块滚动条 */
+pre.astro-code {
+  max-height: 520px;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+
+pre.astro-code::-webkit-scrollbar {
+  width: var(--space-1);
+  height: var(--space-1);
+}
+
+/* =============================================================================
+   引用
+   ============================================================================= */
+
+blockquote {
+  border-top: 1px dotted var(--color-border-dotted);
+  border-bottom: 1px dotted var(--color-border-dotted);
+  padding: 0 var(--space-15);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* =============================================================================
+   水平线
+   ============================================================================= */
+
+hr {
+  clear: both;
+  margin: var(--space-15) 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid var(--color-border-dark);
+  padding: 0;
+}
+
+/* =============================================================================
+   表格
+   ============================================================================= */
+
+table th {
+  font-weight: var(--font-weight-bold);
+}
+
+table th, table td {
+  border: 1px solid var(--color-border-medium);
+  padding: var(--space-1) 13px;
+}
+
+table tr {
+  border-top: 1px solid var(--color-border-medium);
+  background-color: var(--color-text-inverse);
+}
+
+table tr:nth-child(2n) {
+  background-color: var(--color-bg-table-alt);
+}
+
+/* =============================================================================
+   图片
+   ============================================================================= */
+
+img {
+  max-width: 100%;
+}
+
+/* =============================================================================
+   任务列表
+   ============================================================================= */
+
+.task-list {
+  padding-left: var(--space-2);
+  margin-bottom: 0;
+}
+
+.task-list li {
+  margin-left: var(--space-5);
+}
+
+.task-list-item {
+  list-style-type: none;
+  padding-left: var(--space-2);
+}
+
+.task-list-item label {
+  font-weight: var(--font-weight-normal);
+}
+
+.task-list-item.enabled label {
+  cursor: pointer;
+}
+
+.task-list-item+.task-list-item {
+  margin-top: var(--space-3);
+}
+
+.task-list-item-checkbox {
+  display: inline-block;
+  margin-left: -var(--space-5);
+  margin-right: var(--space-3);
+  vertical-align: 1px;
+}
+
+/* =============================================================================
+   响应式调整
+   ============================================================================= */
+
+@media (max-width: 640px) {
+  :root {
+    --font-size-3xl: 1.5rem;  /* h1在小屏幕上更小 */
+    --font-size-2xl: 1.25rem; /* h2在小屏幕上更小 */
+  }
+  
+  body {
+    padding: var(--space-3);
+  }
+  
+  ul, ol {
+    padding-left: var(--space-6);
+  }
+  
+  pre {
+    padding: var(--space-1) var(--space-1);
+    font-size: var(--font-size-xs);
+  }
+  
+  table th, table td {
+    padding: var(--space-1) var(--space-2);
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-xl);
+  }
+}

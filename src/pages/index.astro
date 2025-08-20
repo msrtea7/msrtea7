@@ -5,7 +5,6 @@ import MainLayout from '../layouts/layout_home.astro';
 
 // import Navigation from '../components/Nav_home.astro';
 import TwoColumn from '../components/2column.astro';
-import ImageGrid from '../components/22imageGrid.astro';
 import SocialMedia from '../components/socialMedia.astro';
 
 
@@ -29,6 +28,9 @@ const pageTitle = "msrtea7";
                 聊天很难，见面好。<br>
             </div>
             <SocialMedia />
+            <div class="normal-size-2">
+                <span class="red-text">公告：</span>近期 Site themes(paticularly the dark theme) are now under intensive re-write and re-design. 为可能造成不舒服的浏览体验表示歉意，会尽快完成更新。
+            </div>
         </div>
         <div slot="right">
             <Image 
@@ -61,6 +63,11 @@ const pageTitle = "msrtea7";
     
     .normal-size {
         font-size: 1.125rem;
+        line-height: 1.6;
+    }
+
+    .normal-size_2 {
+        font-size: 1rem;
         line-height: 1.6;
     }
 </style>

@@ -1,0 +1,59 @@
+/* =============================================================================
+   浅色主题颜色变量
+   ============================================================================= */
+
+:root {
+  /* 主题色 */
+  --color-primary: #933D3F;           /* 主题红色 - h1, 导航悬停 */
+  --color-primary-hover: #AE3737;     /* 链接色 */
+  --color-danger: #a61717;            /* 错误/危险色 */
+  
+  /* 文本颜色 */
+  --color-text-primary: #333;         /* 主要文本 */
+  --color-text-secondary: #777;       /* 次要文本 - h6, blockquote */
+  --color-text-inverse: #fff;         /* 反色文本 */
+  --color-text-black: #000;           /* 纯黑文本 - h2 */
+  
+  /* 背景颜色 */
+  --color-bg-primary: #FCF5ED;        /* 主背景色 */
+  --color-bg-secondary: #F8EDDA;      /* 次要背景 - blockquote */
+  --color-bg-tertiary: #F4ECE3;       /* 第三背景 - inline code */
+  --color-bg-code: #f8f8f8;           /* 代码块背景 */
+  --color-bg-white: #fff;             /* 纯白背景 */
+  --color-bg-table-alt: #f8f8f8;      /* 表格条纹背景 */
+  --color-bg-hover: rgba(249, 249, 249, 0.5); /* 悬停背景 */
+  
+  /* 边框颜色 */
+  --color-border-primary: #000;       /* 主边框 - 导航 */
+  --color-border-light: #eaeaea;      /* 浅边框 - code */
+  --color-border-medium: #ccc;        /* 中等边框 - tables, h2 */
+  --color-border-dark: #ddd;          /* 深边框 - hr */
+  --color-border-dotted: #CDC7BC;     /* 点状边框 - blockquote */
+  --color-border-divider: #81776e;    /* 分割线 */
+  --color-border-debug: #eee;         /* 调试边框 */
+  
+  /* 特殊UI颜色 */
+  --color-shadow: rgba(0, 0, 0, 0.1); /* 阴影色 */
+  
+  /* 按钮颜色 */
+  --color-button-bg-start: #F1F1F1;   /* 渐变起始色 */
+  --color-button-bg-end: #DDDDDD;     /* 渐变结束色 */
+  --color-button-border: #CCCCCC;     /* 按钮边框 */
+
+  /* blog-card */
+  --color-blog-card-post-title: #933D3F;
+  --color-blog-card-date: #333;
+
+  /* navgation */
+  --color-nav-hover: #933D3F;
+
+  /* social-media */
+  --color-social-hover: #933D3F;
+
+  /* carousal */
+  --color-carousal-arrow: 933D3F;
+  --color-carousal-hover-bg: #933D3F;
+  --color-carousal-hovor-arrow: #FCF5ED;
+  --color-dot-default: #ccc;          /* 轮播图指示点默认色 */
+  --color-carousal-selected: #933D3F;
+}

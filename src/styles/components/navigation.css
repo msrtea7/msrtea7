@@ -1,0 +1,206 @@
+/* =============================================================================
+   导航栏样式 - 重构版
+   依赖: colors-*.css, design-system.css, responsive.css
+   ============================================================================= */
+
+/* =============================================================================
+   字体定义
+   ============================================================================= */
+
+@font-face {
+  font-family: 'YsabeauOffice';
+  src: url('/fonts/YsabeauOffice-VariableFont_wght.ttf') format('truetype-variations');
+}
+
+/* =============================================================================
+   导航栏基础样式
+   ============================================================================= */
+
+.navbar {
+  padding: 0rem 0 1rem 0; /* top right bottom left */
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links > :last-child {
+  margin-left: auto;
+}
+
+.nav-links > a, 
+.dropdown-trigger {
+  margin-right: 1.25rem; /* 标签之间的距离 */
+  padding: 0.3125rem 0.625rem; /* 文字与边框之间的内边距 */
+  border: 0.05rem solid var(--color-border-primary);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+/* 导航项悬停效果 */
+.nav-links > a:hover, 
+.dropdown-trigger:hover {
+  color: var(--color-nav-hover);
+  border-color: var(--color-nav-hover);
+}
+
+/* 去掉最后一个元素的右边距 */
+.nav-links > a:last-child,
+.nav-links > div:last-child {
+  margin-right: 0;
+}
+
+/* =============================================================================
+   下拉菜单样式
+   ============================================================================= */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-trigger {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-trigger::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 0.3125rem;
+  vertical-align: middle;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 6px solid currentColor; /* 使用当前文字颜色 */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%; /* 紧贴触发器底部 */
+  min-width: 5rem;
+  background-color: var(--color-bg-primary);
+  border: none;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(0);
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 0.5rem 0.625rem;
+  text-decoration: none;
+  color: inherit;
+  border: 0.05rem solid var(--color-border-primary);
+  margin-bottom: -1px; /* 避免边框重叠 */
+  transition: all var(--transition-fast);
+}
+
+.dropdown-content a:last-child {
+  margin-bottom: 0; /* 最后一项不需要负margin */
+}
+
+.dropdown-content a:hover {
+  background-color: var(--color-bg-hover);
+  color: var(--color-nav-hover);
+  border-color: var(--color-nav-hover);
+}
+
+/* 显示下拉内容 */
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* =============================================================================
+   响应式调整
+   ============================================================================= */
+
+/* 桌面设备 */
+@media (min-width: 768px) {
+  .navbar {
+    font-family: var(--font-family-ysabeau);
+  }
+}
+
+/* 移动设备 */
+@media (max-width: 768px) {
+  /* 在移动设备上，鼠标悬停不起作用，改为点击切换 */
+  .dropdown:hover .dropdown-content {
+    display: none; /* 覆盖悬停效果 */
+  }
+  
+  /* 为切换状态添加一个新的类 */
+  .dropdown.active .dropdown-content {
+    display: block;
+    opacity: 1;
+  }
+  
+  /* 使下拉菜单与触发器同宽 */
+  .dropdown-content {
+    min-width: 100%;
+  }
+}
+
+/* =============================================================================
+   theme toggle
+   ============================================================================= */
+
+/* 主题切换按钮样式 - 基于你现有的导航栏样式 */
+.theme-toggle {
+  margin-right: 0; /* 作为最右侧元素，不需要右边距 */
+  padding: 0.3125rem 0.625rem; /* 与导航链接相同的内边距 */
+  border: 0.05rem solid #000; /* 与导航链接相同的边框 */
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 悬停效果 - 与导航链接保持一致 */
+.theme-toggle:hover {
+  color: #933D3F;
+  border-color: #933D3F;
+}
+
+/* SVG 图标样式 */
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* 太阳图标（浅色主题时显示） */
+.sun { 
+  fill: currentColor; 
+}
+
+/* 月亮图标（默认隐藏） */
+.moon { 
+  fill: transparent; 
+}
+
+/* 深色主题时的图标切换 */
+:global(html.dark) .sun { 
+  fill: transparent; 
+}
+
+:global(html.dark) .moon { 
+  fill: currentColor; 
+}
+
+/* 响应式处理 - 与你的导航栏保持一致 */
+@media (max-width: 768px) {
+  .theme-toggle {
+    /* 在移动设备上保持相同样式 */
+  }
+}

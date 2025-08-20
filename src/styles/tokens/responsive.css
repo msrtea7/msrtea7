@@ -1,0 +1,93 @@
+/* =============================================================================
+   响应式断点系统
+   ============================================================================= */
+
+:root {
+  /* 断点系统 */
+  --breakpoint-xs: 480px;   /* 超小屏幕 */
+  --breakpoint-sm: 640px;   /* 小屏幕/移动端 */
+  --breakpoint-md: 768px;   /* 平板 */
+  --breakpoint-lg: 1024px;  /* 桌面 */
+  --breakpoint-xl: 1280px;  /* 大屏幕 */
+  --breakpoint-2xl: 1536px; /* 超大屏幕 */
+}
+
+/* 响应式工具类 */
+
+/* 容器最大宽度 */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* 显示/隐藏工具类 */
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+  
+  .desktop-only {
+    display: block;
+  }
+}
+
+/* 响应式文本大小 */
+.responsive-text {
+  font-size: var(--font-size-sm);
+}
+
+@media (min-width: 768px) {
+  .responsive-text {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* 响应式间距 */
+.responsive-padding {
+  padding: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .responsive-padding {
+    padding: var(--space-4);
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-padding {
+    padding: var(--space-6);
+  }
+}

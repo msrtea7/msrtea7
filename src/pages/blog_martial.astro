@@ -3,7 +3,6 @@ import MainLayout from '../layouts/layout_home.astro';
 
 // blog collections
 import { getCollection } from "astro:content";
-import  '../styles/blog_card.css';
 
 const the_posts = await getCollection("martial");
 const pageTitle = "martial";

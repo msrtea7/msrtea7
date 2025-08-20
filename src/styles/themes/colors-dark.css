@@ -1,0 +1,59 @@
+/* =============================================================================
+   深色主题颜色变量
+   ============================================================================= */
+
+html.dark {
+  /* 主题色 */
+  --color-primary: #933D3F;           /* 主题红色 - h1, 导航悬停 */
+  --color-primary-hover: #F0FDA6;     /* 链接色 - 改为淡黄色 */
+  --color-danger: #a61717;            /* 错误/危险色 */
+  
+  /* 文本颜色 */
+  --color-text-primary: #DB9AB1;      /* 主要文本 - 粉玫瑰色 */
+  --color-text-secondary: #DB9AB199;  /* 次要文本 - h6, blockquote - 半透明粉色 */
+  --color-text-inverse: #fff;         /* 反色文本 */
+  --color-text-black: #DB9AB1;        /* 纯黑文本 - h2 - 改为粉玫瑰色 */
+  
+  /* 背景颜色 */
+  --color-bg-primary: #1a0a0f;        /* 主背景色 */
+  --color-bg-secondary: #2d1319;      /* 次要背景 - blockquote - 改为深背景 */
+  --color-bg-tertiary: #2d1319;       /* 第三背景 - inline code - 改为深背景 */
+  --color-bg-code: #2d1319;           /* 代码块背景 - 改为深背景 */
+  --color-bg-white: #fff;             /* 纯白背景 */
+  --color-bg-table-alt: #3d1f29;      /* 表格条纹背景 - 改为深色条纹 */
+  --color-bg-hover: #1a0a0f; /* 悬停背景 */
+  
+  /* 边框颜色 */
+  --color-border-primary: #DB9AB1;    /* 主边框 - 导航 */
+  --color-border-light: #4A1628;      /* 浅边框 - code - 改为深酒红色 */
+  --color-border-medium: #4A1628;     /* 中等边框 - tables, h2 - 改为深酒红色 */
+  --color-border-dark: #4A1628;       /* 深边框 - hr - 改为深酒红色 */
+  --color-border-dotted: #4A1628;     /* 点状边框 - blockquote - 改为深酒红色 */
+  --color-border-divider: #FFFFFF;    /* 分割线 */
+  --color-border-debug: #eee;         /* 调试边框 */
+  
+  /* 特殊UI颜色 */
+  --color-shadow: rgba(0, 0, 0, 0.1); /* 阴影色 */
+  
+  /* 按钮颜色 */
+  --color-button-bg-start: #F1F1F1;   /* 渐变起始色 */
+  --color-button-bg-end: #DDDDDD;     /* 渐变结束色 */
+  --color-button-border: #CCCCCC;     /* 按钮边框 */
+
+  /* blog-card */
+  --color-blog-card-post-title: #F0FDA6;
+  --color-blog-card-date: #DB9AB1;
+
+  /* navgation */
+  --color-nav-hover: #F0FDA6;
+
+  /* social-media */
+  --color-social-hover: #F0FDA6;
+
+  /* carousal */
+  --color-carousal-arrow: #F0FDA6;
+  --color-carousal-hover-bg: #F0FDA6;
+  --color-carousal-hovor-arrow: #933D3F;
+  --color-dot-default: #933D3F;          /* 轮播图指示点默认色 */
+  --color-carousal-selected: #F0FDA6;
+}

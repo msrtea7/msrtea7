@@ -1,0 +1,155 @@
+/* =============================================================================
+   文章补充样式 - 重构版
+   依赖: colors-*.css, design-system.css, responsive.css
+   ============================================================================= */
+
+/* =============================================================================
+   地图容器
+   ============================================================================= */
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.map-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* =============================================================================
+   图片样式
+   ============================================================================= */
+
+.single_img {
+  display: block;
+  width: 70%;
+  max-width: 1000px;
+  height: auto;
+  margin: 0 auto;
+  /* border: 1px solid var(--color-border-debug); 调试边框 */
+}
+
+.single_img_small {
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  margin: 0 auto;
+  object-fit: contain;
+  /* border: 1px solid var(--color-border-debug); 调试边框 */
+}
+
+/* =============================================================================
+   Bilibili视频容器
+   ============================================================================= */
+
+.bilibili-video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9的宽高比 */
+  height: 0;
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+}
+
+.bilibili-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: var(--radius-xl);
+}
+
+/* =============================================================================
+   居中注释块
+   ============================================================================= */
+
+.centered-guide-block {
+  margin: 0 auto;
+  width: 100%; /* 在小屏幕上使用全宽 */
+}
+
+/* =============================================================================
+   SVG显示
+   ============================================================================= */
+
+.full_svg {
+  width: 80%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+/* =============================================================================
+   响应式框架
+   ============================================================================= */
+
+.responsive-iframe {
+  height: 600px;
+  border: none;
+}
+
+/* =============================================================================
+   响应式调整
+   ============================================================================= */
+
+/* 平板及以上设备 */
+@media (min-width: 768px) {
+  .centered-guide-block {
+    width: 50%; /* 仅在宽屏上将宽度限制为50% */
+  }
+  
+  .responsive-iframe {
+    width: 500px;
+  }
+}
+
+/* 移动设备 */
+@media (max-width: 768px) {
+  .single_img {
+    width: 80%;
+  }
+  
+  .single_img_small {
+    width: 100%;
+    height: 350px; /* 保持固定高度 */
+  }
+  
+  .bilibili-video-container {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    width: calc(100% + 2rem);
+    border-radius: 0;
+  }
+  
+  .bilibili-video-container iframe {
+    border-radius: 0; /* 在小屏幕上移除圆角 */
+  }
+  
+  .full_svg {
+    width: 95%;
+  }
+  
+  .responsive-iframe {
+    width: 100%;
+  }
+}
+
+/* 超大屏幕 */
+@media (min-width: 1280px) {
+  .full_svg {
+    max-width: 1000px;
+  }
+}

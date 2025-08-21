@@ -38,6 +38,7 @@
   color: inherit;
   cursor: pointer;
   transition: all var(--transition-fast);
+  font-size: var(--font-size-button);
 }
 
 /* 导航项悬停效果 */
@@ -92,6 +93,7 @@
   transform: translateY(0);
   transition: opacity var(--transition-fast);
   pointer-events: none;
+  font-size: var(--font-size-button);
 }
 
 .dropdown-content a {
@@ -168,10 +170,10 @@
 }
 
 /* 悬停效果 - 与导航链接保持一致 */
-.theme-toggle:hover {
+/* .theme-toggle:hover {
   color: #933D3F;
   border-color: #933D3F;
-}
+} */
 
 /* SVG 图标样式 */
 .theme-toggle svg {

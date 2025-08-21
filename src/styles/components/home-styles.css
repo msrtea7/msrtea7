@@ -49,7 +49,7 @@ section, summary, time, mark, audio, video {
 
 body {
   -webkit-text-size-adjust: 100%;
-  font-family: var(--font-family-serif);
+  font-family: var(--font-family-ysabeau);
   font-size: var(--font-size-sm);
   line-height: var(--leading-relaxed);
   color: var(--color-text-primary);

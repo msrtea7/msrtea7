@@ -84,7 +84,7 @@ pre {
 
 @font-face {
   font-family: 'Chinese Font';
-  src: local('Songti SC'), local('Songti TC'), local('STSong');
+  src: url('/fonts/fzlgq.TTF') format('truetype-variations');
   unicode-range: U+4E00-9FFF, U+3400-4DBF, U+20000-2A6DF, U+2A700-2B73F, U+2B740-2B81F, U+2B820-2CEAF, U+F900-FAFF, U+2F800-2FA1F;
 }
 
@@ -94,7 +94,7 @@ pre {
 
 body {
   -webkit-text-size-adjust: 100%;
-  font-family: var(--font-family-serif);
+  font-family: var(--font-family-ysabeau);
   font-size: var(--font-size-sm);
   line-height: var(--leading-relaxed);
   color: var(--color-text-primary);
@@ -137,7 +137,7 @@ h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
 }
 
 h1 {
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-bold);
   text-align: center;
   font-size: var(--font-size-3xl);
   color: var(--color-primary);
@@ -154,7 +154,7 @@ h3 {
 }
 
 h4 {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-h4);
 }
 
 h5 {

@@ -108,7 +108,7 @@
 /* 平板及以上设备 */
 @media (min-width: 768px) {
   .centered-guide-block {
-    width: 50%; /* 仅在宽屏上将宽度限制为50% */
+    width: 52%; /* 仅在宽屏上将宽度限制为50% */
   }
   
   .responsive-iframe {

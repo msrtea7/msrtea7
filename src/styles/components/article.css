@@ -463,3 +463,18 @@ img {
     font-size: var(--font-size-xl);
   }
 }
+
+
+/* =============================================================================
+   Shiki 代码块主题切换
+   ============================================================================= */
+
+/* 暗色主题下的代码块样式 */
+html.dark pre.astro-code,
+html.dark pre.astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}

@@ -21,11 +21,14 @@ export default defineConfig({
     ],
     markdown: {
         shikiConfig: {
-            theme: 'everforest-dark',
+            themes: {
+                light: 'gruvbox-light-hard',
+                dark: 'laserwave'
+            },
+            //red
             //material-theme
             //monokai
             //gruvbox-dark-hard
-            // defaultColor: false,
         },
     },
 });

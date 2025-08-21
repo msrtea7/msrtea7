@@ -9,8 +9,8 @@
 
 .social-icons {
   display: flex;
-  gap: var(--space-4);
-  margin: var(--space-4) 0;
+  gap: var(--space-3);
+  margin: var(--space-3) 0;
 }
 
 .social-icons a {
@@ -20,4 +20,9 @@
 
 .social-icons a:hover {
   color: var(--color-social-hover);
+}
+
+.social-icons svg {
+  width: var(--font-size-socialMedia);
+  height: var(--font-size-socialMedia);
 }

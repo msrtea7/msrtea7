@@ -172,13 +172,12 @@
 /* 悬停效果 - 与导航链接保持一致 */
 /* .theme-toggle:hover {
   color: #933D3F;
-  border-color: #933D3F;
 } */
 
 /* SVG 图标样式 */
 .theme-toggle svg {
-  width: 16px;
-  height: 16px;
+  width: var(--font-size-button);
+  height: var(--font-size-button);
 }
 
 /* 太阳图标（浅色主题时显示） */
@@ -205,4 +204,9 @@
   .theme-toggle {
     /* 在移动设备上保持相同样式 */
   }
+}
+
+/* 按钮悬浮效果 */
+.theme-toggle:hover svg {
+  transform: scale(1.05);
 }

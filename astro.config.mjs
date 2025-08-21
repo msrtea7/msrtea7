@@ -3,7 +3,6 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown'
 
-
 import icon from 'astro-icon';
 
 
@@ -26,6 +25,7 @@ export default defineConfig({
                 dark: 'laserwave'
             },
             //red
+            //laserwave
             //material-theme
             //monokai
             //gruvbox-dark-hard

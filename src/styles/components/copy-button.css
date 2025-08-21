@@ -1,0 +1,68 @@
+/* 复制按钮样式 */
+.copy-code {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  
+  /* 按钮样式 */
+  background: transparent;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1);
+  
+  /* 文字和图标 */
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  
+  /* 过渡效果 */
+  transition: all 0.2s ease;
+  
+  /* 确保图标垂直居中 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.copy-success {
+  color: var(--color-copy-success) !important;
+}
+
+.copy-code:hover {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-medium);
+  color: var(--color-text-primary);
+}
+
+.copy-code:active {
+  transform: scale(0.95);
+}
+
+/* 确保代码块容器支持绝对定位 */
+pre {
+  position: relative;
+}
+
+/* 复制成功时的边框闪烁效果 */
+@keyframes copy-success {
+  0% { border-color: var(--color-border-medium); }
+  50% { border-color: var(--color-copy-success); box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2); }
+  100% { border-color: var(--color-border-medium); }
+}
+
+.copy-success {
+  animation: copy-success 0.6s ease;
+}
+
+/* 移动端隐藏复制按钮 */
+@media (max-width: 768px) {
+  .copy-code {
+    display: none;
+  }
+}
+
+/* 或者更精确的触摸设备检测 */
+@media (hover: none) and (pointer: coarse) {
+  .copy-code {
+    display: none;
+  }
+}

@@ -58,8 +58,45 @@
   
   /* 字体族 */
   --font-family-serif: 'Chinese Font', 'Noto Serif SC', Georgia, Palatino, serif;
-  --font-family-mono: Consolas, "Liberation Mono", Courier, monospace;
+  /* --font-family-mono: Consolas, "Liberation Mono", Courier, monospace; */
   --font-family-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-family-ysabeau: 'Noto Serif SC', 'YsabeauOffice', serif, Palatino, Georgia;
+  --font-family-mono: 'agave-mono';
   /* --font-family-ysabeau: 'YsabeauOffice', serif, Palatino, Georgia; */
+
+
+  /* =============================================================================
+   移动端响应式变量 - 新增到 design-system.css 的 :root 中
+   ============================================================================= */
+
+  /* 移动端字体大小系统 - 基于1.2倍比例 */
+  --font-size-xs-mobile: 0.875rem;    /* 14px */
+  --font-size-sm-mobile: 1rem;        /* 16px - 移动端正文 */
+  --font-size-base-mobile: 1rem;      /* 16px - 移动端根字体大小 */
+  --font-size-h4-mobile: 1.125rem;    /* 18px - for h4 */
+  --font-size-lg-mobile: 1.2rem;      /* 19.2px */
+  --font-size-xl-mobile: 1.25rem;     /* 20px */
+  --font-size-2xl-mobile: 1.44rem;    /* 23px */
+  --font-size-3xl-mobile: 1.728rem;   /* 27.6px */
+  --font-size-4xl-mobile: 1.875rem;   /* 30px */
+  --font-size-button-mobile: 0.875rem; /* 14px */
+  --font-size-socialMedia-mobile: 1.25rem; /* 20px */
+
+  /* 移动端间距系统 - 更紧凑 */
+  --space-1-mobile: 0.25rem;     /* 4px */
+  --space-2-mobile: 0.5rem;      /* 8px */
+  --space-3-mobile: 0.625rem;    /* 10px */
+  --space-4-mobile: 0.75rem;     /* 12px */
+  --space-5-mobile: 1rem;        /* 16px */
+  --space-6-mobile: 1.25rem;     /* 20px */
+  --space-8-mobile: 1.5rem;      /* 24px */
+  --space-10-mobile: 2rem;       /* 32px */
+  --space-12-mobile: 2.5rem;     /* 40px */
+  --space-15-mobile: 0.75rem;    /* 12px - 移动端段落间距 */
+  
+  /* 移动端行高系统 - 更紧凑但保持可读性 */
+  --leading-tight-mobile: 1.2;
+  --leading-normal-mobile: 1.4;
+  --leading-relaxed-mobile: 1.5;
+  --leading-loose-mobile: 1.6;
 }

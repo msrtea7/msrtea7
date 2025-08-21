@@ -56,4 +56,13 @@
   --color-carousal-hovor-arrow: #FCF5ED;
   --color-dot-default: #ccc;          /* 轮播图指示点默认色 */
   --color-carousal-selected: #933D3F;
+
+  /* code */
+  --color-scroll-bar-bg: #933D3F;
+  --color-copy-success: #933D3F;
+
+  /* audio-player */
+  --color-audioPlayer-progressBar: rgba(205, 199, 188, 0.3);
+  --color-audioPlayer-progressFill: #e6a788;
+  --color-audioPlayer-body: #777;
 }

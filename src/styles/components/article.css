@@ -88,6 +88,11 @@ pre {
   unicode-range: U+4E00-9FFF, U+3400-4DBF, U+20000-2A6DF, U+2A700-2B73F, U+2B740-2B81F, U+2B820-2CEAF, U+F900-FAFF, U+2F800-2FA1F;
 }
 
+@font-face {
+  font-family: 'agave-mono';
+  src: url('/fonts/Agave-Regular.ttf');
+}
+
 /* =============================================================================
    基础样式
    ============================================================================= */
@@ -256,44 +261,42 @@ dl dd>:last-child {
 /* =============================================================================
    代码
    ============================================================================= */
-
-pre, code, tt {
+/* 基础字体设置 - 对所有代码元素生效 */
+pre, code {
   font-size: var(--font-size-xs);
   font-family: var(--font-family-mono);
 }
 
-code, tt {
-  margin: 0 0px;
-  padding: 0px 0px;
-  white-space: pre-wrap;
-  border: 1px solid var(--color-border-light);
-  background-color: var(--color-bg-tertiary);
-  border-radius: var(--radius-base);
-}
-
-pre>code {
+/* 内联代码样式 - 只影响不在pre中的code */
+code:not(pre code) {
   margin: 0;
-  padding: 0;
+  padding: 2px 4px;
+  background-color: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-base);
   white-space: pre-wrap;
-  border: none;
-  background: transparent;
 }
 
+/* 代码块容器样式 - 布局相关，不会与Shiki冲突 */
 pre {
-  background-color: var(--color-bg-code);
-  border: 1px solid var(--color-border-medium);
+  padding: var(--space-1) var(--space-2);
+  /* border: 1px solid var(--color-border-medium); */
+  border-radius: var(--radius-base);
   font-size: 13px;
   line-height: 19px;
   overflow: auto;
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-base);
 }
 
-pre code, pre tt {
-  background-color: transparent;
+/* 代码块中的code - 重置样式，让Shiki完全控制 */
+pre code {
+  margin: 0;
+  padding: 0;
+  background: transparent;
   border: none;
+  white-space: pre-wrap;
 }
 
+/* 键盘按键样式 */
 kbd {
   -moz-border-bottom-colors: none;
   -moz-border-left-colors: none;
@@ -312,16 +315,22 @@ kbd {
   padding: var(--space-1) var(--space-1);
 }
 
-/* Astro代码块滚动条 */
+/* Shiki代码块特定样式 - 滚动相关 */
 pre.astro-code {
+  padding: var(--space-2) var(--space-3); /* 上下 左右 */
+
+  line-height: 1.6;    /* 行高 */
+
   max-height: 520px;
   overflow: auto;
   scrollbar-width: thin;
+  scrollbar-color: var(--color-scroll-bar-bg) transparent;
 }
 
 pre.astro-code::-webkit-scrollbar {
   width: var(--space-1);
   height: var(--space-1);
+  
 }
 
 /* =============================================================================
@@ -477,4 +486,145 @@ html.dark pre.astro-code span {
   font-style: var(--shiki-dark-font-style) !important;
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+
+
+
+/* =============================================================================
+   移动端响应式优化 - 替换 article.css 末尾现有的响应式部分
+   ============================================================================= */
+
+/* 小屏幕优化 (≤640px) */
+@media (max-width: 640px) {
+  /* 基础字体和行高 */
+  body {
+    font-size: var(--font-size-sm-mobile);
+    line-height: var(--leading-relaxed-mobile);
+    padding: var(--space-4-mobile);
+  }
+  
+  /* 标题字体大小 */
+  h1 {
+    font-size: var(--font-size-3xl-mobile);
+    margin: var(--space-5-mobile) 0 var(--space-2-mobile);
+  }
+  
+  h2 {
+    font-size: var(--font-size-2xl-mobile);
+    margin: var(--space-5-mobile) 0 var(--space-2-mobile);
+  }
+  
+  h3 {
+    font-size: var(--font-size-lg-mobile);
+  }
+  
+  h4 {
+    font-size: var(--font-size-h4-mobile);
+  }
+  
+  h5, h6 {
+    font-size: var(--font-size-sm-mobile);
+  }
+  
+  /* 段落和块级元素间距 */
+  p, blockquote, ul, ol, dl, table, pre {
+    margin: var(--space-15-mobile) 0;
+  }
+  
+  /* 标题间距 */
+  h1, h2, h3, h4, h5, h6 {
+    margin: var(--space-5-mobile) 0 var(--space-2-mobile);
+  }
+  
+  h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+    margin-top: var(--space-2-mobile);
+  }
+  
+  /* 列表缩进 */
+  ul, ol {
+    padding-left: var(--space-6-mobile);
+  }
+  
+  /* 代码块 */
+  pre {
+    padding: var(--space-1-mobile) var(--space-2-mobile);
+    font-size: var(--font-size-xs-mobile);
+  }
+  
+  code, tt {
+    font-size: var(--font-size-xs-mobile);
+  }
+  
+  /* 引用块 */
+  blockquote {
+    padding: 0 var(--space-15-mobile);
+  }
+  
+  /* 表格 */
+  table th, table td {
+    padding: var(--space-1-mobile) var(--space-3-mobile);
+  }
+  
+  /* 水平线间距 */
+  hr {
+    margin: var(--space-15-mobile) 0;
+  }
+  
+  /* 定义列表 */
+  dl dt {
+    margin: var(--space-15-mobile) 0 var(--space-1-mobile);
+  }
+  
+  dl dd {
+    margin: 0 0 var(--space-15-mobile);
+    padding: 0 var(--space-15-mobile);
+  }
+  
+  /* 任务列表 */
+  .task-list li {
+    margin-left: var(--space-5-mobile);
+  }
+  
+  .task-list-item {
+    padding-left: var(--space-2-mobile);
+  }
+  
+  .task-list-item+.task-list-item {
+    margin-top: var(--space-3-mobile);
+  }
+  
+  .task-list-item-checkbox {
+    margin-left: calc(-1 * var(--space-5-mobile));
+    margin-right: var(--space-3-mobile);
+  }
+}
+
+/* 超小屏幕进一步优化 (≤480px) */
+@media (max-width: 480px) {
+  body {
+    padding: var(--space-3-mobile);
+  }
+  
+  h1 {
+    font-size: var(--font-size-2xl-mobile);
+  }
+  
+  h2 {
+    font-size: var(--font-size-xl-mobile);
+  }
+  
+  /* 更紧凑的间距 */
+  ul, ol {
+    padding-left: var(--space-5-mobile);
+  }
+  
+  pre {
+    padding: var(--space-1-mobile);
+  }
+  
+  table th, table td {
+    padding: var(--space-1-mobile) var(--space-2-mobile);
+    font-size: var(--font-size-xs-mobile);
+  }
 }

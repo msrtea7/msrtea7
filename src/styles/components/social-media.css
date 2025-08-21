@@ -20,6 +20,7 @@
 
 .social-icons a:hover {
   color: var(--color-social-hover);
+  transform: scale(1.07);
 }
 
 .social-icons svg {

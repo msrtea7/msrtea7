@@ -195,7 +195,7 @@ a {
   color: var(--color-primary-hover);
   text-decoration: none;
 }
-
+ms
 a:hover {
   text-decoration: underline;
 }
@@ -323,15 +323,22 @@ pre.astro-code {
 
   max-height: 520px;
   overflow: auto;
-  scrollbar-width: thin;
+  /* scrollbar-width: thin; */
+  scrollbar-width: none; /* 因为Safari显示不好，直接取消滑动条*/
   scrollbar-color: var(--color-scroll-bar-bg) transparent;
 }
 
 pre.astro-code::-webkit-scrollbar {
   width: var(--space-1);
   height: var(--space-1);
-  
 }
+
+/* 滚动条轨道背景 - 设为透明 */
+pre.astro-code::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 更新说明：现在保留了设置透明的代码，但是是不生效的因为我吧scroll bar的width设置为none了。操蛋safari. */
 
 /* =============================================================================
    引用

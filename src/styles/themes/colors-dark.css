@@ -63,6 +63,6 @@ html.dark {
 
   /* audio-player */
   --color-audioPlayer-progressBar: rgba(205, 199, 188, 0.3);
-  --color-audioPlayer-progressFill: #e6a788;
+  --color-audioPlayer-progressFill: #F0FDA6;
   --color-audioPlayer-body: #933D3F;
 }

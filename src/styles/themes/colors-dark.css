@@ -4,7 +4,7 @@
 
 html.dark {
   /* 主题色 */
-  --color-primary: #933D3F;           /* 主题红色 - h1, 导航悬停 */
+  --color-primary: #f7e8aa;           /* 主题红色 - h1, 导航悬停 */
   --color-primary-hover: #F0FDA6;     /* 链接色 - 改为淡黄色 */
   --color-danger: #a61717;            /* 错误/危险色 */
   
@@ -64,5 +64,5 @@ html.dark {
   /* audio-player */
   --color-audioPlayer-progressBar: rgba(205, 199, 188, 0.3);
   --color-audioPlayer-progressFill: #F0FDA6;
-  --color-audioPlayer-body: #F0FDA6;
+  --color-audioPlayer-body: #f6dead;
 }

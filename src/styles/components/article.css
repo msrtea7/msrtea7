@@ -270,10 +270,11 @@ pre, code {
 /* 内联代码样式 - 只影响不在pre中的code */
 code:not(pre code) {
   margin: 0;
-  padding: 2px 4px;
+  padding: 2px 2px;
   background-color: var(--color-bg-tertiary);
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-base);
+  size: var(--font-size-sm);
   white-space: pre-wrap;
 }
 
@@ -282,8 +283,8 @@ pre {
   padding: var(--space-1) var(--space-2);
   /* border: 1px solid var(--color-border-medium); */
   border-radius: var(--radius-base);
-  font-size: 13px;
-  line-height: 19px;
+  /* font-size: 13px; */
+  /* line-height: 19px; */
   overflow: auto;
 }
 
@@ -339,6 +340,20 @@ pre.astro-code::-webkit-scrollbar-track {
 }
 
 /* 更新说明：现在保留了设置透明的代码，但是是不生效的因为我吧scroll bar的width设置为none了。操蛋safari. */
+
+/* =============================================================================
+   Shiki 代码块主题切换
+   ============================================================================= */
+
+/* 暗色主题下的代码块样式 */
+html.dark pre.astro-code,
+html.dark pre.astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
+}
 
 /* =============================================================================
    引用
@@ -478,21 +493,6 @@ img {
   h2 {
     font-size: var(--font-size-xl);
   }
-}
-
-
-/* =============================================================================
-   Shiki 代码块主题切换
-   ============================================================================= */
-
-/* 暗色主题下的代码块样式 */
-html.dark pre.astro-code,
-html.dark pre.astro-code span {
-  color: var(--shiki-dark) !important;
-  background-color: var(--shiki-dark-bg) !important;
-  font-style: var(--shiki-dark-font-style) !important;
-  font-weight: var(--shiki-dark-font-weight) !important;
-  text-decoration: var(--shiki-dark-text-decoration) !important;
 }
 
 

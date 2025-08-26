@@ -26,7 +26,8 @@ html.dark {
   /* 边框颜色 */
   --color-border-primary: #DB9AB1;    /* 主边框 - 导航 */
   --color-border-light: #4A1628;      /* 浅边框 - code - 改为深酒红色 */
-  --color-border-medium: #1a0a0f;     /* 中等边框 - tables, h2 - 改为深酒红色 */
+  --color-border-medium: #1a0a0f;     /* 中等边框 - tables,  */
+  --color-line-under-h2: #DB9AB1;      /*h2下面的线*/
   --color-border-dark: #4A1628;       /* 深边框 - hr - 改为深酒红色 */
   --color-border-dotted: #4A1628;     /* 点状边框 - blockquote - 改为深酒红色 */
   --color-border-divider: #FFFFFF;    /* 分割线 */

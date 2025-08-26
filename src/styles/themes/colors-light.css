@@ -26,7 +26,8 @@
   /* 边框颜色 */
   --color-border-primary: #000;       /* 主边框 - 导航 */
   --color-border-light: #eaeaea;      /* 浅边框 - code */
-  --color-border-medium: #ccc;        /* 中等边框 - tables, h2 */
+  --color-border-medium: #ccc;        /* 中等边框 - tables */
+  --color-line-under-h2: #ccc;      /*h2下面的线*/
   --color-border-dark: #ddd;          /* 深边框 - hr */
   --color-border-dotted: #CDC7BC;     /* 点状边框 - blockquote */
   --color-border-divider: #81776e;    /* 分割线 */

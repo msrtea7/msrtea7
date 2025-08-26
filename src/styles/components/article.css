@@ -150,7 +150,7 @@ h1 {
 
 h2 {
   font-size: var(--font-size-2xl);
-  border-bottom: 1px solid var(--color-border-medium);
+  border-bottom: 1px solid var(--color-line-under-h2);
   color: var(--color-text-black);
 }
 

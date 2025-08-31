@@ -6,12 +6,50 @@ tags: ["compiler"]
 ---
 
 # The Ultimate Guide For **Basic** Personal WSL DL Env Development
+<div style="text-align: center;">
+  update: <i>2025-08-31</i><br/>
+  Author: <i>msrtea7</i>
+</div>
+
+
+
+## Simplified tensorflow gpu dev env
+
+First, make sure NVIDIA driver is installed and works good, check through command ```nvidia-smi``` . 
+
+Then install wsl --> [full doc link](https://documentation.ubuntu.com/wsl/stable/howto/install-ubuntu-wsl2/), here I use ubuntu.
+
+```
+# List of distros could be installed
+wsl --list --online
+
+# Install
+wsl --install -d Ubuntu-24.04
+```
+
+In file explorer, find the WSL file system at `\\wsl$\Ubuntu\home\USERNAME`
+
+Double ckeck ```nvidia-smi``` under WSL terminal session. [Install uv](https://docs.astral.sh/uv/getting-started/installation/) and setting up tf-gpu as followed:
+
+```
+uv init
+source .venv/bin/activate
+uv add tensorflow[and-cuda]
+```
+
+
+# Old version with SSH & network config
+
+<div style="text-align: center;">
+  pubdata: <i>2024-03-01</i><br/>
+  Author: <i>msrtea7</i>
+</div>
 
 > 此刻是二零二四年三月一日凌晨一点四十分，我的心情无比沉重且轻盈，我将写下这篇文档以在将来帮助自己或有需要的人。
 >
 > Fuck Windows, 灾难级。
 
-## 1. 配置 Windows
+## 配置 Windows
 
 1. 重装电脑。
 
@@ -28,23 +66,22 @@ tags: ["compiler"]
   - 在NVIDIA官网下载，选择，安装驱动 <https://www.nvidia.com/download/index.aspx> 
   - 执行 ```nvidia-smi``` 检查
 
----
 
-## 2. 配置 WSL
+## 配置 WSL
 
 1. WSL基本配置(默认宿主机win11，WSL2；其他环境自行解决)
 
   - 在 ```C:\Users\&Username&\``` 新建.wslconfig文件并粘贴以下内容以设置wsl网络mirror
-      > 
-      > [experimental]<br>
-      > autoMemoryReclaim=gradual # 开启自动回收内存，可在 gradual, dropcache, disabled 之间选择<br>
-      > networkingMode=mirrored # 开启镜像网络<br>
-      > dnsTunneling=true # 开启 DNS Tunneling<br>
-      > firewall=true # 开启 Windows 防火墙<br>
-      > autoProxy=true # 开启自动同步代理<br>
-      > sparseVhd=true # 开启自动释放 WSL2 虚拟硬盘空间<br>
-      >
-  - 执行 ```wsl --install``` 安装WSL(较新版本的Windows会直接下载WSL2，注意甄别)
+      ``` 
+      experimental]<br>
+      autoMemoryReclaim=gradual # 开启自动回收内存，可在 gradual, dropcache, disabled 之间选择<br>
+      networkingMode=mirrored # 开启镜像网络<br>
+      dnsTunneling=true # 开启 DNS Tunneling<br>
+      firewall=true # 开启 Windows 防火墙<br>
+      autoProxy=true # 开启自动同步代理<br>
+      sparseVhd=true # 开启自动释放 WSL2 虚拟硬盘空间<br>
+      ```
+  - 执行 ```wsl --install``` 安装WSL(需要WSL2，较新版本的Windows会直接下载WSL2，注意检查一下)
   - 在Microsoft Store上下载 Ubuntu 22.04.3 LTS，并install。(如下载默认的Ubuntu 18*，有可能导致代理失效)
   - 执行 ```sudo passwd root```, ```su root```, 以root用户登陆，默认的账户一直要sudo很烦且有可能碰到指令执行报错
 
@@ -53,26 +90,27 @@ tags: ["compiler"]
   - 安装miniconda <https://docs.anaconda.com/free/miniconda/index.html>
   - 安装gpu tensorflow <https://www.tensorflow.org/install/pip>
 
----
 
-## 3. 杂谈
+<!-- ## 3. 杂谈
 
 "高端"的食材往往只需要简单的配置。
 
 忏悔，感恩。
 
----
+--- -->
 
-## 4. ssh
+## SSH
 
+```
 apt install openssh-server
 apt install build-essential
+```
 
-## 5. nvim
+<!-- ## 5. nvim -->
 
-## 我且输
+## VSCODE
 
-安装vscode <https://dev.to/abbazs/how-to-install-vscode-in-ubuntu-using-apt-get-2m8o>
+安装vscode参考自文档：<https://dev.to/abbazs/how-to-install-vscode-in-ubuntu-using-apt-get-2m8o>
 
 1.  Download the Microsoft GPG key: Run the following command to download the Microsoft GPG key and save it as microsoft.gpg: ```curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg```
 

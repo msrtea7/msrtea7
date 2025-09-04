@@ -1,0 +1,198 @@
+---
+title: 'Barbot Prototype'
+pubDate: 2025-07-20
+author: 'Walbaaco'
+# tags: [""]
+---
+
+# **Barbot Assistant Prototype**
+
+<div style="text-align: center;">
+    <image src='https://assets.msrtea7.com/barbot/home.png' alt="Gin tasting" class="single_img" />
+</div>
+
+## Introduction
+
+An AI assistant for independent bars that manages business operations such as inventory management and POS systems through natural conversation.
+
+Ask any question about your bar data and get instant answers:
+
+- **Natural Language Interface**: Conversational format like chatGPT
+- **Easy record**: Read, write, delete, update the database using natual language.
+- **Customizable Knowledge**: Understands your cocktail recipes, seasonal menus, and supplier relationships
+- **Actionable Insights**: Provides data and calculation results, along with thought processes or specific recommendations (when needed), replacing routine accounting work
+
+Let bartenders do what bartenders do.
+
+<blockquote className="centered-guide-block">
+<div style="text-align: left">
+"Do we have enough whiskey?"<br/>
+"Yamazaki has 2 bottles left, enough for this weekend, but Maker's only has 1 bottle left, suggest ordering tomorrow"
+
+"Why are costs so high lately?"<br/>
+"Material A has increased by nearly 30%, affecting spirits A, B, C. I calculated..."
+
+"What should we order this week?"<br/>
+"There's that xxx event this weekend, right? Gin definitely won't be enough, suggest..."
+</div>
+</blockquote>
+
+## Core Features
+
+1. **Traditional Inventory Management**
+    - Real-time inventory queries, filtered by ingredient, location, expiration date
+    - Automatic low stock alerts and restocking suggestions
+	- ...
+
+2. **Cost Analysis & Optimization**
+    - Batch calculation of recipe costs (including preprocessed ingredients)
+    - Profitability analysis
+	- ...
+
+3. **Procurement Decision Support**
+    - Restocking plans based on sales forecasts
+    - Event preparation suggestions
+	- ...
+
+4. **Sales Data Analysis**
+    - Revenue forecasting and inventory matching (predict next week's revenue and reverse-engineer optimal inventory configuration)
+    - ...
+
+
+## System Architecture
+
+```
+Client Interface → MCP Server → Tool Calls → Database, Documents... → Business Logic Processing → Structured Output
+```
+
+
+## Limitations
+
+The biggest challenge is data acquisition. Every establishment has different POS systems - some use Meituan, some use Yinbao, others have custom systems, requiring individual API adaptations. For Excel-based data, formats vary wildly, making data quality and complexity difficult to assess. Real-time inventory updates are also challenging and require continuous updating.
+
+For example, the simple simulated system I've currently completed might require:
+- Complete database design
+- 1-3 months of sales records and purchase orders
+- Complete cocktail recipe lists and supplier information
+
+The ideas and technical approaches I'm implementing are rapidly evolving in industry. If such a system is meaningful, investing some time to digitize bar assets might reveal more possibilities.
+
+## Current Partial Implementation Demo (Translation)
+
+> Check gin inventory <br/>
+
+```
+
+## Current Gin Inventory Summary
+
+Your current gin inventory is as follows:
+
+### Hendrick's Gin
+- Total Quantity: 4 bottles
+- Unit Price: 89.99 DKK/bottle
+- Location: Bar counter
+- Supplier: Copenhagen Spirits
+- Earliest Expiration: July 5, 2027
+
+### Monkey 47 Gin
+- Total Quantity: 1 bottle
+- Unit Price: 189.99 DKK/bottle
+- Location: Premium shelf
+- Supplier: Premium Imports
+- Earliest Expiration: July 8, 2027
+
+### Bombay Sapphire Gin
+- Total Quantity: 8 bottles
+- Unit Price: 95.00-95.99 DKK/bottle
+- Location: Storage Room B (3 bottles), Premium Shelf (2 bottles), Storage (3 bottles)
+- Supplier: Copenhagen Spirits
+- Earliest Expiration: July 9, 2027
+
+Would you like to know more details about these gins, or
+check inventory for other products?
+
+```
+
+<br/>
+
+> What's causing our costs to rise<br/>
+
+```
+Based on available data, I can identify several potential factors that may be driving your cost increases:
+
+## Cost Driver Analysis
+
+### 1. High-Cost Premium Spirits
+- **Monkey 47 Gin** costs 189.99 DKK per bottle, much more expensive than other gins
+- Cost per ml is 0.295 DKK (more than double Hendrick's Gin)
+- If used in standard cocktails rather than premium cocktails, could significantly increase costs
+
+### 2. Inventory Management Issues
+- **Low stock levels** - 17 out of 19 items (89%) are marked as "low stock"
+- This suggests possible emergency ordering needs, which typically incur premiums
+- May indicate inefficient ordering patterns (quantities too small, frequency too high)
+
+### 3. Product Mix
+- Heavy reliance on premium spirits like specialty gins
+- Limited information about low-cost alternatives available for soft drink preparation
+
+### 4. Supplier Concentration
+- Heavy dependence on "Copenhagen Spirits" for multiple products
+- This may limit your bargaining power for better prices
+- Could expose you to price increase risks from a single supplier
+
+......
+
+## Cost Reduction Recommendations
+
+1. **Optimize Spirit Selection**:
+- Consider using Hendrick's Gin (your most cost-effective gin) for more cocktails
+- Reserve Monkey 47 only for premium cocktails with appropriate pricing
+
+2. **Improve Inventory Management**:
+- Set appropriate par levels to avoid emergency ordering
+- Implement more consistent ordering schedules
+
+......
+
+Without more detailed sales and usage data, these are the main cost drivers I can identify based on available information. Would you like me to explore any of these aspects in greater depth?
+
+```
+
+<br/>
+
+> Tell me the cost of "DTU No Paper Plane" and "Danish Garden". You can find how to make elderflower syrup and lemon juice in resources, and find the cost of each ingredient in the dataset.
+
+```
+Now, I'll estimate the costs of these cocktails based on available information:
+
+### Elderflower Syrup Cost Calculation (per liter):
+- Fresh elderflowers: 100g = 3.50 DKK (based on 35 DKK/kg)
+- Sugar: 500g = 7.75 DKK (based on 15.50 DKK/kg)
+- Water: negligible cost
+- Lemon (for flavoring): 1 lemon = ~1.20 DKK (based on 12 DKK/kg, assuming ~100g per lemon)
+- Total cost per liter: ~12.45 DKK
+
+### Lemon Juice Cost Calculation (per 100ml):
+- Lemons: approximately 3 lemons (~300g) yield ~100ml lemon juice = 3.60 DKK (based on 12 DKK/kg)
+- Total cost per 100ml: ~3.60 DKK
+
+### "DTU No Paper Plane" Estimated Cost (assuming standard Paper Plane recipe with modifications):
+- Bourbon/Whiskey: 30ml (cost unknown, not in inventory)
+- Amaro Nonino: 30ml = ~14.00 DKK (based on 349.99 DKK per 750ml bottle)
+- Other possible ingredients not found in inventory
+
+Due to lack of complete ingredient information for this cocktail, I cannot provide an accurate total cost.
+
+### "Danish Garden" Estimated Cost (based on common gin garden cocktails):
+- Hendrick's Gin: 45ml = ~5.40 DKK (based on 89.99 DKK per 750ml bottle)
+- Elderflower syrup: 20ml = ~0.25 DKK (based on above estimated cost)
+- Lemon juice: 15ml = ~0.54 DKK (based on above estimated cost)
+- Other ingredients may include cucumber, mint, or other garden herbs (not fully identified in inventory)
+
+Partial estimated cost for Danish Garden: ~6.19 DKK (excluding garnishes and other potential ingredients)
+
+For more accurate costing, I would need complete recipes for these cocktails.
+Would you like me to help calculate more precise costs if you can provide the complete ingredient lists and quantities for these cocktails?
+
+```

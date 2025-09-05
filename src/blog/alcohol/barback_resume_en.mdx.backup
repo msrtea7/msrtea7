@@ -1,0 +1,135 @@
+---
+title: 'Resume - Barman'
+pubDate: 2025-09-04
+author: 'Walbaaco'
+# tags: [""]
+---
+
+import ImageCarousel from '../../components/ImageCarousel.astro';
+
+export const img_bachelor_1 = 'https://assets.msrtea7.com/resume_bar/kude_5.jpg'
+export const img_bachelor_2 = 'https://assets.msrtea7.com/resume_bar/kude_6.png'
+export const img_bachelor_3 = 'https://assets.msrtea7.com/resume_bar/kude_4.png'
+export const img_bachelor_4 = 'https://assets.msrtea7.com/resume_bar/history_2.JPG'
+
+
+export const img_bachelor = [
+    { src: img_bachelor_1, alt: "img_bachelor_1", isExternal: true },
+    { src: img_bachelor_2, alt: "img_bachelor_2", isExternal: true },
+    { src: img_bachelor_3, alt: "img_bachelor_3", isExternal: true },
+    { src: img_bachelor_4, alt: "img_bachelor_4", isExternal: true },
+];
+
+import daiquiri from '../../assets/bar/daiquiri.png';
+import good from '../../assets/bar/good.png';
+import pineaple from '../../assets/bar/pineaple.png';
+import paper from '../../assets/bar/paper.png';
+
+export const logo = 'https://assets.msrtea7.com/resume_bar/logo_rough.png'
+
+export const img_master = [
+    { src: good, alt: "fresh" },
+    { src: logo, alt: "external image", isExternal: true },
+    { src: pineaple, alt: "my boy" },
+    { src: paper, alt: "paper plane" },
+];
+
+# **Resume**
+
+> Hello! Thank you for taking the time to read this resume. 
+>
+> Hope this resume would help you getting a better understand of me.
+
+## **Basic Information**
+
+### **Personal Information**
+
+<div class="cv-layout">
+  <div class="info-section">
+| Name | Li Junrui |
+|:------:|:------:|
+| Age | 23 |
+| Education | Master's student in Computer Science at DTU |
+| Email | msrtea7@gmail.com |
+| Phone | +45 50130278 |
+| Languages | Chinese, English |
+  </div>
+  <div class="image-section">
+    <img src='https://assets.msrtea7.com/resume_bar/profile.png' alt="profile" />
+  </div>
+</div>
+
+### **Position Applied For**
+
+I am looking for a job as a barback.
+
+## **Relevant Experience and Skills**
+
+### **Kude Mixology Club Operator | China Jiliang University, Hangzhou**
+*2021 - 2022* 
+
+Responsible for club management, teaching and sharing knowledge, organizing cocktail stands for students.
+
+During this time, I experimented with various techniques with hands-on experience including:
+- Milk wash
+- Fat wash
+- Infusion
+- Flavored syrups
+- Clarification
+- Sous vide infusion
+- ...
+
+During this period, I was primarily active in Hangzhou bars. My industry exploration included:
+
+- Watching cocktail competitions in person
+- Attending masterclasses and guest bartending events
+- Visiting distilleries
+    - Zhangzhou Balang Distillery
+    - Lishui Guoshandian 2, 3 Liang Distillery
+
+> [Gin Tasting 👆Link](https://msrtea7.com/posts/alcohol/gin_tasting_1/).
+
+<ImageCarousel images={img_bachelor} />
+<br/>
+
+### **Home Bar Operation | Denmark**
+
+*2024 to present*
+
+During my overseas studies, I've been "operating" a home bar, hosting students from different regions and cultural backgrounds around the world.
+
+In this context, my language and communication skills have improved, and I've also recognized the value of bars in the service industry.
+
+During this time, I've also been exploring overseas bars and distilleries.
+
+> [Rome Bar Tour, Pt.1 👆Link](https://msrtea7.com/posts/alcohol/bar_tour_rome_one/)<br/>
+> [Visit to Radius Distillery in Denmark 👆Link](https://msrtea7.com/posts/alcohol/visit_radius_distillery/)
+
+<ImageCarousel images={img_master} />
+<br/>
+
+### **Microbrewing and safe food production**
+
+*2025.6*
+
+During the semi-semester at June, I took course [DTU 23532 Beer brewing and quality control](https://kurser.dtu.dk/course/23532). 
+
+Through this course, I acquired hands-on experience in microbrewing and cultivated beer tasting abilities. Most significantly, I gained expertise in HACCP-based safe food production in accordance with Danish/EU regulatory frameworks. 
+
+> Some of my project notes could be found [👆Link](https://msrtea7.com/posts/alcohol/beer_production/)
+
+### **Barbot (prototype)**
+
+*2025.7*
+
+By the end of this summer, I prototype a stock management software I called "barbot". 
+
+I was inspired from a conversation with a bartender from Bird CPH, when I getting to know that they are using Microsoft Excel for stock management etc. I think I could do something with this leveraging my education background. 
+
+> Very simple introduction doc for the software [👆link](https://msrtea7.com/posts/alcohol/barbot_mvp_intro_en/). 
+
+As I recently read the book [*Welcome Home*](https://www.deathandcompanymarket.com/products/death-co-welcome-home-book) from *Death & Co*, I got many ideas of updating the current prototype. If you are interested with the project, I'm very willing that we could talk more about it!
+
+> My reading notes(in Chinese):
+> - [Reading - Deadth & Co Welcome home - pt.1](https://msrtea7.com/posts/alcohol/death_co_notes_1/)
+> - [Reading - Deadth & Co Welcome home - pt.2](https://msrtea7.com/posts/alcohol/death_co_notes_2/)

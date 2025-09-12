@@ -20,3 +20,8 @@ Some emotions that I've never ever experienced for my life.
 这是好事儿，吗
 
 We will see.
+
+<div style="text-align: center;">
+    <Image src='https://assets.msrtea7.com/diary/holland_bitter.png' alt="the zombie bike" class="single_img_small" />
+    <h5>Bitter from Holland, Netherland</h5>
+</div>

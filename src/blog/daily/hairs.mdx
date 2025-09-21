@@ -1,0 +1,32 @@
+---
+title: '发型'
+pubDate: 2025-09-21
+author: 'Walbaaco'
+tags: ["me"]
+---
+
+import ImageCarousel from '../../components/ImageCarousel.astro';
+
+
+export const hairs_1 = 'https://assets.msrtea7.com/hairs/h1.JPG'
+export const hairs_2 = 'https://assets.msrtea7.com/hairs/h2.jpg'
+export const hairs_3 = 'https://assets.msrtea7.com/hairs/h3.png'
+export const hairs_4 = 'https://assets.msrtea7.com/hairs/h4.png'
+export const hairs_5 = 'https://assets.msrtea7.com/hairs/h5.JPG'
+export const hairs_6 = 'https://assets.msrtea7.com/hairs/h6.png'
+
+
+export const images = [
+    { src: hairs_6, alt: "hairs_6", isExternal: true },
+    { src: hairs_5, alt: "hairs_5", isExternal: true },
+    { src: hairs_4, alt: "hairs_4", isExternal: true },
+    { src: hairs_3, alt: "hairs_3", isExternal: true },
+    { src: hairs_2, alt: "hairs_2", isExternal: true },
+    { src: hairs_1, alt: "hairs_1", isExternal: true },
+];
+
+# 发型
+
+<br/>
+
+<ImageCarousel images={images} />

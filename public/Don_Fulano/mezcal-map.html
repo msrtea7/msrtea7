@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>Mexican Agave Spirits Production Regions</title> -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        :root {
+            /* Color palette */
+            --color-primary: #27ae60;
+            --color-secondary: #bdc3c7;
+            --color-dark: #2c3e50;
+            --color-gray: #7f8c8d;
+            --color-white: #ffffff;
+            --color-text: #333;
+
+            /* Spacing */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+
+            /* Border radius */
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+
+            /* Transitions */
+            --transition-base: 0.3s ease;
+
+            /* Layout */
+            --max-width: 90rem;
+            --map-height: 70vh;
+            --map-min-height: 30rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: inherit;
+            background: transparent;
+            color: var(--color-text);
+            line-height: 1.6;
+            padding: var(--spacing-lg);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-dark);
+        }
+
+        header p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--color-gray);
+            font-weight: 300;
+        }
+
+        main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        #map-container {
+            position: relative;
+            width: 100%;
+            height: var(--map-height);
+            min-height: var(--map-min-height);
+            margin-bottom: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        .state {
+            stroke: var(--color-white);
+            stroke-width: 1;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .state:hover {
+            stroke-width: 2;
+            stroke: var(--color-dark);
+            filter: brightness(1.1);
+        }
+
+        #tooltip {
+            position: fixed;
+            background: rgba(44, 62, 80, 0.9);
+            color: var(--color-white);
+            padding: 0.75rem var(--spacing-md);
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity var(--transition-base);
+            z-index: 999;
+            backdrop-filter: blur(4px);
+            transform: translate(-50%, calc(-100% - 10px));
+        }
+
+        #legend {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+            margin-top: var(--spacing-lg);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 0.9rem;
+            color: var(--color-dark);
+        }
+
+        .legend-color {
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: var(--radius-sm);
+            /* border-radius: 0; */
+            /* border: 1px solid #ddd; */
+        }
+
+        .legend-color.tequila {
+            background-color: #2d5016;
+        }
+
+        .legend-color.mezcal {
+            background-color: #e85d75;
+        }
+
+        .legend-color.raicilla {
+            background-color: #4a9eff;
+        }
+
+        .legend-color.bacanora {
+            background-color: #f39c63;
+        }
+
+        .legend-color.sotol {
+            background-color: #8b6f47;
+        }
+
+        @media (max-width: 48rem) {
+            body {
+                padding: var(--spacing-md);
+            }
+
+            #map-container {
+                height: 60vh;
+                min-height: 25rem;
+            }
+
+            #legend {
+                gap: var(--spacing-md);
+            }
+
+            .legend-item {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 40rem) {
+            #legend {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--spacing-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <main>
+        <div id="map-container">
+            <svg id="map"></svg>
+            <div id="tooltip"></div>
+        </div>
+
+        <div id="legend">
+            <div class="legend-item">
+                <div class="legend-color tequila"></div>
+                <span>Tequila</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color mezcal"></div>
+                <span>Mezcal</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color raicilla"></div>
+                <span>Raicilla</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color bacanora"></div>
+                <span>Bacanora</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color sotol"></div>
+                <span>Sotol</span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Configuration object - single source of truth for all settings
+        const CONFIG = {
+            // Map settings
+            projection: {
+                center: [-102, 23],  // Mexico center coordinates [longitude, latitude]
+                padding: 0.1         // Map padding as percentage (0.1 = 10% margin)
+            },
+
+            // Spirit types and their colors
+            spiritTypes: {
+                tequila: {
+                    name: 'Tequila',
+                    color: '#2d5016'  // Dark green
+                },
+                mezcal: {
+                    name: 'Mezcal',
+                    color: '#e85d75'  // Red/pink
+                },
+                raicilla: {
+                    name: 'Raicilla',
+                    color: '#4a9eff'  // Blue
+                },
+                bacanora: {
+                    name: 'Bacanora',
+                    color: '#f39c63'  // Orange
+                },
+                sotol: {
+                    name: 'Sotol',
+                    color: '#8b6f47'  // Brown/tan
+                }
+            },
+
+            // Visual settings
+            colors: {
+                nonAuthorized: '#bdc3c7',   // Gray for non-authorized states
+                stroke: '#ffffff',           // State border color
+                strokeHover: '#2c3e50',     // State border on hover
+                errorText: '#e74c3c'        // Error message color
+            },
+
+            // Animation settings
+            transitions: {
+                duration: 300  // milliseconds
+            },
+
+            // Stripe pattern settings
+            stripePattern: {
+                width: 8,        // Width of each stripe
+                angle: 45        // Angle in degrees
+            }
+        };
+
+        // State authorization mapping - each state to its authorized spirit types
+        const stateAuthorizations = {
+            // Tequila states
+            'Jalisco': ['tequila', 'raicilla'],
+            'Guanajuato': ['tequila', 'mezcal'],
+            'Michoacán': ['tequila', 'mezcal'],
+            'Nayarit': ['tequila'],
+            'Tamaulipas': ['tequila', 'mezcal'],
+
+            // Mezcal-only states
+            'Oaxaca': ['mezcal'],
+            'Guerrero': ['mezcal'],
+            'Puebla': ['mezcal'],
+            'Zacatecas': ['mezcal'],
+            'San Luis Potosí': ['mezcal'],
+            'Durango': ['mezcal', 'sotol'],
+
+            // Sotol states
+            'Chihuahua': ['sotol'],
+            'Coahuila': ['sotol'],
+
+            // Bacanora state
+            'Sonora': ['bacanora']
+        };
+
+        // Set up SVG dimensions and projection
+        const svg = d3.select('#map');
+        const tooltip = d3.select('#tooltip');
+
+        let width, height;
+
+        function updateDimensions() {
+            const container = document.getElementById('map-container');
+            width = container.clientWidth;
+            height = container.clientHeight;
+
+            svg.attr('width', width).attr('height', height);
+        }
+
+        // Mexico-centered projection (configured dynamically)
+        const projection = d3.geoMercator();
+
+        const path = d3.geoPath().projection(projection);
+
+        // Create SVG patterns for striped states
+        function createStripePattern(spiritTypes, patternId) {
+            const defs = svg.select('defs').empty() ? svg.append('defs') : svg.select('defs');
+
+            // Check if pattern already exists
+            if (!defs.select(`#${patternId}`).empty()) {
+                return `url(#${patternId})`;
+            }
+
+            const pattern = defs.append('pattern')
+                .attr('id', patternId)
+                .attr('patternUnits', 'userSpaceOnUse')
+                .attr('width', CONFIG.stripePattern.width * spiritTypes.length)
+                .attr('height', CONFIG.stripePattern.width * spiritTypes.length)
+                .attr('patternTransform', `rotate(${CONFIG.stripePattern.angle})`);
+
+            spiritTypes.forEach((spiritType, index) => {
+                pattern.append('rect')
+                    .attr('x', index * CONFIG.stripePattern.width)
+                    .attr('y', 0)
+                    .attr('width', CONFIG.stripePattern.width)
+                    .attr('height', CONFIG.stripePattern.width * spiritTypes.length)
+                    .attr('fill', CONFIG.spiritTypes[spiritType].color);
+            });
+
+            return `url(#${patternId})`;
+        }
+
+        // Initialize all stripe patterns needed for multi-authorization states
+        function initializeAllPatterns() {
+            // Get unique combinations of authorizations that need patterns
+            const patternCombinations = new Set();
+
+            Object.values(stateAuthorizations).forEach(authorizations => {
+                if (authorizations.length > 1) {
+                    patternCombinations.add(authorizations.join('-'));
+                }
+            });
+
+            // Create patterns for each unique combination
+            patternCombinations.forEach(combination => {
+                const spiritTypes = combination.split('-');
+                const patternId = `pattern-${combination}`;
+                createStripePattern(spiritTypes, patternId);
+            });
+        }
+
+        // Get fill style for a state based on its authorizations
+        function getStateFillStyle(stateName) {
+            const authorizations = stateAuthorizations[stateName];
+
+            if (!authorizations || authorizations.length === 0) {
+                // Non-authorized state
+                return CONFIG.colors.nonAuthorized;
+            } else if (authorizations.length === 1) {
+                // Single authorization - solid color
+                return CONFIG.spiritTypes[authorizations[0]].color;
+            } else {
+                // Multiple authorizations - striped pattern
+                const patternId = `pattern-${authorizations.join('-')}`;
+                return createStripePattern(authorizations, patternId);
+            }
+        }
+
+        // Get list of spirit names for a state
+        function getStateSpirits(stateName) {
+            const authorizations = stateAuthorizations[stateName];
+            if (!authorizations || authorizations.length === 0) {
+                return [];
+            }
+            return authorizations.map(spirit => CONFIG.spiritTypes[spirit].name);
+        }
+
+        // Initialize map
+        function initMap() {
+            updateDimensions();
+
+            // Update projection with new dimensions
+            projection.translate([width / 2, height / 2]);
+
+            loadMexicoData();
+        }
+
+        // Load and render Mexico state data
+        async function loadMexicoData() {
+            try {
+                // Load local Mexico states GeoJSON data
+                const mexicoData = await d3.json('./mx.json');
+
+                renderStates(mexicoData.features);
+
+            } catch (error) {
+                console.error('Error loading Mexico data:', error);
+                // Show error message if local file fails to load
+                svg.append('text')
+                    .attr('x', width / 2)
+                    .attr('y', height / 2)
+                    .attr('text-anchor', 'middle')
+                    .attr('fill', CONFIG.colors.errorText)
+                    .style('font-size', '1.2rem')
+                    .text('Error loading map data');
+            }
+        }
+
+        function renderStates(statesData) {
+            // Create FeatureCollection
+            const featureCollection = {
+                type: 'FeatureCollection',
+                features: statesData
+            };
+
+            // Auto-fit projection to map bounds with configured padding
+            const padding = CONFIG.projection.padding;
+            projection.fitExtent(
+                [
+                    [width * padding, height * padding],
+                    [width * (1 - padding), height * (1 - padding)]
+                ],
+                featureCollection
+            );
+
+
+            // Clear previous render and draw states
+            svg.selectAll('*').remove();
+
+            // Initialize all stripe patterns after clearing
+            initializeAllPatterns();
+
+            svg.selectAll('.state')
+                .data(statesData)
+                .enter()
+                .append('path')
+                .attr('class', d => {
+                    const stateName = getStateName(d);
+                    const authorizations = stateAuthorizations[stateName];
+                    const hasAuth = authorizations && authorizations.length > 0;
+                    return `state ${hasAuth ? 'authorized' : 'non-authorized'}`;
+                })
+                .attr('d', path)
+                .attr('fill', d => {
+                    const stateName = getStateName(d);
+                    return getStateFillStyle(stateName);
+                })
+                .on('mouseover', handleMouseOver)
+                .on('mousemove', handleMouseMove)
+                .on('mouseout', handleMouseOut);
+        }
+
+        // Extract state name from feature data
+        function getStateName(feature) {
+            // Use the name property from mx.json
+            return feature.properties.name || 'Unknown State';
+        }
+
+        // Mouse event handlers
+        function handleMouseOver(event, d) {
+            const stateName = getStateName(d);
+            const spirits = getStateSpirits(stateName);
+
+            d3.select(event.currentTarget).raise();
+
+            let tooltipContent = `<strong>${stateName}</strong><br>`;
+
+            if (spirits.length > 0) {
+                tooltipContent += spirits.join(', ');
+            } else {
+                tooltipContent += '✗ No authorized agave spirits';
+            }
+
+            tooltip
+                .style('opacity', 1)
+                .html(tooltipContent);
+        }
+
+        function handleMouseMove(event) {
+            tooltip
+                .style('left', (event.clientX) + 'px')
+                .style('top', (event.clientY) + 'px');
+        }
+
+        function handleMouseOut() {
+            tooltip.style('opacity', 0);
+        }
+
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            updateDimensions();
+            initMap();
+        });
+
+        // Initialize the map when the page loads
+        document.addEventListener('DOMContentLoaded', initMap);
+    </script>
+</body>
+</html>

@@ -137,18 +137,35 @@
 
         /* ============ 响应式 ============ */
         @media (max-width: 768px) {
+            body {
+                padding: 40px 15px 20px 15px;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            html {
+                overflow: auto;
+            }
+
+            .timeline-container {
+                padding-left: 15px;
+                max-width: 100%;
+            }
+
             .timeline-line {
-                left: 20px;
+                left: 26px;
             }
 
             .timeline-dot {
-                left: 20px;
+                left: 26px;
             }
 
             .timeline-content {
-                width: calc(100% - 60px);
-                margin-left: auto !important;
+                width: calc(100% - 50px);
+                margin-left: 50px !important;
+                margin-right: 0 !important;
                 text-align: left !important;
+                padding: 15px;
             }
 
             .timeline-year {
@@ -162,12 +179,39 @@
 
         @media (max-width: 480px) {
             body {
-                padding: 20px 10px;
+                padding: 30px 10px 20px 10px;
+            }
+
+            .timeline-container {
+                padding-left: 5px;
+            }
+
+            .timeline-line {
+                left: 18px;
+            }
+
+            .timeline-dot {
+                left: 18px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 40px);
+                margin-left: 40px !important;
+                padding: 12px;
             }
 
             :root {
                 --spacing: 40px;
-                --card-padding: 15px;
+                --card-padding: 12px;
+                --dot-size: 10px;
+            }
+
+            .timeline-year {
+                font-size: 15px;
+            }
+
+            .timeline-description {
+                font-size: 12px;
             }
         }
     </style>

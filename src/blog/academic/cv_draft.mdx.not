@@ -1,0 +1,132 @@
+---
+title: 'CV - draft'
+pubDate: 2025-08-25
+author: 'Walbaaco'
+tags: ["visualization"]
+# layout: '../../../layouts/layout_blog_raw.astro'
+---
+
+# CV - *draft*
+
+## **Brief**
+
+<div class="cv-layout">
+  <div class="info-section">
+      | Name | Li Junrui |
+      |:------:|:------:|
+      | Gender | Male |
+      | Education | MSc Computer Science and Engineering |
+      | Email | s242643@dtu.dk / msrtea7@gmail.com |
+  </div>
+  <div class="image-section">
+    <img src='https://assets.msrtea7.com/resume_bar/profile_1.png' alt="profile" />
+  </div>
+</div>
+
+## **Tech stack**
+
+Program analysis, Compiler, Data analysis and visualizatin, High performance computing, Machine learning.
+
+## **Work experience**
+
+### Hangzhou Sheng’ao Information Technology Co., Ltd. Hangzhou, China
+- Job: Algorithm and Data Intern
+- Duration: 07/2022 - 09/2022
+- Work content:
+
+  Applied deep learning algorithms in small molecule drugs, conducted preprocessing of biochemical data, and engaged in database operations.
+
+## **Projects**
+
+### **Exploring Large Language Models for Automated Static Program Analysis**
+
+Course project of DTU *02806 Program Analysis*
+
+- Year: 2024
+- Main content:
+
+  Explored whether Large Language Models can enhance program analysis by evaluating their performance on common error detection tasks (array bounds, divide-by-zero, assertion errors, deadlocks). Combined LLM-based static analysis with dynamic testing validation through fuzz testing and dictionary-based input selection. 
+
+### **Application user management system**
+Course project of DTU *02239 Data Security*, [link to the project github repository](https://github.com/msrtea7/ds_authentication?tab=readme-ov-file#data-security-combined-lab)
+
+- Year: 2024
+- Main content:
+
+  1. **Authentication:** a password-based authentication mechanisms for client/server applications. It covers topics: Password storage, transmission and verification, session management with RMI framework integrated.
+  2. **Access control:** implementation of 2 approaches: access control list (ACL), role-Based access control (RBAC). It then simulates scenarios of organizaitonal changes where dynamic permission adjustment is applied.
+
+
+### **Parallel computing and high performance computing**
+
+Course project of DTU *02613 Python and High-Performance Computing*
+
+- Year: 2024-2025
+- Covered:
+
+  Performance profiling and optimization for large-scale numerical simulations. Implemented parallel computing with multiprocessing. Applied JIT compilation with Numba and GPU acceleration with CUDA/CuPy. Deployed on HPC cluster with job arrays for distributed computing.
+
+### **Compiler construction (hyggec)**
+
+Course project of DTU *02247 Compiler Construction*
+
+- Year: 2024
+- Covered:
+
+  Extended the Hygge compiler with seven enhancements across syntax, semantics, type checking, interpreter, and RISC-V code generation. Implemented RISC-V stack frame redesign for functions with 9+ arguments, conforming to calling conventions with proper alignment. Developed partial evaluation optimization achieving 30-80% instruction reduction through constant folding, propagation, and dead code elimination.
+  
+  - [Link to the project blog - optimization](https://msrtea7.com/posts/academic/02247_compiler_construction_opt/)
+  - [Link to the project blog - stack](https://msrtea7.com/posts/academic/02247_compiler_construction_fun/)
+  
+
+
+### **Explore NYC Public Toilets, Here Is The Start**
+
+Course project of DTU *02806 Social data analysis and visualization*. [Link to the 02806 Project](http://msrtea7.com/posts/academic/02806_project)
+
+- Year: 2025
+- Skill covered:
+
+  Social data analysis. Visualization techniques with python and js. Narrative visualization.
+
+### **Beer brewing and safe food production**
+
+Course project of DTU *23532 – Beer Brewing*. [Link to the report diagrams](https://msrtea7.com/posts/alcohol/beer_production/)
+- Year: 2025
+- Skills covered:
+
+  Theory on beer brewing. Beer recipe design and calculation. Hands on microbrewery experience. Self-monitoring and HACCP based safe food production. 
+
+## **Ongoing projects**
+
+### **Process mining**
+
+Course project of DTU *02268 Process-oriented and Event-driven Software Systems*
+
+- Year: 2025
+- Main content:
+
+  Modeled and analyzed business processes for food waste initiative Madboks using BPMN and DCR graphs. Implemented process automation through event-driven architecture and Complex Event Processing to optimize volunteer management and food distribution workflows.
+
+### **Large-scale modeling (Poisson Problem)**
+
+Course project of DTU *02616 Large-scale Modelling*
+
+- Year: 2025
+- Covered:
+
+  Implemented parallel solver for Poisson equation using MPI domain decomposition. Explored sliced and cubic decomposition strategies with custom MPI data types. Applied Jacobi iteration accelerated with Numba JIT compilation. Analyzed scalability and communication overhead across different parallelization approaches.
+
+### **Social network analysis (My Little Pony)**
+
+Course project of DTU *02805 Social graphs and interactions*
+
+- Year: 2025-2026
+- Covered:
+
+  Analyzing social interactions and community structures in My Little Pony fandom networks. Applied graph theory metrics and network analysis algorithms to detect communities and quantify relationship dynamics using Python and network science tools.
+
+
+
+
+

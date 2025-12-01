@@ -1,0 +1,257 @@
+---
+title: 'My research regarding Bacanora'
+pubDate: 2025-12-01
+author: 'Walbaaco'
+tags: ["agave"]
+---
+
+# **Bacanora**
+
+## **Maguey vs Agave**
+
+Agave is a plant. [Agave](https://www.mezcalreviews.com/filter-by/agave/) refers to the scientific name for the plant. And [Maguey](https://www.mezcalreviews.com/filter-by/maguey/) is the common name that is used in the community and by the producer.
+
+我理解两者为一对多的关系，agave to maguey. 前者决定了生物上的共性，即在分类上是同一类，后者代表了特定自然条件，如气候，土壤，which可能会影响风味， + 文化(例如地方文化，DI)。
+
+也是因为这个，在NOM里面，只会标注Agave，而不是maguey。
+
+### **Case, the Agave for Bacanora**
+
+[NOM-168-SCFI-2005](https://platiica.economia.gob.mx/wp-content/uploads/sites/2/PDF_Normas_Publicas/NOM-168-SCFI-2005.pdf) 里对Bacanora的定义：
+
+> Bebida alcohólica regional del Estado de Sonora, México, obtenida por destilación y rectificación de mostos, preparados directa y originalmente con los azúcares extraídos de la molienda de las cabezas maduras de ***Agave angustifolia Haw***, hidrolizadas por cocimiento, y sometidas a fermentación alcohólica con levaduras. El bacanora es un líquido que, de acuerdo a su tipo, es incoloro o amarillento cuando es madurado en recipientes de madera de roble o encino, o cuando se aboque sin madurarlo.
+
+Bacanora用的是Agave angustifolia，在mezcal产区，其maguey是(被称作)Espadin。而在Sonora，where Bcanora生产的地方，用到的Agave angustifolia有两种Maguey：[Pacifica](https://www.mezcalreviews.com/filter-by/maguey/pacifica/), [Yaquiana](https://www.mezcalreviews.com/filter-by/maguey/yaquiana/)
+
+### **Why angustifolia?**
+
+我断言，和Agave tequilana(Blue agave)一样，生长周期是决定性因素。
+
+## **DO, NOM**
+
+在我查看各个Agave Spirit的NOM的时候，我发现，Raicilla并没有获得NOM。但是ta有DO。
+
+我反思，DO是什么，NOM是什么，不都是法律嘛，两者之间是什么关系，为什么Racilla可以在酒标上面标注自己是Raicilla呢。在Tequila，Mezcal等NOM上面有Labeling相关法案的reference。Raicilla凭什么！DO到底是什么，NOM到底是什么！
+
+### **Defining DO**
+
+DO is defined at the Article 264 of the Federal Law for the Protection of Industrial Property [(New Law DOF 01-07-2020)](https://www.dof.gob.mx/nota_detalle.php?codigo=5596010&fecha=01/07/2020#gsc.tab=0)
+
+> (Original Text)Se entiende por denominación de origen, el producto vinculado a una zona geográfica de la cual éste es originario, siempre y cuando su calidad, características o reputación se deban exclusiva o esencialmente al origen geográfico de las materias primas, los procesos de producción, así como los factores naturales y culturales que inciden en el mismo.
+> (Google translated)A designation of origin refers to a product linked to a geographical area from which it originates, provided that its quality, characteristics or reputation are due exclusively or essentially to the geographical origin of the raw materials, the production processes, as well as the natural and cultural factors that affect it.
+
+从这里，我们得到了DO。在Article 264的第二段话提到：
+
+> (Original Text)Una vez emitida la declaratoria de protección de una denominación de origen, ésta deberá contar con una Norma Oficial Mexicana específica.
+> (Google translated) Once a declaration of protection for a designation of origin has been issued, it must have a specific Official Mexican Standard.
+
+Why, 为什么需要NOM呢，NOM是什么。
+
+### **Law**
+
+这是法律范畴的东西，所以首先要简单看一下墨西哥的法律结构。
+
+```
+第1层：宪法
+├─ 1917年政治宪法
+   ├─ 第133条（法律效力层级）
+   └─ 第28条（垄断和专利权）
+
+第2层：国际条约
+├─ 里斯本协定（DO国际保护）
+└─ USMCA（美墨加协定）
+
+第3层：联邦法律
+├─ 《联邦工业产权保护法》2020 ⭐
+│  └─ 第264-300条（DO专门规定）
+├─ 《联邦计量和标准化法》
+└─ 《联邦消费者保护法》
+
+第4层：行政层
+├─ 行政声明
+│  └─ 1977年龙舌兰DOT声明 ✅
+│     (在DOF发布)
+│
+├─ 技术标准(NOM)
+│  ├─ NOM-006-SCFI-2012 ✅
+│  │  (龙舌兰产品标准)
+│  ├─ NOM-030-SCFI-2006
+│  │  (标签数量声明)
+│  ├─ NOM-142-SSA1-1995
+│  │  (酒类卫生标准)
+│  └─ NOM-251-SSA1-2009
+│     (食品卫生操作规范)
+│
+└─ 实施细则
+   └─ 各种操作程序和指南
+
+第5层：执行层
+├─ IMPI授权（生产授权、DO使用授权）
+├─ CRT认证（合规证书）
+└─ 市场监督
+```
+
+从法律效力上来看：
+《联邦工业产权保护法》第264条 = 上位法（法律框架）
+龙舌兰DOT声明（1977） = 行政声明（法律保护）
+NOM-006-SCFI-2012 = 技术标准（执行细则）
+
+以Tequila为例子，逻辑链条由此可以拆解为：
+
+```
+第264条（Artículo 264）
+	    ↓
+	定义什么是"原产地命名"
+	    ↓
+	规定必须有"特定的NOM"
+		    ↓
+		龙舌兰的DOT声明（1977年）
+		    ↓
+		要求制定技术标准NOM
+			    ↓
+			NOM-006-SCFI-2012（龙舌兰的生产、标签、质量标准）
+```
+
+### **How DO works**
+
+从上文我知道了我在墨西哥境内我得当心各个DO。我不在墨西哥，我凭什么接纳你是Bacanora，我凭什么不能生产Bacanora. Who can stop me!
+
+#### **DO在国际秩序中如何获得认可**
+
+##### **模式1：多边条约体系**
+
+例如里斯本协定，原产国注册 → WIPO国际注册 → 所有成员国自动承认
+
+##### **模式2：双边谈判**
+
+```
+          墨西哥           ⇄                美国
+            │                                │
+   承认"Bourbon"为               承认"Tequila"为
+   美国专有产品                  墨西哥专有产品
+            │                                │
+            └────────── 双边协议 ────────────┘
+                    (1973-1974)
+```
+
+
+Case: 墨西哥-美国（1973-1974）[url](https://www.tequilana.org/2024/04/denominacion-de-origen-tequila.html)
+
+| 墨西哥给予美国 | 美国给予墨西哥 |
+|--------------|--------------|
+| 承认"Bourbon Whiskey"仅限美国 | 承认"Tequila"仅限墨西哥 |
+| 禁止墨西哥生产"Bourbon" | 禁止美国生产"Tequila" |
+
+**时间线：**
+```
+1973年12月5日 → 美国《联邦公报》发布承认龙舌兰DO
+1974年5月6日 → 墨西哥发布承认波本威士忌的决议
+```
+
+##### **模式3：区域一体化体系**
+
+例如欧盟PDO/PGI体系，内部统一标准，对外作为整体谈判。像是香槟(Champagne),帕尔马火腿(Prosciutto di Parma)曼彻格奶酪(Manchego),
+
+**例子：**
+- 香槟（Champagne）
+- 帕尔马火腿（Prosciutto di Parma）
+- 曼彻格奶酪（Manchego）
+
+#### **DO in Mexico**
+
+所以墨西哥的DO的保护机制是一个三层法律架构，从国际法到国内法再到行政执行层层递进
+
+```
+┌─────────────────────────────────────┐
+│        第一层：国际法层面              │
+├─────────────────────────────────────┤
+│  • 里斯本协定（国际条约）               │
+│  • TRIPS协定（WTO框架）               │
+│  • 双边/多边贸易协定                   │
+│  ────────────────────────────────   │
+│  法律性质：国际公法                    │
+└─────────────────────────────────────┘
+            ↓
+┌─────────────────────────────────────┐
+│        第二层：国内法层面              │
+├─────────────────────────────────────┤
+│  • 各国DO保护法律                     │
+│  • 墨西哥：《联邦工业产权保护法》         │ 
+│  • 法国:AOC法                        │
+│  • 欧盟:PDO/PGI条例                  │
+│  ────────────────────────────────   │
+│  法律性质：国内立法                    │
+└─────────────────────────────────────┘
+            ↓
+┌─────────────────────────────────────┐
+│        第三层：行政执行层面            │
+├─────────────────────────────────────┤
+│  • DO保护声明                        │
+│  • 技术标准                          │
+│  • 认证体系                          │
+│  ───────────────────────────────────│
+│  法律性质：行政法规                    │
+└─────────────────────────────────────┘
+```
+
+#### **DO Summary**
+
+DO不是纯洁的，许多的批评和debate也由此产生。
+
+但是，干杯吧朋友。
+
+### **Pause here**
+
+我的拓展到这里先暂停了。对于Raicilla labeling, 我仍没有结论，因为这需要仔细考察墨西哥法律了。
+但有一个值得注意的现象：
+和Mezcal, Bacanora, Tequila的DO不同，除了授权的地区，Raicilla的DO涉及的生产规范等细节which另外几种烈酒的这个内容是写在其NOM里面的。
+
+或许这个就是原因吧
+
+### **References**
+
+[All the DOs(link)](https://www.gob.mx/impi/acciones-y-programas/declaraciones-generales-de-proteccion-de-denominaciones-de-origen)
+
+NOMs until year 2025 <br/>
+[NOM tequila]: [NOM-006-SCFI-2012](https://platiica.economia.gob.mx/normalizacion/nom-006-scfi-2012/). Updated from NOM-006-SCFI-2005, NOM-006-SCFI-1994, NOM-006-SCFI-1993<br/>
+[NOM Mezcal]:[NOM-070-SCFI-2016](https://platiica.economia.gob.mx/normalizacion/NOM-070-SCFI-2016/). Updated from NOM-070-SCFI-1994<br/>
+[NOM Bacanora]: [NOM-168-SCFI-2004](https://platiica.economia.gob.mx/normalizacion/NOM-168-SCFI-2004/) <br/>
+[NOM Sotol]: [NOM-159-SCFI-2004](https://platiica.economia.gob.mx/normalizacion/NOM-159-SCFI-2004/) <br/>
+
+[The Making of Tequila's Geographical Indication: The Struggle for Power and the Construction of agave azul Distinctiveness](https://www.scielo.org.mx/scielo.php?script=sci_arttext&pid=S0185-06362007000100007)
+
+## **Bacanora**
+
+终于，我们回到了Bacanora。
+
+### **History of Bacanora**
+
+[From article: 77 Years Outlawed, Sonora’s Rebel Spirit Lives: Bacanora—Spirit of Sonora’s Desert](https://theagavecompass.substack.com/p/77-years-outlawed-sonoras-rebel-spirit)
+
+In 1915, the governor of Sonora, Plutarco Elías Calles (who later became president of Mexico), declared war on local distillers. He saw homemade spirits as backward, unregulated, and a threat to modernization. Officially, it was about control and taxation; unofficially, it was about consolidating power.
+
+The punishment was severe: fines, destruction of stills, and even imprisonment. Local legend claims some producers were forced to smash their copper stills under government orders. Yet in the Sierra Madre and the rugged desert valleys, people adapted. They hid their remains in caves, roasted agave under camouflage, and used mule paths to transport their contraband.
+
+For comparison: U.S. Prohibition lasted 13 years (1920–1933). Bacanora’s prohibition lasted 77 years. That makes it one of the most extended alcohol bans in modern history—and one of the most successfully defied.
+
+When legalization finally came in 1992, it was less about permission and more about recognition of what had already endured. Bacanora hadn’t just survived the ban; it had become a badge of Sonoran identity—fiery, proud, and impossible to erase.
+
+### **Mezcal, Tequila, Bacanora**
+
+[Paper: BACANORA INDUSTRY AND ITS PROCESS OF PRODUCTION](https://www.researchgate.net/publication/241684661_INDUSTRIA_DEL_BACANORA_Y_SU_PROCESO_DE_ELABORACION_BACANORA_INDUSTRY_AND_ITS_PROCESS_OF_PRODUCTION)
+
+> Sin embargo, con laintroducción de la técnica de destilación por los misionerosespañoles en el siglo XVI, las bebidas fermentadas sesustituyeron por los destilados de agave, los cuales, desdeentonces han evolucionado en diferentes productosdestacando entre ellos el tequila, el mezcal y el bacanora(Mc Vaugh, 1989)
+
+在这个引用中可以看到，当时，Bacanora甚至是可以和Tequila, Mezcal齐名的一个产品，放在一起讨论。但是今天如果不是nerd，或许都不会知道Bacanora。
+
+禁令持续了77年,使巴卡诺拉产业失去了与龙舌兰酒同步发展的机会。索诺拉就在美国边境上。在1915年禁令之前,巴卡诺拉是美国西南部的流行饮料。
+
+历史证据表明,尽管这一活动在长达三百年的时间里遭受根除企图,但其持续存在不仅源于经济因素,更在于它在索诺拉山区人口最根深蒂固的文化和传统实践中所扮演的角色。[La industria del bacanora: historia y tradición de resistencia en la sierra sonorense](https://www.scielo.org.mx/scielo.php?script=sci_arttext&pid=S1870-39252007000200005).
+
+
+Authority will ever win. 干杯吧朋友
+
+### How it tastes
+
+My experience: herbs, cement.
+

@@ -1,0 +1,32 @@
+---
+title: '2026'
+pubDate: 2026-01-01
+author: 'Walbaaco'
+tags: ["utils"]
+---
+
+import ImageCarousel from '../../components/ImageCarousel.astro';
+
+
+export const IMG_1 = 'https://assets.msrtea7.com/bae/meet_1.JPG'
+export const IMG_2 = 'https://assets.msrtea7.com/bae/meet_2.JPG'
+export const IMG_3 = 'https://assets.msrtea7.com/bae/meet_3.JPG'
+export const IMG_4 = 'https://assets.msrtea7.com/bae/meet_4.jpg'
+export const IMG_5 = 'https://assets.msrtea7.com/bae/meet_5.PNG'
+
+
+export const images = [
+    { src: IMG_1, alt: "IMG_0012", isExternal: true },
+    { src: IMG_2, alt: "IMG_0014", isExternal: true },
+    { src: IMG_3, alt: "IMG_0015", isExternal: true },
+    { src: IMG_4, alt: "IMG_0016", isExternal: true },
+    { src: IMG_5, alt: "IMG_0017", isExternal: true },
+];
+
+# 2026
+
+<div style="text-align: center;">
+  **营，Baby²**
+</div>
+
+<ImageCarousel images={images} />

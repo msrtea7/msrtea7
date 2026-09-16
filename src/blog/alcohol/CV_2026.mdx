@@ -1,0 +1,116 @@
+---
+title: 'Resume'
+pubDate: 2026-09-11
+author: 'Walbaaco'
+# tags: [""]
+---
+
+import ImageCarousel from '../../components/ImageCarousel.astro';
+
+export const img_bachelor_1 = '<https://assets.msrtea7.com/resume_bar/kude_5.jpg>'
+export const img_bachelor_2 = '<https://assets.msrtea7.com/resume_bar/kude_6.png>'
+export const img_bachelor_3 = '<https://assets.msrtea7.com/resume_bar/kude_4.png>'
+export const img_bachelor_4 = '<https://assets.msrtea7.com/resume_bar/history_2.JPG>'
+export const img_bachelor_5 = '<https://assets.msrtea7.com/resume_bar/balang_gin.png>'
+
+export const img_bachelor = [
+    { src: img_bachelor_4, alt: "img_bachelor_4", isExternal: true },
+    { src: img_bachelor_1, alt: "img_bachelor_1", isExternal: true },
+    { src: img_bachelor_2, alt: "img_bachelor_2", isExternal: true },
+    { src: img_bachelor_3, alt: "img_bachelor_3", isExternal: true },
+    { src: img_bachelor_5, alt: "img_bachelor_5", isExternal: true },
+];
+
+import daiquiri from '../../assets/bar/daiquiri.png';
+import good from '../../assets/bar/good.png';
+import bar_tools from '../../assets/bar/bar_tools.png';
+import pineaple from '../../assets/bar/pineaple.png';
+
+export const logo = '<https://assets.msrtea7.com/resume_bar/logo_rough.png>'
+export const radius = '<https://assets.msrtea7.com/resume_bar/radius.JPG>'
+export const beer = '<https://assets.msrtea7.com/resume_bar/beer.JPG>'
+
+export const img_master = [
+    { src: good, alt: "fresh" },
+    { src: logo, alt: "logo", isExternal: true },
+    { src: beer, alt: "beer production", isExternal: true },
+    { src: radius, alt: "visiting radius distillery", isExternal: true  },
+];
+
+# **Resume**
+
+<div class="cv-layout">
+  <div class="info-section">
+| Name | Li Junrui |
+|:------:|:------:|
+| Age | 24 |
+| Education | MSc. Computer Science and Engineering |
+| Email | msrtea7@gmail.com |
+| Phone | +86 13735709902 |
+| Languages | Chinese & English |
+  </div>
+  <div class="image-section">
+    <img src='https://assets.msrtea7.com/cv2026/Bar_Portfolio.jpg' alt="portolio"/>
+  </div>
+</div>
+
+### **The Barking Dog | Copenhagen [*link* 🌐︎](https://thebarkingdog.dk/)**
+
+*2025.09 - 2026.07*
+
+- Bartender & Barback
+-
+
+### **Micro beer brewing and safe food production**
+
+*2025.6*
+
+- Hands-on microbrewing experience with different beer recipes
+- HACCP based safe food production programme in a microbrewery
+- [Project Archives Link (Figures only)](http://localhost:4321/posts/alcohol/beer_production)
+
+### **Projects**
+
+- #### Agave Distribution Visualization
+
+    Mexican agave distribution visualization. Data from GBIF. Try out at [agaveviz.msrtea7.com](https://agaveviz.msrtea7.com/)
+
+- #### Game - The Brave Jimador
+
+    The Brave Jimador is a Game under development. To earn points, Jimador (currently a dunky in the figure) should jump in to the collectable points without hitting the agave body. This game is to show people the diversity of agaves used in agave spirit production.
+
+  - Illustration
+
+    <div style="text-align: center;">
+        <image src='https://assets.msrtea7.com/cv2026/TheBraveJimador_2.png' alt="book cover" class="single_img" />
+    </div>
+    <br/>
+
+  - Mechanism Demo
+
+    <div class="bilibili-video-container" style="margin:0 auto;max-width:400px">
+      <iframe src="//player.bilibili.com/player.html?bvid=BV16teF6XET4&page=1"
+        scrolling="no"
+        border="0"
+        frameborder="no"
+        framespacing="0"
+        allowfullscreen="true">
+      </iframe>
+    </div>
+
+- #### Mezcal Database
+
+    Organize data from Mezcal Review, store them as a graph database. It could be used for quantitative research regarding agave spirits. Personally I expose the database to AI and let it do the job.
+
+    Some blogs:
+
+  - [Beyond Espadín](https://assets.msrtea7.com/cv2026/beyond-espadin.html)
+  - [The kingdom of Joven](https://assets.msrtea7.com/cv2026/the-kingdom-of-joven.html)
+  - [The Lineage](https://assets.msrtea7.com/cv2026/the-lineage.html)
+  - [Who Owns Your Mezcal?](<https://assets.msrtea7.com/cv2026/who-owns-your-mezcal.html>)
+
+- #### **Barbot (prototype)**
+
+  A bar stock management software prototype inspired by conversations with local bartenders.
+
+  > Quick intro doc [👆link](https://msrtea7.com/posts/alcohol/barbot_mvp_intro_en/).
